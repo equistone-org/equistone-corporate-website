@@ -115,7 +115,74 @@ export default function Home() {
             <Link href="/about">Read more</Link>
           </div>
         </div>
+        <div className="grid grid-cols-3 my-42 text-black">
+          {/* Card 1 */}
+          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-t border-b border-gray-400">
+            <div className="flex items-center justify-center py-4">
+              <Image
+                src="/equistone-maracorp-logo.svg"
+                alt="Mara Corp"
+                height={46}
+                width={162}
+                className="dark:invert"
+              />
+            </div>
+            <h4 className="text-white flex justify-center font-semibold">
+              Mara Corporation Sdn Bhd
+            </h4>
+          </div>
 
+          {/* Card 2 */}
+          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-b border-t border-gray-400">
+            <div className="flex items-center justify-center py-4">
+              <Image
+                src="/equistone-klinikutama-logo.svg"
+                alt="Klinik Utama"
+                height={46}
+                width={162}
+                priority
+                className="dark:invert"
+              />
+            </div>
+            <h4 className="text-white  flex justify-center font-semibold">
+              Klinik Utama Sdn Bhd
+            </h4>
+          </div>
+
+          {/* Card 3 */}
+          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-b border-r border-t border-gray-400">
+            <div className="flex items-center justify-center py-4">
+              <Image
+                src="/equistone-intellilabs-logo.svg"
+                alt="IntelliLabs"
+                height={72}
+                width={182}
+                priority
+                className="dark:invert"
+              />
+            </div>
+            <h4 className="text-white  flex justify-center font-semibold">
+              IntelliLabs AI
+            </h4>
+          </div>
+
+          {/* Card 4 */}
+          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-b border-gray-400">
+            <div className="flex items-center justify-center py-4">
+              <Image
+                src="/equistone-threadstone-logo.svg"
+                alt="Threadstone"
+                height={72}
+                width={182}
+                priority
+                className="dark:invert"
+              />
+            </div>
+            <h4 className="text-white flex justify-center font-semibold">
+              Threadstone Capital Sdn Bhd
+            </h4>
+          </div>
+        </div>
         {/* <div className="grid grid-cols-3 gap-x-4 my-42 text-black">
           <div className="col-span-1 bg-secondary-light shadow-sm px-12 py-18 text-2xl flex flex-col justify-between">
             <div className="items-center flex justify-center py-4">
@@ -173,72 +240,6 @@ export default function Home() {
           <p className="text-6xl text-green-dark-primary font-medium w-[80%] leading-14">
             A tiptop product that succesful, trust by clinic to use
           </p>
-        </div>
-
-        <div className="grid grid-cols-3 my-42 text-black">
-          {/* Card 1 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-t border-b border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-maracorp-logo.svg"
-                alt="Mara Corp"
-                height={46}
-                width={162}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              Mara Corporation Sdn Bhd
-            </h4>
-          </div>
-
-          {/* Card 2 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-b border-t border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-klinikutama-logo.svg"
-                alt="Klinik Utama"
-                height={46}
-                width={162}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              Klinik Utama Sdn Bhd
-            </h4>
-          </div>
-
-          {/* Card 3 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-b border-r border-t border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-intellilabs-logo.svg"
-                alt="IntelliLabs"
-                height={72}
-                width={182}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              IntelliLabs AI
-            </h4>
-          </div>
-
-          {/* Card 4 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-b border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-threadstone-logo.svg"
-                alt="Threadstone"
-                height={72}
-                width={182}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              Threadstone Capital Sdn Bhd
-            </h4>
-          </div>
         </div>
       </main>
       <FooterLight />

@@ -1,11 +1,145 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import FooterDark from "@/components/FooterDark";
+import gsap from "gsap";
+import { useState, useRef, useLayoutEffect } from "react";
 
-export default function AboutPage() {
+/* ================= CORPORATE DETAIL COMPONENT ================= */
+function TeamDetail({ index, detailRef, type, image, name }) {
+  const contentMap = {
+    afiq: {
+      title: "Chief Executive Officer",
+      description:
+        "Leads the overall corporate vision and strategic direction of the organization, focusing on sustainable growth, governance excellence, and long-term value creation.",
+      education:
+        "Bachelor of Business Administration (BBA), Universiti Malaya. Executive Leadership Program, INSEAD.",
+    },
+
+    syed: {
+      title: "Chief Executive Officer",
+      description:
+        "Provides executive oversight across business operations with a focus on strategic expansion, operational discipline, and organizational performance.",
+      education:
+        "MBA, Universiti Kebangsaan Malaysia. Certified Strategic Management Professional, London Business School.",
+    },
+
+    amirul: {
+      title: "Chief Financial Officer",
+      description:
+        "Oversees financial planning, capital management, and regulatory compliance, ensuring financial stability and reporting integrity.",
+      education:
+        "Bachelor of Accounting (Hons), Universiti Teknologi MARA (UiTM). Chartered Accountant (CA Malaysia).",
+    },
+
+    danial: {
+      title: "Chief Operation Officer",
+      description:
+        "Manages operational execution across all divisions, ensuring efficiency, scalability, and consistent service delivery standards.",
+      education:
+        "Bachelor of Operations Management, Universiti Putra Malaysia. Lean Six Sigma Black Belt Certification.",
+    },
+
+    khairul: {
+      title: "Chief Technology Officer",
+      description:
+        "Leads technology strategy, system architecture, and digital transformation initiatives to support scalable innovation.",
+      education:
+        "Bachelor of Computer Science, Universiti Sains Malaysia (USM). AWS Certified Solutions Architect.",
+    },
+
+    aidil: {
+      title: "Chief Technical Officer",
+      description:
+        "Responsible for engineering execution, infrastructure stability, and technical delivery across enterprise systems.",
+      education:
+        "Bachelor of Software Engineering, Multimedia University (MMU). Microsoft Certified Azure Engineer.",
+    },
+
+    wan: {
+      title: "Chief Audit Officer",
+      description:
+        "Provides independent oversight of governance, compliance, and internal control frameworks to ensure organizational integrity.",
+      education:
+        "Bachelor of Accounting, International Islamic University Malaysia (IIUM). Certified Internal Auditor (CIA).",
+    },
+  };
+  // const data = contentMap[type];
+
   return (
-    <div className="flex-1 flex-col  items-start justify-center bg-[#EFF4F6] font-sans ">
+    <div
+      ref={(el) => (detailRef.current[index] = el)}
+      className="col-span-3 overflow-hidden h-0 opacity-0"
+    >
+      <div className="bg-white px-32 py-12 flex items-center gap-12 border-b border-gray-600">
+        {/* IMAGE */}
+        <div className="flex-shrink-0">
+          <Image
+            src={image}
+            alt={name}
+            width={180}
+            height={180}
+            className="object-cover"
+          />
+        </div>
+
+        {/* CONTENT */}
+        <div className="flex flex-col space-y-4 max-w-3xl">
+          {/* NAME */}
+          <div>
+            <p className="uppercase font-semibold text-[#22333B] tracking-wide">
+              {name}
+            </p>
+
+            <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
+              {contentMap[type].title}
+            </p>
+          </div>
+
+          {/* DIVIDER */}
+          <div className="w-12 h-[2px] bg-gray-300"></div>
+
+          <p className="text-gray-700 leading-relaxed text-sm">
+            {contentMap[type].description}
+          </p>
+
+          {/* EDUCATION */}
+          <div className="pt-2">
+            <p className="text-xs uppercase tracking-widest text-gray-500">
+              Education & Certification
+            </p>
+            <p className="text-sm text-gray-600 mt-1">
+              {contentMap[type].education}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ================= PAGE ================= */
+export default function AboutPage() {
+  const [openIndex, setOpenIndex] = useState(null);
+  const detailRef = useRef([]);
+
+  useLayoutEffect(() => {
+    detailRef.current.forEach((el, i) => {
+      if (!el) return;
+
+      gsap.to(el, {
+        height: openIndex === i ? "auto" : 0,
+        opacity: openIndex === i ? 1 : 0,
+        duration: 0.3,
+      });
+    });
+  }, [openIndex]);
+
+  return (
+    <div className="flex-1 flex-col items-start justify-center bg-[#EFF4F6] font-sans">
       <main className="flex z-2 w-full relative min-h-screen flex-col bg-[#22333B] font-sans">
+        {/* HEADER */}
         <header className="w-full flex justify-between py-12 px-16">
           <Link href="/">
             <Image
@@ -17,7 +151,8 @@ export default function AboutPage() {
               priority
             />
           </Link>
-          <div className="flex flex-row space-x-26 items-center font-medium uppercase text-base">
+
+          <div className="flex flex-row space-x-26 items-center font-medium uppercase text-base text-white">
             <div className="flex flex-row space-x-8">
               <div>ABOUT</div>
               <div>
@@ -25,157 +160,207 @@ export default function AboutPage() {
               </div>
               <div>PRODUCT</div>
             </div>
+
             <div className="text-sm px-4 py-2 bg-white font-semibold text-[#22333B]">
               LET TALK
             </div>
           </div>
         </header>
-        <section className="flex mt-12 flex-col items-start  w-full">
-          <p className="text-6xl text-white font-medium w-[80%] leading-14 px-16">
-            TEAM
+
+        {/* TITLE */}
+        <section className="flex mt-12 flex-col items-start w-full">
+          <h1 className="text-6xl text-white font-medium px-16">TEAM</h1>
+          <p className="text-xl text-white font-medium px-16 pt-4">
+            A team of experienced leaders shaping strategy, innovation, and
+            growth.
           </p>
-          <div className="grid grid-cols-3 mt-12 text-black w-full">
-            <div className="col-span-3 bg-primary-light border-b border-gray-800 w-full px-24 flex flex-row justify-center pt-6">
+
+          <div className="grid grid-cols-3 mt-8 text-black w-full">
+            {/* ================= AFIQ ================= */}
+            <div
+              onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
+              className="col-span-3 bg-primary-light border-b border-gray-800 px-24 flex justify-center pt-6 cursor-pointer"
+            >
               <div className="flex flex-row space-x-2">
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black">
+                  <p className="uppercase font-semibold">
                     MUHAMAD AFIQ BIN IDRIS
                   </p>
-                  <p className="font-normal text-black">
-                    Chief Executive Officer
-                  </p>
+                  <p>Chief Executive Officer</p>
                 </div>
+
                 <Image
                   src="/team/img_1.png"
-                  alt="team 1"
-                  height={46}
+                  alt="Afiq"
                   width={162}
-                  priority
+                  height={46}
                 />
               </div>
             </div>
-            <div className="col-span-3 grid grid-cols-3 bg-secondary-light border-b border-gray-800 w-full px-28 pt-6 gap-x-6">
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+            <TeamDetail
+              index={0}
+              detailRef={detailRef}
+              type="afiq"
+              image="/team/img_1.png"
+              name="MUHAMAD AFIQ BIN IDRIS"
+            />
+
+            {/* ================= SYED / AMIRUL / DANIAL ================= */}
+            <div className="col-span-3 grid grid-cols-3 bg-secondary-light border-b border-gray-800 px-28 pt-6 gap-x-6">
+              <div
+                onClick={() => setOpenIndex(openIndex === 1 ? null : 1)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
-                    SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI
-                  </p>
-                  <p className="font-normal text-black">
-                    Chief Executive Officer
-                  </p>
+                  <p className="uppercase font-semibold">SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI</p>
+                  <p>Chief Operation Officer</p>
                 </div>
                 <Image
                   src="/team/img_2.png"
-                  alt="team 1"
-                  height={42}
+                  alt="Syed"
                   width={162}
-                  priority
+                  height={42}
                 />
               </div>
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+              <div
+                onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
-                    AMIRUL RASHID BIN AZMEE
-                  </p>
-                  <p className="font-normal text-black">
-                    Chief Financial Officer
-                  </p>
+                  <p className="uppercase font-semibold">AMIRUL RASHID BIN AZMEE</p>
+                  <p>Chief Financial Officer</p>
                 </div>
                 <Image
                   src="/team/img_3.png"
-                  alt="team 1"
-                  height={36}
+                  alt="Amirul"
                   width={182}
-                  priority
+                  height={36}
                 />
               </div>
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+              <div
+                onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
-                    MOHD DANIAL ARIFF BIN MOHD ZAMRI
-                  </p>
-                  <p className="font-normal text-black">
-                    Chief Operation Officer
-                  </p>
+                  <p className="uppercase font-semibold">MOHD DANIAL ARIFF BIN MOHD ZAMRI</p>
+                  <p>Chief Operation Officer</p>
                 </div>
                 <Image
                   src="/team/img_4.png"
-                  alt="team 1"
-                  height={46}
+                  alt="Danial"
                   width={162}
-                  priority
+                  height={46}
                 />
               </div>
             </div>
-            <div className="col-span-3 grid grid-cols-3 bg-primary-light border-b border-gray-800 w-full px-28 pt-6 gap-x-6">
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+            <TeamDetail
+              index={1}
+              detailRef={detailRef}
+              type="syed"
+              image="/team/img_2.png"
+              name="SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI"
+            />
+            <TeamDetail
+              index={2}
+              detailRef={detailRef}
+              type="amirul"
+              image="/team/img_3.png"
+              name="AMIRUL RASHID BIN AZMEE"
+            />
+            <TeamDetail
+              index={3}
+              detailRef={detailRef}
+              type="danial"
+              image="/team/img_4.png"
+              name="MOHD DANIAL ARIFF BIN MOHD ZAMRI"
+            />
+
+            {/* ================= TECH / AUDIT ================= */}
+            <div className="col-span-3 grid grid-cols-3 bg-primary-light border-b border-gray-800 px-28 pt-6 gap-x-6">
+              <div
+                onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
-                    KHAIRULANWAR BIN IDRIS{" "}
+                  <p className="uppercase font-semibold">
+                    KHAIRULANWAR BIN IDRIS
                   </p>
-                  <p className="font-normal text-black">
-                    Chief Technology Officer
-                  </p>
+                  <p>Chief Technology Officer</p>
                 </div>
                 <Image
                   src="/team/img_5.png"
-                  alt="team 1"
-                  height={46}
+                  alt="Khairul"
                   width={162}
-                  priority
+                  height={46}
                 />
               </div>
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+              <div
+                onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
-                    MOHAMAD AIDIL MAULA ABD. RAHIM{" "}
+                  <p className="uppercase font-semibold">
+                    MOHAMAD AIDIL MAULA ABD. RAHIM
                   </p>
-                  <p className="font-normal text-black">
-                    Chief Technical Officer
-                  </p>
+                  <p>Chief Technical Officer</p>
                 </div>
                 <Image
                   src="/team/img_6.png"
-                  alt="team 1"
-                  height={46}
+                  alt="Aidil"
                   width={162}
-                  priority
+                  height={46}
                 />
               </div>
-              <div className="flex flex-row justify-between space-x-2 col-span-1">
+
+              <div
+                onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
+                className="cursor-pointer flex justify-between"
+              >
                 <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold text-black w-[60%]">
+                  <p className="uppercase font-semibold">
                     WAN AQMARUR RAZIN BIN WAN AZLAN
                   </p>
-                  <p className="font-normal text-black">Chief Audit Officer </p>
+                  <p>Chief Audit Officer</p>
                 </div>
                 <Image
                   src="/team/img_7.png"
-                  alt="team 1"
-                  height={46}
+                  alt="Wan"
                   width={162}
-                  priority
+                  height={46}
                 />
               </div>
             </div>
+
+            <TeamDetail
+              index={4}
+              detailRef={detailRef}
+              type="khairul"
+              image="/team/img_5.png"
+              name="KHAIRULANWAR BIN IDRIS"
+            />
+            <TeamDetail
+              index={5}
+              detailRef={detailRef}
+              type="aidil"
+              image="/team/img_6.png"
+              name="MOHAMAD AIDIL MAULA ABD. RAHIM"
+            />
+            <TeamDetail
+              index={6}
+              detailRef={detailRef}
+              type="wan"
+              image="/team/img_7.png"
+              name="WAN AQMARUR RAZIN BIN WAN AZLAN"
+            />
           </div>
         </section>
+      </main>
 
-        {/* <footer className="w-full my-12">
-          <div className="border-t border-white flex px-16 mt-26 justify-between items-end">
-            <div className="flex flex-row space-x-12">
-              <p>2025 Equistone Sdn Bhd</p> <p>Privacy Policy</p>
-            </div>
-            <div className="flex flex-col w-[12%] mt-6 space-y-4">
-              <div className="flex font-normal text-base">
-                20ug, Jalan Yong Shook Lin, Bandar Baru Petaling Jaya, 46200
-                Petaling Jaya Selangor  Malaysia
-              </div>
-              <p className="flex font-normal text-base">admin@equistone.com</p>
-            </div>
-          </div>
-        </footer> */}
-      </main>{" "}
       <FooterDark />
     </div>
   );
