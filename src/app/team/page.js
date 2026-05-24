@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import HeaderDark from "@/components/HeaderDark";
 import FooterDark from "@/components/FooterDark";
 import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
 
-/* ================= CORPORATE DETAIL COMPONENT ================= */
 function TeamDetail({ index, detailRef, type, image, name }) {
   const contentMap = {
     afiq: {
@@ -65,53 +64,51 @@ function TeamDetail({ index, detailRef, type, image, name }) {
         "Bachelor of Accounting, International Islamic University Malaysia (IIUM). Certified Internal Auditor (CIA).",
     },
   };
-  // const data = contentMap[type];
-
   return (
     <div
       ref={(el) => (detailRef.current[index] = el)}
       className="col-span-3 overflow-hidden h-0 opacity-0"
     >
-      <div className="bg-white px-32 py-12 flex items-center gap-12 border-b border-gray-600">
-        {/* IMAGE */}
-        <div className="flex-shrink-0">
-          <Image
-            src={image}
-            alt={name}
-            width={180}
-            height={180}
-            className="object-cover"
-          />
-        </div>
-
-        {/* CONTENT */}
-        <div className="flex flex-col space-y-4 max-w-3xl">
-          {/* NAME */}
-          <div>
-            <p className="uppercase font-semibold text-[#22333B] tracking-wide">
-              {name}
-            </p>
-
-            <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
-              {contentMap[type].title}
-            </p>
+      <div className="bg-secondary-light px-[clamp(2rem,3vw,4rem)] w-full py-12 items-center border-b border-gray-600">
+        <div className="container mx-auto flex gap-12">
+          <div className="shrink-0">
+            <Image
+              src={image}
+              alt={name}
+              width={180}
+              height={180}
+              className="object-cover"
+            />
           </div>
+          {/* CONTENT */}
+          <div className="flex flex-col space-y-4 max-w-3xl">
+            {/* NAME */}
+            <div>
+              <p className="uppercase font-semibold text-[#22333B] tracking-wide">
+                {name}
+              </p>
 
-          {/* DIVIDER */}
-          <div className="w-12 h-[2px] bg-gray-300"></div>
+              <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
+                {contentMap[type].title}
+              </p>
+            </div>
 
-          <p className="text-gray-700 leading-relaxed text-sm">
-            {contentMap[type].description}
-          </p>
+            {/* DIVIDER */}
+            <div className="w-12 h-[2px] bg-gray-300"></div>
 
-          {/* EDUCATION */}
-          <div className="pt-2">
-            <p className="text-xs uppercase tracking-widest text-gray-500">
-              Education & Certification
+            <p className="text-gray-700 leading-relaxed text-sm">
+              {contentMap[type].description}
             </p>
-            <p className="text-sm text-gray-600 mt-1">
-              {contentMap[type].education}
-            </p>
+
+            {/* EDUCATION */}
+            <div className="pt-2">
+              <p className="text-xs uppercase tracking-widest text-gray-500">
+                Education & Certification
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                {contentMap[type].education}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -137,64 +134,49 @@ export default function AboutPage() {
   }, [openIndex]);
 
   return (
-    <div className="flex-1 flex-col items-start justify-center bg-[#EFF4F6] font-sans">
-      <main className="flex z-2 w-full relative min-h-screen flex-col bg-[#22333B] font-sans">
-        {/* HEADER */}
-        <header className="w-full flex justify-between py-12 px-16">
-          <Link href="/">
-            <Image
-              className="dark:invert"
-              src="/equistone-logo.svg"
-              alt="Equistone Logo"
-              width={200}
-              height={100}
-              priority
-            />
-          </Link>
-
-          <div className="flex flex-row space-x-26 items-center font-medium uppercase text-base text-white">
-            <div className="flex flex-row space-x-8">
-              <div>ABOUT</div>
-              <div>
-                <Link href="/team">TEAM</Link>
-              </div>
-              <div>PRODUCT</div>
-            </div>
-
-            <div className="text-sm px-4 py-2 bg-white font-semibold text-[#22333B]">
-              LET TALK
-            </div>
-          </div>
-        </header>
+    <div className="flex-1 flex-col items-start justify-center bg-primary-light font-sans">
+      <main className="flex z-2 w-full relative min-h-screen flex-col bg-primary-dark font-sans">
+        <HeaderDark />
 
         {/* TITLE */}
-        <section className="flex mt-12 flex-col items-start w-full">
-          <h1 className="text-6xl text-white font-medium px-16">TEAM</h1>
-          <p className="text-xl text-white font-medium px-16 pt-4">
-            A team of experienced leaders shaping strategy, innovation, and
-            growth.
-          </p>
+        <section className="flex mt-10 lg:mt-12 flex-col items-start w-full">
+          <div className="px-[clamp(2rem,3vw,4rem)] w-full">
+            <h1 className="text-[clamp(2.5rem,5vw,4rem)] lg:text-6xl container mx-auto text-white font-medium">
+              TEAM
+            </h1>
+          </div>
+          <div className="px-[clamp(2rem,3vw,4rem)] w-full">
+            <p className="container mx-auto text-base lg:text-xl text-white font-medium pt-4">
+              A team of experienced leaders shaping strategy, innovation, and
+              growth.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-3 mt-8 text-black w-full">
-            {/* ================= AFIQ ================= */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 text-black w-full">
             <div
               onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
-              className="col-span-3 bg-primary-light border-b border-gray-800 px-24 flex justify-center pt-6 cursor-pointer"
+              className="col-span-1 lg:col-span-3 bg-primary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6 cursor-pointer"
             >
-              <div className="flex flex-row space-x-2">
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">
-                    MUHAMAD AFIQ BIN IDRIS
-                  </p>
-                  <p>Chief Executive Officer</p>
-                </div>
+              <div className="container mx-auto flex justify-center">
+                <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      MUHAMAD AFIQ BIN IDRIS
+                    </p>
 
-                <Image
-                  src="/team/img_1.png"
-                  alt="Afiq"
-                  width={162}
-                  height={46}
-                />
+                    <p className="text-sm">Chief Executive Officer</p>
+                  </div>
+
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end">
+                    <Image
+                      src="/team/img_1.png"
+                      alt="Afiq"
+                      width={162}
+                      height={46}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -206,54 +188,70 @@ export default function AboutPage() {
               name="MUHAMAD AFIQ BIN IDRIS"
             />
 
-            {/* ================= SYED / AMIRUL / DANIAL ================= */}
-            <div className="col-span-3 grid grid-cols-3 bg-secondary-light border-b border-gray-800 px-28 pt-6 gap-x-6">
-              <div
-                onClick={() => setOpenIndex(openIndex === 1 ? null : 1)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI</p>
-                  <p>Chief Operation Officer</p>
-                </div>
-                <Image
-                  src="/team/img_2.png"
-                  alt="Syed"
-                  width={162}
-                  height={42}
-                />
-              </div>
+            <div className="col-span-1 lg:col-span-3 bg-secondary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
+              <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                  onClick={() => setOpenIndex(openIndex === 1 ? null : 1)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI
+                    </p>
+                    <p className="text-sm">Chief Operation Officer</p>
+                  </div>
 
-              <div
-                onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">AMIRUL RASHID BIN AZMEE</p>
-                  <p>Chief Financial Officer</p>
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
+                    <Image
+                      src="/team/img_2.png"
+                      alt="Syed"
+                      width={162}
+                      height={42}
+                    />
+                  </div>
                 </div>
-                <Image
-                  src="/team/img_3.png"
-                  alt="Amirul"
-                  width={182}
-                  height={36}
-                />
-              </div>
 
-              <div
-                onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">MOHD DANIAL ARIFF BIN MOHD ZAMRI</p>
-                  <p>Chief Operation Officer</p>
+                <div
+                  onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      AMIRUL RASHID BIN AZMEE
+                    </p>
+                    <p className="text-sm">Chief Financial Officer</p>
+                  </div>
+
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
+                    <Image
+                      src="/team/img_3.png"
+                      alt="Amirul"
+                      width={182}
+                      height={36}
+                    />
+                  </div>
                 </div>
-                <Image
-                  src="/team/img_4.png"
-                  alt="Danial"
-                  width={162}
-                  height={46}
-                />
+
+                <div
+                  onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      MOHD DANIAL ARIFF BIN MOHD ZAMRI
+                    </p>
+                    <p className="text-sm">Chief Operation Officer</p>
+                  </div>
+
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
+                    <Image
+                      src="/team/img_4.png"
+                      alt="Danial"
+                      width={162}
+                      height={46}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -279,63 +277,76 @@ export default function AboutPage() {
               name="MOHD DANIAL ARIFF BIN MOHD ZAMRI"
             />
 
-            {/* ================= TECH / AUDIT ================= */}
-            <div className="col-span-3 grid grid-cols-3 bg-primary-light border-b border-gray-800 px-28 pt-6 gap-x-6">
-              <div
-                onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">
-                    KHAIRULANWAR BIN IDRIS
-                  </p>
-                  <p>Chief Technology Officer</p>
-                </div>
-                <Image
-                  src="/team/img_5.png"
-                  alt="Khairul"
-                  width={162}
-                  height={46}
-                />
-              </div>
+            <div className="col-span-1 lg:col-span-3 bg-primary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
+              <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Card 1 */}
+                <div
+                  onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      KHAIRULANWAR BIN IDRIS
+                    </p>
+                    <p className="text-sm">Chief Technology Officer</p>
+                  </div>
 
-              <div
-                onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">
-                    MOHAMAD AIDIL MAULA ABD. RAHIM
-                  </p>
-                  <p>Chief Technical Officer</p>
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
+                    <Image
+                      src="/team/img_5.png"
+                      alt="Khairul"
+                      width={162}
+                      height={46}
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
-                <Image
-                  src="/team/img_6.png"
-                  alt="Aidil"
-                  width={162}
-                  height={46}
-                />
-              </div>
 
-              <div
-                onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
-                className="cursor-pointer flex justify-between"
-              >
-                <div className="mt-4 border-l border-gray-900 px-8 flex flex-col space-y-2">
-                  <p className="uppercase font-semibold">
-                    WAN AQMARUR RAZIN BIN WAN AZLAN
-                  </p>
-                  <p>Chief Audit Officer</p>
+                {/* Card 2 */}
+                <div
+                  onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      MOHAMAD AIDIL MAULA ABD. RAHIM
+                    </p>
+                    <p className="text-sm">Chief Technical Officer</p>
+                  </div>
+
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
+                    <Image
+                      src="/team/img_6.png"
+                      alt="Aidil"
+                      width={162}
+                      height={46}
+                    />
+                  </div>
                 </div>
-                <Image
-                  src="/team/img_7.png"
-                  alt="Wan"
-                  width={162}
-                  height={46}
-                />
+
+                {/* Card 3 */}
+                <div
+                  onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
+                  className="cursor-pointer flex justify-between"
+                >
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                    <p className="uppercase font-semibold text-sm lg:text-base">
+                      WAN AQMARUR RAZIN BIN WAN AZLAN
+                    </p>
+                    <p className="text-sm">Chief Audit Officer</p>
+                  </div>
+
+                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
+                    <Image
+                      src="/team/img_7.png"
+                      alt="Wan"
+                      width={162}
+                      height={46}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-
             <TeamDetail
               index={4}
               detailRef={detailRef}

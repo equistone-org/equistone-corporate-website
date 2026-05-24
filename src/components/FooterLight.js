@@ -3,74 +3,80 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="w-full sticky bottom-0 h-fit z-0 bg-primary-light">
-      <div className="mx-auto border-t-2 border-black text-gray-950 px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)] flex flex-col gap-[clamp(1rem,2vw,2rem)]">
-        {/* Top Info */}
-        <section className="flex flex-row justify-between">
-          {/* Logo */}
-          <section>
-            <div className="w-full">
+      <div className="border-t-2 border-black text-gray-600 px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)] flex flex-col gap-[clamp(1rem,2vw,2rem)]">
+        <div className="container mx-auto">
+          {/* Top Info */}
+          <section className="flex flex-col lg:flex-row justify-between gap-8">
+            {/* Logo */}
+            <section className="w-full lg:w-[30%]">
+              <div className="w-full max-w-[180px] lg:max-w-[260px]">
+                <Image
+                  src="/footer/equistone-dark-logo.svg"
+                  alt="Equistone logo"
+                  width={2000}
+                  height={200}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            </section>
+
+            {/* Links */}
+            <section className="flex flex-col sm:flex-row justify-end gap-[clamp(1rem,3vw,3rem)] text-[clamp(0.9rem,1.2vw,1rem)]">
+              <address className="not-italic flex flex-col">
+                <h2 className="text-[clamp(0.75rem,1vw,0.9rem)]">Contact Us</h2>
+                <a className="hover:underline font-semibold">
+                  support@XXXXXXXX
+                </a>
+                <a className="hover:underline font-semibold">+013-XXXXXXX</a>
+              </address>
+
+              <address className="not-italic flex flex-col">
+                <h2 className="text-[clamp(0.75rem,1vw,0.9rem)]">
+                  Legal and Policies
+                </h2>
+                <a
+                  href="mailto:support@rytbank.my"
+                  className="hover:underline font-semibold"
+                >
+                  Terms and Conditions
+                </a>
+              </address>
+            </section>
+          </section>
+
+          {/* Social Icons */}
+          <section className="flex justify-end space-x-[clamp(0.5rem,1.5vw,1rem)]">
+            <div className="p-[clamp(0.4rem,1vw,0.6rem)] rounded-lg flex justify-center">
               <Image
-                src="footer/equistone-dark-logo.svg"
-                alt="Equistone logo"
-                width={2000}
-                height={200}
-                className="w-full h-auto"
+                src="/footer/equistone-light-telegram-icon.svg"
+                alt="Telegram"
+                width={24}
+                height={24}
+                className="w-[clamp(14px,2vw,22px)] h-auto invert"
+                priority
+              />
+            </div>
+
+            <div className="p-[clamp(0.4rem,1vw,0.6rem)] rounded-lg flex justify-center">
+              <Image
+                src="/footer/equistone-light-discord-icon.svg"
+                alt="Discord"
+                width={24}
+                height={24}
+                className="w-[clamp(14px,2vw,22px)] h-auto invert"
                 priority
               />
             </div>
           </section>
-          <section className="flex justify-end space-x-[clamp(1rem,3vw,3rem)] text-[clamp(0.9rem,1.2vw,1rem)]">
-            <address className="not-italic flex flex-col">
-              <h2 className="text-[clamp(0.75rem,1vw,0.9rem)]">Contact Us</h2>
-              <a className="hover:underline font-semibold">support@XXXXXXXX</a>
-              <a className="hover:underline font-semibold">+013-XXXXXXX</a>
-            </address>
 
-            <address className="not-italic flex flex-col">
-              <h2 className="text-[clamp(0.75rem,1vw,0.9rem)]">
-                Legal and Policies
-              </h2>
-              <a
-                href="mailto:support@rytbank.my"
-                className="hover:underline font-semibold"
-              >
-                Terms and Conditions
-              </a>
-            </address>
+          {/* Copyright */}
+          <section className="mt-[clamp(1rem,3vw,3rem)] flex justify-end">
+            <p className="text-[clamp(0.8rem,1vw,1rem)] text-gray-900 font-semibold">
+              © {new Date().getFullYear()} Equistone. All rights reserved.
+            </p>
           </section>
-        </section>
-
-        {/* Social Icons */}
-        <section className="flex justify-end space-x-[clamp(0.5rem,1.5vw,1rem)]">
-          <div className="p-[clamp(0.4rem,1vw,0.6rem)] rounded-lg flex justify-center">
-            <Image
-              src="footer/equistone-light-telegram-icon.svg"
-              alt="Telegram"
-              width={24}
-              height={24}
-              className="w-[clamp(14px,2vw,22px)] h-auto invert"
-              priority
-            />
-          </div>
-
-          <div className="p-[clamp(0.4rem,1vw,0.6rem)] rounded-lg flex justify-center">
-            <Image
-              src="footer/equistone-light-discord-icon.svg"
-              alt="Discord"
-              width={24}
-              height={24}
-              className="w-[clamp(14px,2vw,22px)] h-auto invert"
-              priority
-            />
-          </div>
-        </section>
-
-        {/* Copyright */}
-        <section className="mt-[clamp(1rem,3vw,3rem)] flex justify-end">
-          <p className="text-[clamp(0.8rem,1vw,1rem)] text-gray-900 font-semibold">
-            © {new Date().getFullYear()} Equistone. All rights reserved.
-          </p>
-        </section>
+        </div>
       </div>
     </footer>
   );

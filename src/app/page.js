@@ -1,247 +1,232 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import HeaderLight from "@/components/HeaderLight";
 import FooterLight from "@/components/FooterLight";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
+function PartnerSlider() {
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(".logo-track", {
+        xPercent: -50,
+        duration: 30,
+        repeat: -1,
+        ease: "linear",
+      });
+    }, sliderRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const logos = [
+    {
+      src: "/collaborations/equistone-payhalal-logo.svg",
+      name: "Payhalal Sdn Bhd",
+    },
+    {
+      src: "/collaborations/equistone-klinikutama-logo.svg",
+      name: "Klinik Utama Sdn Bhd",
+    },
+    {
+      src: "/collaborations/equistone-intellilabs-logo.svg",
+      name: "IntelliLabs AI",
+    },
+    {
+      src: "/collaborations/equistone-jomchat-logo.svg",
+      name: "JomChat",
+    },
+  ];
+
+  return (
+    <div ref={sliderRef} className="overflow-hidden w-full py-20 bg-primary-dark">
+      <div className="logo-track flex w-max">
+        {[...logos, ...logos].map((logo, index) => (
+          <div
+            key={index}
+            className="w-[300px] px-6 lg:px-12 py-10 lg:py-18 text-lg lg:text-2xl flex flex-col justify-between border border-gray-400"
+          >
+            <div className="flex items-center justify-center py-4 h-[120px]">
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                height={72}
+                width={182}
+                className="w-[120px] lg:w-[182px] h-auto"
+              />
+            </div>
+
+            <h4 className="text-white flex justify-center font-semibold text-center">
+              {logo.name}
+            </h4>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
+  const orb1 = useRef(null);
+  const orb2 = useRef(null);
+  const orb3 = useRef(null);
+  useEffect(() => {
+    gsap.to(orb1.current, {
+      x: 150,
+      y: -200,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(orb2.current, {
+      x: -180,
+      y: 120,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(orb3.current, {
+      x: 100,
+      y: 180,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }, []);
+
   return (
-    <div className="flex-1 flex-col items-start justify-center bg-primary-light font-sans ">
-      <main
-        className="relative  z-2 flex h-screen w-full flex-col font-sans bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(34,51,59,1.2), rgba(34,51,59,0.4)), url('/background/equistone-main-img.jpg')",
-        }}
-      >
-        <header className="w-full flex justify-between py-12 px-16 border-b border-white">
-          <Link href="/">
-            <Image
-              className="dark:invert"
-              src="/equistone-logo.svg"
-              alt="Equistone Logo"
-              width={200}
-              height={100}
-              priority
-            />
-          </Link>
-          <div className="flex flex-row space-x-26 items-center font-medium uppercase text-base">
-            <div className="flex flex-row space-x-8">
-              <div>ABOUT</div>
-              <div>
-                <Link href="/team">TEAM</Link>
-              </div>
-              <div>PRODUCT</div>
-            </div>
-            <div className="text-sm px-4 py-2 bg-white font-semibold text-[#22333B]">
-              LET TALK
-            </div>
-          </div>
-        </header>
+    <div className="flex-1 flex-col items-start justify-center bg-primary-light font-sans">
+      <main className="relative min-h-screen w-full overflow-hidden font-sans z-[99]">
+        <div className="absolute inset-0 z-0 overflow-hidden bg-secondary-light">
+          {/* Orb 1 */}
+          <div
+            ref={orb1}
+            className="absolute w-[600px] h-[600px] rounded-full blur-[20px] opacity-90"
+            style={{
+              background:
+                "radial-gradient(circle, #e7c8a0 0%, transparent 70%)",
+              top: "20%",
+              left: "10%",
+            }}
+          />
 
-        <main className="grid grid-cols-2 w-full h-full">
-          <div className="bg-primary-dark col-span-1 pl-16 flex items-center justify-center">
-            <h1 className="text-[6rem] font-medium leading-[1.6] tracking-tight text-white flex items-center justify-center gap-6">
+          <div
+            ref={orb2}
+            className="absolute w-[500px] h-[800px] rounded-full blur-[40px] opacity-90"
+            style={{
+              background:
+                "radial-gradient(circle, #deb68a 0%, transparent 70%)",
+              top: "60%",
+              left: "50%",
+            }}
+          />
+
+          <div
+            ref={orb3}
+            className="absolute w-[800px] h-[1200px] rounded-full blur-[60px] opacity-90"
+            style={{
+              background:
+                "radial-gradient(circle, #d4a373 0%, transparent 70%)",
+              top: "20%",
+              left: "70%",
+            }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 flex min-h-screen flex-col">
+          <HeaderLight withBorder />
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto">
+            <div className="col-span-2 px-[clamp(2rem,3vw,4rem)] py-12 lg:py-0 flex items-center justify-center">
+              <h1 className="text-[clamp(4rem,6vw,6rem)] font-medium leading-[1.2] tracking-tight text-green-dark-primary flex items-start justify-center gap-4 lg:gap-6">
+                Unlocking value through clarity, strategy, and purpose
+              </h1>
+            </div>
+
+            <div className="col-span-1 px-[clamp(2rem,3vw,4rem)] hidden lg:block"></div>
+          </div>
+        </div>
+      </main>
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-light py-16 ">
+        <div className="container mx-auto">
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-2xl lg:text-4xl font-normal leading-[1.2] tracking-tight text-[#00330f] flex gap-4">
               <span>•</span>
-              Unlocking value through clarity, strategy, and purpose
+              About us
             </h1>
-          </div>
-          <div className="col-span-1 pr-16"></div>
-        </main>
-      </main>
-      <main className="flex z-2 relative h-sceen w-full flex-col px-16 font-sans bg-primary-light py-16">
-        <div className="flex flex-row justify-between text-center">
-          <h1 className="text-4xl font-normal leading-[1.2] tracking-tight text-[#00330f] flex gap-4">
-            <span>•</span>
-            About us
-          </h1>
-          <p className="text-2xl text-[#3a4347]">-1</p>
-        </div>
-        <div className="mt-6">
-          <p className="text-6xl text-green-dark-primary font-medium w-[80%] leading-14">
-            Equistone builds value where investment, strategy, and technology
-            meet.
-          </p>
-          <div className="text-sm px-4 py-2 bg-[#22333B] font-semibold text-white w-fit mt-8">
-            <Link href="/about">Read more</Link>
-          </div>
-        </div>
 
-        {/* <div className="grid grid-cols-2 gap-x-2 my-42 text-black">
-          <div className="col-span-1 bg-[#F8F8F8] shadow-sm p-12 text-2xl">
-            <div className="flex flex-row space-x-6">
-              <Image
-                src="/equistone-mission.svg"
-                alt="Equistone mission"
-                width={36}
-                height={36}
-                priority
-              />
-              <p className="font-medium">Mission</p>
-            </div>
-            <h4 className="mt-6">
-              To empower businesses through innovative technology solutions that
-              drive growth and efficiency
-            </h4>
-          </div>
-          <div className="col-span-1 bg-[#F8F8F8] shadow-sm p-12 text-2xl">
-            <div className="flex flex-row space-x-6">
-              <Image
-                src="/equistone-vision.svg"
-                alt="Equistone vision"
-                width={40}
-                height={40}
-                priority
-              />
-              <p className="font-medium">Vision</p>
-            </div>
-            <h4 className="mt-6">Mara Corporation Sdn Bhd</h4>
-          </div>
-        </div> */}
-      </main>
-      <main className="flex z-2 relative h-sceen w-full flex-col px-16 font-sans bg-[#22333B] py-20">
-        <div className="flex flex-row justify-between text-center">
-          <h1 className="text-4xl font-normal leading-[1.2] tracking-tight text-white flex gap-4">
-            <span>•</span>
-            Our strategic partner
-          </h1>
-          <p className="text-2xl text-[#bec1c2]">-2</p>
-        </div>
-        <div className="mt-6">
-          <p className="text-4xl text-white font-medium w-[60%] leading-12">
-            We work hand-in-hand with our strategic partners, combining
-            strengths and expertise to ensure project success and deliver
-            greater value
-          </p>
-          <div className="text-sm px-4 py-2 bg-[#EFF4F6]  font-semibold text-black w-fit mt-8">
-            <Link href="/about">Read more</Link>
-          </div>
-        </div>
-        <div className="grid grid-cols-3 my-42 text-black">
-          {/* Card 1 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-t border-b border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-maracorp-logo.svg"
-                alt="Mara Corp"
-                height={46}
-                width={162}
-                className="dark:invert"
-              />
-            </div>
-            <h4 className="text-white flex justify-center font-semibold">
-              Mara Corporation Sdn Bhd
-            </h4>
+            <p className="text-lg lg:text-2xl text-[#3a4347]">-1</p>
           </div>
 
-          {/* Card 2 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-b border-t border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-klinikutama-logo.svg"
-                alt="Klinik Utama"
-                height={46}
-                width={162}
-                priority
-                className="dark:invert"
-              />
-            </div>
-            <h4 className="text-white  flex justify-center font-semibold">
-              Klinik Utama Sdn Bhd
-            </h4>
-          </div>
+          <div className="mt-6">
+            <p className="text-[clamp(2rem,4vw,4.2rem)] text-green-dark-primary font-medium w-full lg:w-[80%] leading-[1.2]">
+              Equistone builds value where investment, strategy, and technology
+              meet.
+            </p>
 
-          {/* Card 3 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-b border-r border-t border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-intellilabs-logo.svg"
-                alt="IntelliLabs"
-                height={72}
-                width={182}
-                priority
-                className="dark:invert"
-              />
+            <div className="text-sm px-4 py-2 bg-primary-dark font-semibold text-white w-fit mt-8">
+              <Link href="/about">Read more</Link>
             </div>
-            <h4 className="text-white  flex justify-center font-semibold">
-              IntelliLabs AI
-            </h4>
           </div>
-
-          {/* Card 4 */}
-          <div className="px-12 py-18 text-2xl flex flex-col justify-between border-r border-l border-b border-gray-400">
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/equistone-threadstone-logo.svg"
-                alt="Threadstone"
-                height={72}
-                width={182}
-                priority
-                className="dark:invert"
-              />
-            </div>
-            <h4 className="text-white flex justify-center font-semibold">
-              Threadstone Capital Sdn Bhd
-            </h4>
-          </div>
-        </div>
-        {/* <div className="grid grid-cols-3 gap-x-4 my-42 text-black">
-          <div className="col-span-1 bg-secondary-light shadow-sm px-12 py-18 text-2xl flex flex-col justify-between">
-            <div className="items-center flex justify-center py-4">
-              <Image
-                src="/equistone-maracorp-logo.svg"
-                alt="Mara Corp"
-                height={46}
-                width={162}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              Mara Corporation Sdn Bhd
-            </h4>
-          </div>
-          <div className="col-span-1 bg-secondary-light shadow-sm px-12 py-18 text-2xl flex flex-col justify-between">
-            <div className="items-center flex justify-center py-4">
-              <Image
-                src="/equistone-klinikutama-logo.svg"
-                alt="Klinik Utama"
-                height={46}
-                width={162}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              Klinik Utama Sdn Bhd
-            </h4>
-          </div>
-          <div className="col-span-1 bg-secondary-light shadow-sm px-12 py-18 text-2xl flex flex-col justify-between">
-            <div className="items-center flex justify-center py-4">
-              <Image
-                src="/equistone-intellilabs-logo.svg"
-                alt="intellilabs"
-                height={72}
-                width={182}
-                priority
-              />
-            </div>
-            <h4 className="text-green-dark-primary flex justify-center font-semibold">
-              IntelliLabs AI
-            </h4>
-          </div>
-        </div> */}
-      </main>
-      <main className="flex z-2 relative h-sceen w-full flex-col px-16 font-sans bg-primary-light  py-20">
-        <div className="flex flex-row justify-between text-center">
-          <h1 className="text-4xl font-normal leading-[1.2] tracking-tight text-black flex gap-4">
-            <span>•</span>
-            Our product
-          </h1>
-          <p className="text-2xl text-[#3d494d]">-2</p>
-        </div>
-        <div className="mt-6">
-          <p className="text-6xl text-green-dark-primary font-medium w-[80%] leading-14">
-            A tiptop product that succesful, trust by clinic to use
-          </p>
         </div>
       </main>
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-dark py-20">
+        <div className="container mx-auto">
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-2xl lg:text-4xl font-normal leading-[1.2] tracking-tight text-white flex gap-4">
+              <span>•</span>
+              Our strategic partner
+            </h1>
+
+            <p className="text-lg lg:text-2xl text-[#bec1c2]">-2</p>
+          </div>
+
+          <div className="mt-6">
+            <p className="text-[clamp(1.8rem,3vw,3rem)] text-white font-medium w-full lg:w-[80%] leading-[1.2]">
+              We work hand-in-hand with our strategic partners, combining
+              strengths and expertise to ensure project success and deliver
+              greater value
+            </p>
+
+            <div className="text-sm px-4 py-2 bg-[#EFF4F6] font-semibold text-black w-fit mt-8">
+              <Link href="/about">Read more</Link>
+            </div>
+          </div>
+          <PartnerSlider />
+        </div>
+      </main>
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-light py-20">
+        <div className="container mx-auto">
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-2xl lg:text-4xl font-normal leading-[1.2] tracking-tight text-black flex gap-4">
+              <span>•</span>
+              Our product
+            </h1>
+
+            <p className="text-lg lg:text-2xl text-[#3d494d]">-2</p>
+          </div>
+
+          <div className="mt-6">
+            <p className="text-[clamp(2rem,4vw,4.2rem)] text-green-dark-primary font-medium w-full lg:w-[80%] leading-[1.2]">
+              A tiptop product that succesful, trust by clinic to use
+            </p>
+          </div>
+        </div>
+      </main>
+
       <FooterLight />
     </div>
   );

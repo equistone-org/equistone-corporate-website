@@ -40,15 +40,15 @@ body {
 
 @layer utilities {
   .bg-primary-light {
-    background-color: #f2f4f3;
+    background-color: #fefdf2;
   }
 
   .bg-secondary-light {
-    background-color: #fdfdfc;
+    background-color: #fefcef;
   }
 
   .bg-primary-dark {
-    background-color: #22333b;
+    background-color: #344e41;
   }
 
   .text-green-dark-primary {
