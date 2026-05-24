@@ -11,7 +11,7 @@ export default function Footer() {
             <section className="w-full lg:w-[30%]">
               <div className="w-full max-w-[180px] lg:max-w-[260px]">
                 <Image
-                  src="/footer/equistone-light-logo.svg"
+                  src="/shared/equistone-light-logo.svg"
                   alt="Equistone logo"
                   width={2000}
                   height={200}

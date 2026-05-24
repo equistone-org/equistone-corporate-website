@@ -8,7 +8,7 @@ export default function HeaderLight({ withBorder = false }) {
         <div className="container mx-auto flex justify-between py-8 lg:py-12">
           <Link href="/">
             <Image
-              src="/equistone-dark-logo.svg"
+              src="/shared/equistone-dark-logo.svg"
               alt="Equistone Logo"
               width={200}
               height={100}
