@@ -140,16 +140,14 @@ export default function AboutPage() {
 
         {/* TITLE */}
         <section className="flex mt-10 lg:mt-12 flex-col items-start w-full">
-          <div className="px-[clamp(2rem,3vw,4rem)] w-full">
-            <h1 className="text-[clamp(2.5rem,5vw,4rem)] lg:text-6xl container mx-auto text-white font-medium">
-              TEAM
+          <div className="container mx-auto">
+            {" "}
+            <h1 className="my-8 text-[clamp(3rem,7vw,6rem)] leading-[1] font-semibold text-whie">
+              The Team Behind
+              <br />
+              Equistone’s Next Phase
+              <span className="text-[#b87a45]"> Of Growth.</span>
             </h1>
-          </div>
-          <div className="px-[clamp(2rem,3vw,4rem)] w-full">
-            <p className="container mx-auto text-base lg:text-xl text-white font-medium pt-4">
-              A team of experienced leaders shaping strategy, innovation, and
-              growth.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 text-black w-full">

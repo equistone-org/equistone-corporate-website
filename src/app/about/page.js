@@ -1,102 +1,204 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import HeaderLight from "@/components/HeaderLight";
+import FooterLight from "@/components/FooterLight";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col items-start justify-center bg-[#EFF4F6] font-sans ">
-      <main className="flex w-full min-h-screen flex-col bg-[#22333B] font-sans">
-        <header className="w-full flex justify-between py-12 px-16">
-          <Link href="/">
-            <Image
-              className="dark:invert"
-              src="/equistone-logo.svg"
-              alt="Equistone Logo"
-              width={200}
-              height={100}
-              priority
-            />
-          </Link>
-          <div className="flex flex-row space-x-26 items-center font-medium uppercase text-base">
-            <div className="flex flex-row space-x-8">
-              <div>ABOUT</div>
-              <div>
-                <Link href="/team">TEAM</Link>
+    <div className="flex flex-col bg-primary-light font-sans text-black">
+      <HeaderLight withBorder />
+
+      {/* HERO */}
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between gap-12">
+            {/* LEFT */}
+            <div className="lg:w-[65%]">    
+              <h1 className="mt-8 text-[clamp(3rem,7vw,6rem)] leading-[1] font-semibold text-black">
+                Building Long-Term
+                <br />
+                Value Through
+                <span className="text-[#7f4f24]"> ICT Ventures.</span>
+              </h1>
+
+              <p className="mt-10 text-[#3a4347] leading-8 text-lg lg:w-[90%]">
+                Equistone Sdn Bhd is a Malaysian investment holding and digital
+                solutions company focused on strategic investments, advisory,
+                and technology-backed value creation.
+              </p>
+            </div>
+
+            {/* RIGHT */}
+            <div className="lg:w-[25%] flex flex-col justify-end">
+              <div className="border-l border-gray-300 pl-6">
+                <div className="text-4xl font-semibold">2019</div>
+
+                <p className="mt-3 text-[#3a4347] leading-7">
+                  Incorporated in Kuala Lumpur, Malaysia
+                </p>
               </div>
-              <div>PRODUCT</div>
-            </div>
-            <div className="text-sm px-4 py-2 bg-white font-semibold text-[#22333B]">
-              LET TALK
-            </div>
-          </div>
-        </header>
-        <section className="grid grid-cols-2 mt-12 bg-[#EFF4F6] py-12 text-black w-full">
-          <div className="col-span-2">
-            <p className="text-6xl text-black font-medium w-[80%] leading-14 px-16">
-              ABOUT
-            </p>
-            <p className="flex mt-12 flex-col items-start text-base w-full px-62 text-justify mb-12">
-              Equistone Sdn. Bhd. (“ESB”) is a Malaysian-based investment
-              holding and digital solutions company focused on building
-              long-term value through strategic investments, advisory services,
-              and technology enablement. With a multidisciplinary team
-              experienced in corporate finance, investment structuring, project
-              development, and digital transformation, ESB serves as both an
-              investor and a strategic advisor to high-impact ventures across
-              Malaysia. As an investment and advisory platform, ESB identifies,
-              finances, and develops opportunities with strong commercial
-              potential while offering end-to-end advisory support across
-              financial modelling, project structuring, capital optimisation,
-              and execution planning. Our track record includes the development
-              of ESB’s in-house cloud-based Clinic Management System (“Clinex”),
-              currently deployed across 21 clinics in the Klang Valley,
-              demonstrating our ability to turn concepts into scalable,
-              commercially viable digital solutions. Equistone’s purpose is to
-              become one of Malaysia’s leading platforms for purpose-driven
-              investments, strategic advisory, and technology-backed value
-              creation, supporting partners, clients, and ecosystems throughout
-              their growth journeys
-            </p>
-          </div>
-          <div className="col-span-1 border border-black ml-62 p-14">
-            <p className="text-4xl text-black font-medium mb-6">PROBLEM</p>
-            <p className="text-base">
-              Many high-potential businesses in Malaysia struggle to scale due
-              to limited access to smart capital, weak strategic and financial
-              planning, and outdated operational systems. Industries remain
-              hindered by fragmented advisory support and slow digital adoption,
-              causing missed opportunities, inefficiencies, and an inability to
-              convert strong ideas into viable, future-ready ventures.
-            </p>
-          </div>
-          <div className="col-span-1 border border-black mr-62 p-14 bg-amber-500"></div>
-          <div className="col-span-1 border border-black ml-62 p-14 bg-amber-500"></div>{" "}
-          <div className="col-span-1 border border-black mr-62 p-14">
-            <p className="text-4xl text-black font-medium mb-6">SOLUTION</p>
-            <p className="text-base">
-              ESB bridges this gap by combining strategic investment, advisory
-              expertise, and digital innovation into a single value-creation
-              platform. With deep expertise in corporate finance, capital
-              structure, and project execution, we enable organisations to drive
-              transformation, achieve sustainable growth, and build impactful,
-              commercially successful ventures.
-            </p>
-          </div>{" "}
-        </section>
-        <footer className="w-full my-12">
-          <div className="border-t border-white flex px-16 mt-26 justify-between items-end">
-            <div className="flex flex-row space-x-12">
-              <p>2025 Equistone Sdn Bhd</p> <p>Privacy Policy</p>
-            </div>
-            <div className="flex flex-col w-[12%] mt-6 space-y-4">
-              <div className="flex font-normal text-base">
-                20ug, Jalan Yong Shook Lin, Bandar Baru Petaling Jaya, 46200
-                Petaling Jaya Selangor  Malaysia
+
+              <div className="border-l border-gray-300 pl-6 mt-10">
+                <div className="text-4xl font-semibold">50+</div>
+
+                <p className="mt-3 text-[#3a4347] leading-7">
+                  Clinics operating on Clinex
+                </p>
               </div>
-              <p className="flex font-normal text-base">admin@equistone.com</p>
             </div>
           </div>
-        </footer>
+        </div>
       </main>
+
+      {/* COMPANY OVERVIEW */}
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* LEFT CONTENT */}
+            <div className="lg:col-span-2">
+              <h3 className="text-[clamp(2rem,2vw,4rem)] leading-[1.2] font-medium text-black">
+                Capital, Strategy, and Technology — Under One Roof
+              </h3>
+
+              <p className="mt-8 text-[#3a4347] leading-8">
+                Equistone Sdn. Bhd. (“ESB”) is a Malaysian-based investment
+                holding and digital solutions company focused on building
+                long-term value through strategic investments, advisory
+                services, and technology enablement.
+              </p>
+
+              <p className="mt-6 text-[#3a4347] leading-8">
+                With a multidisciplinary team experienced in corporate finance,
+                investment structuring, project development, and digital
+                transformation, ESB serves as both an investor and a strategic
+                advisor to high-impact ventures across Malaysia.
+              </p>
+
+              <p className="mt-6 text-[#3a4347] leading-8">
+                Our track record includes the development of Clinex — an
+                in-house cloud-based Clinic Management System currently deployed
+                across clinics in Malaysia — demonstrating our ability to turn
+                concepts into scalable, commercially viable digital solutions.
+              </p>
+            </div>
+
+            {/* RIGHT SIDEBAR */}
+            <div className="flex flex-col gap-8">
+              <div className="border-l border-gray-300 pl-6">
+                <div className="text-4xl font-semibold text-black">ICT</div>
+
+                <p className="mt-3 text-[#3a4347] leading-7">
+                  Primary focus sector — healthcare, fintech, enterprise
+                </p>
+              </div>
+
+              <div className="border-l border-gray-300 pl-6">
+                <div className="text-4xl font-semibold text-black">ASEAN</div>
+
+                <p className="mt-3 text-[#3a4347] leading-7">
+                  Long-term regional expansion strategy
+                </p>
+              </div>
+
+              <div className="border-l border-black pl-6 mt-4">
+                <p className="italic text-[#1d2b2f] leading-8">
+                  "Equistone's purpose is to become one of Malaysia's leading
+                  platforms for purpose-driven investments, strategic advisory,
+                  and technology-backed value creation."
+                </p>
+
+                <p className="mt-4 text-sm font-semibold text-[#3a4347]">
+                  Equistone Sdn Bhd — Corporate Mission Statement
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* PROBLEM & SOLUTION */}
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-dark text-white">
+        <div className="container mx-auto">
+          <div className="border-b border-white/20 pb-6">
+            <h3 className="text-3xl font-semibold">Problem & Solution</h3>
+
+            <p className="mt-3 text-sm uppercase tracking-widest text-white/60">
+              The Gap Equistone Solves
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
+            {/* Problem */}
+            <div className="border border-white/10 p-10">
+              <div className="text-sm text-white/50 font-semibold">01</div>
+
+              <h4 className="mt-4 text-2xl font-semibold">The Problem</h4>
+
+              <p className="mt-6 text-white/70 leading-8">
+                Many high-potential businesses struggle to scale due to limited
+                access to strategic capital, operational expertise, and digital
+                infrastructure.
+              </p>
+
+              <p className="mt-6 text-white/70 leading-8">
+                Fragmented advisory ecosystems and outdated systems create
+                inefficiencies that prevent businesses from becoming scalable,
+                future-ready ventures.
+              </p>
+            </div>
+
+            {/* Solution */}
+            <div className="border border-white/10 p-10 bg-white/[0.03]">
+              <div className="text-sm text-white/50 font-semibold">02</div>
+
+              <h4 className="mt-4 text-2xl font-semibold">The Solution</h4>
+
+              <p className="mt-6 text-white/70 leading-8">
+                Equistone bridges this gap by combining strategic investment,
+                advisory expertise, and technology execution into one integrated
+                value-creation platform.
+              </p>
+
+              <p className="mt-6 text-white/70 leading-8">
+                We enable organisations to modernise operations, unlock growth,
+                and build commercially successful ventures through hands-on
+                execution and scalable digital infrastructure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* CTA */}
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+        <div className="container mx-auto">
+          <div className="border border-gray-300 p-12 flex flex-col lg:flex-row justify-between gap-10 items-start lg:items-center">
+            <div>
+              <h3 className="text-3xl font-semibold text-black">
+                Build Alongside Equistone
+              </h3>
+
+              <p className="mt-4 text-[#3a4347] leading-8 max-w-2xl">
+                We partner with founders, operators, investors, and enterprises
+                seeking long-term strategic value through ICT-enabled ventures.
+              </p>
+            </div>
+
+            <div className="flex gap-4">
+              <button className="px-5 py-3 bg-black text-white text-sm font-semibold">
+                Partner With Us →
+              </button>
+
+              <button className="px-5 py-3 border border-black text-black text-sm font-semibold">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <FooterLight />
     </div>
   );
 }
