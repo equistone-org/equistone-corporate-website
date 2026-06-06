@@ -1,16 +1,10 @@
-import { Sora } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-// const workSans = Work_Sans({
-//   variable: "--font-work-sans",
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"], // optional
-// });
-
-const workSans = Sora({
-  variable: "--font-work-sans",
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-global",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // optional
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -21,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable} antialiased`}>
+      <body className={`${jakartaSans.variable} antialiased`}>
         {children}
       </body>
     </html>
