@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full sticky bottom-0 h-fit z-0 bg-primary-light">
-      <div className="border-t border-black text-gray-600 px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
+    <footer className="w-full sticky bottom-0 h-fit z-0 bg-light-primary">
+      <div className="border-t border-black text-black/60 px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}
           <div className="flex flex-col lg:flex-row justify-between gap-10">
@@ -148,7 +148,10 @@ export default function Footer() {
               reserved.
             </p>
 
-            <p>SSM Registration: 201901009537 (1318865-U) · Kuala Lumpur, Malaysia</p>
+            <p>
+              SSM Registration: 201901009537 (1318865-U) · Kuala Lumpur,
+              Malaysia
+            </p>
           </div>
         </div>
       </div>

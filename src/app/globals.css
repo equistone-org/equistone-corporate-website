@@ -39,20 +39,44 @@ body {
 }
 
 @layer utilities {
-  .bg-primary-light {
+  .bg-light-primary {
     background-color: #fefdf2;
   }
 
-  .bg-secondary-light {
+  .bg-light-secondary {
     background-color: #fffef4;
   }
 
-  .bg-primary-dark {
+  .text-light-primary {
+    color: #fefae0;
+  }
+
+  .bg-dark-primary {
     background-color: #344e41;
   }
 
-  .text-green-dark-primary {
+  .bg-dark-secondary {
+    background-color: #26312c;
+  }
+
+  .text-dark-primary {
     color: #151a1c;
+  }
+
+  .text-dark-secondary {
+    color: #2b343b;
+  }
+
+  .text-light-orange {
+    color: #dda15e;
+  }
+
+  .text-dark-orange {
+    color: #bc6c25;
+  }
+
+  .bg-dark-orange {
+    background-color: #bc6c25;
   }
 }
 .scrollbar-hide::-webkit-scrollbar {
@@ -61,4 +85,62 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@keyframes livePulse {
+  0% {
+    box-shadow: 0 0 0 0 #344e41;
+  }
+  70% {
+    box-shadow: 0 0 0 10px #344e4100;
+  }
+  100% {
+    box-shadow: 0 0 0 0 #344e4100;
+  }
+}
+
+.live-pulse {
+  animation: livePulse 2s infinite;
+}
+
+.track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 540px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 668px) {
+  .container {
+    max-width: 668px;
+  }
+}
+
+@media (min-width: 924px) {
+  .container {
+    max-width: 94px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .container {
+    max-width: 1180px;
+  }
+}
+
+@media (min-width: 1436px) {
+  .container {
+    max-width: 1436px;
+  }
 }

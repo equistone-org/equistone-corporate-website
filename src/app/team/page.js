@@ -69,7 +69,7 @@ function TeamDetail({ index, detailRef, type, image, name }) {
       ref={(el) => (detailRef.current[index] = el)}
       className="col-span-3 overflow-hidden h-0 opacity-0"
     >
-      <div className="bg-secondary-light px-[clamp(2rem,3vw,4rem)] w-full py-12 items-center border-b border-gray-600">
+      <div className="bg-light-secondary px-[clamp(2rem,3vw,4rem)] w-full py-12 items-center border-b border-gray-600">
         <div className="container mx-auto flex gap-12">
           <div className="shrink-0">
             <Image
@@ -88,7 +88,7 @@ function TeamDetail({ index, detailRef, type, image, name }) {
                 {name}
               </p>
 
-              <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
+              <p className="text-xs uppercase tracking-widest text-black/40500 mt-1">
                 {contentMap[type].title}
               </p>
             </div>
@@ -96,16 +96,16 @@ function TeamDetail({ index, detailRef, type, image, name }) {
             {/* DIVIDER */}
             <div className="w-12 h-[2px] bg-gray-300"></div>
 
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <p className="text-black/40700 leading-relaxed text-sm">
               {contentMap[type].description}
             </p>
 
             {/* EDUCATION */}
             <div className="pt-2">
-              <p className="text-xs uppercase tracking-widest text-gray-500">
+              <p className="text-xs uppercase tracking-widest text-black/40500">
                 Education & Certification
               </p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black/60 mt-1">
                 {contentMap[type].education}
               </p>
             </div>
@@ -134,35 +134,38 @@ export default function AboutPage() {
   }, [openIndex]);
 
   return (
-    <div className="flex-1 flex-col items-start justify-center bg-primary-light font-sans">
-      <main className="flex z-2 w-full relative min-h-screen flex-col bg-primary-dark font-sans">
+    <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
+      <main className="flex z-2 w-full relative min-h-screen flex-col bg-light-primary font-sans">
         <HeaderDark />
 
         {/* TITLE */}
         <section className="flex mt-10 lg:mt-12 flex-col items-start w-full">
           <div className="container mx-auto">
-            {" "}
-            <h1 className="my-8 text-[clamp(3rem,7vw,6rem)] leading-[1] font-semibold text-whie">
+            <h1 className="my-8 text-[clamp(3rem,7vw,6rem)] leading-22 font-semibold text-dark-primary">
               The Team Behind
               <br />
-              Equistone’s Next Phase
-              <span className="text-[#b87a45]"> Of Growth.</span>
+              Equistone’s Next Phase <br />
+              <span className="text-dark-orange"> Of Growth.</span>
             </h1>
+            <p className="mt-8 max-w-2xl leading-8 text-base lg:text-lg text-dark-primary">
+              A team built to execute, scale, and deliver venture growth.
+            </p>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 text-black w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 text-dark-primary w-full">
             <div
               onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
-              className="col-span-1 lg:col-span-3 bg-primary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6 cursor-pointer"
+              className="col-span-1 lg:col-span-3 bg-light-primary border-y border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6 cursor-pointer"
             >
               <div className="container mx-auto flex justify-center">
                 <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-2">
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       MUHAMAD AFIQ BIN IDRIS
                     </p>
 
-                    <p className="text-sm">Chief Executive Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Executive Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end">
@@ -186,17 +189,19 @@ export default function AboutPage() {
               name="MUHAMAD AFIQ BIN IDRIS"
             />
 
-            <div className="col-span-1 lg:col-span-3 bg-secondary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
+            <div className="col-span-1 lg:col-span-3 bg-light-secondary border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div
                   onClick={() => setOpenIndex(openIndex === 1 ? null : 1)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       SYED MOHD ZAHIR BIN SYED AHMAD ZABIDI
                     </p>
-                    <p className="text-sm">Chief Operation Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Strategic Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
@@ -213,11 +218,13 @@ export default function AboutPage() {
                   onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       AMIRUL RASHID BIN AZMEE
                     </p>
-                    <p className="text-sm">Chief Financial Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Financial Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
@@ -234,11 +241,13 @@ export default function AboutPage() {
                   onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       MOHD DANIAL ARIFF BIN MOHD ZAMRI
                     </p>
-                    <p className="text-sm">Chief Operation Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Operation Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex flex-col items-start justify-end h-full">
@@ -275,18 +284,20 @@ export default function AboutPage() {
               name="MOHD DANIAL ARIFF BIN MOHD ZAMRI"
             />
 
-            <div className="col-span-1 lg:col-span-3 bg-primary-light border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
+            <div className="col-span-1 lg:col-span-3 bg-light-primary border-b border-gray-400 px-[clamp(2rem,3vw,4rem)] pt-6">
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Card 1 */}
                 <div
                   onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       KHAIRULANWAR BIN IDRIS
                     </p>
-                    <p className="text-sm">Chief Technology Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Technology Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
@@ -300,16 +311,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Card 2 */}
                 <div
                   onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       MOHAMAD AIDIL MAULA ABD. RAHIM
                     </p>
-                    <p className="text-sm">Chief Technical Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Technical Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
@@ -322,16 +334,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Card 3 */}
                 <div
                   onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
                   className="cursor-pointer flex justify-between"
                 >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-400 px-6 flex flex-col space-y-2">
+                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2">
                     <p className="uppercase font-semibold text-sm lg:text-base">
                       WAN AQMARUR RAZIN BIN WAN AZLAN
                     </p>
-                    <p className="text-sm">Chief Audit Officer</p>
+                    <p className="text-sm uppercase tracking-widest text-black/40500 mt-1">
+                      Chief Audit Officer
+                    </p>
                   </div>
 
                   <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">

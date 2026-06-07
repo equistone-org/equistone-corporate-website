@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full sticky bottom-0 h-fit z-0 bg-primary-dark">
-      <div className="mx-auto border-t border-white/20 text-white px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
+    <footer className="w-full sticky bottom-0 h-fit z-0 bg-dark-primary">
+      <div className="mx-auto border-t border-white/20 text-light-primary px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}
           <div className="flex flex-col lg:flex-row justify-between gap-12">
@@ -21,7 +21,7 @@ export default function Footer() {
                 />
               </div>
 
-              <p className="mt-6 text-sm text-white/70 leading-7">
+              <p className="mt-6 text-sm text-white/60 leading-7">
                 Malaysia's purpose-driven investment holding and
                 venture-building company operating in the ICT sector.
                 Incorporated 2019 — building, funding, and scaling technology
@@ -37,7 +37,7 @@ export default function Footer() {
 
               <a
                 href="https://linkedin.com"
-                className="mt-4 inline-block text-sm font-semibold text-white underline"
+                className="mt-4 inline-block text-sm font-semibold text-light-primary underline"
               >
                 Follow on LinkedIn
               </a>
@@ -48,7 +48,7 @@ export default function Footer() {
               {/* Company */}
               <div>
                 <h4 className="font-semibold mb-4">Company</h4>
-                <ul className="space-y-2 text-white/70">
+                <ul className="space-y-2 text-white/60">
                   <li>
                     <Link href="#">About Equistone</Link>
                   </li>
@@ -73,7 +73,7 @@ export default function Footer() {
               {/* Investment */}
               <div>
                 <h4 className="font-semibold mb-4">Investment</h4>
-                <ul className="space-y-2 text-white/70">
+                <ul className="space-y-2 text-white/60">
                   <li>
                     <Link href="#">Investment Overview</Link>
                   </li>
@@ -95,7 +95,7 @@ export default function Footer() {
               {/* Ventures + Legal */}
               <div>
                 <h4 className="font-semibold mb-4">Ventures</h4>
-                <ul className="space-y-2 text-white/70">
+                <ul className="space-y-2 text-white/60">
                   <li>
                     <Link href="#">Clinex — Healthcare Tech</Link>
                   </li>
@@ -107,7 +107,7 @@ export default function Footer() {
                 </ul>
 
                 <h4 className="font-semibold mt-6 mb-4">Legal</h4>
-                <ul className="space-y-2 text-white/70">
+                <ul className="space-y-2 text-white/60">
                   <li>
                     <Link href="#">Privacy Policy</Link>
                   </li>
@@ -148,7 +148,10 @@ export default function Footer() {
               reserved.
             </p>
 
-            <p>SSM Registration: 201901009537 (1318865-U) · Kuala Lumpur, Malaysia</p>
+            <p>
+              SSM Registration: 201901009537 (1318865-U) · Kuala Lumpur,
+              Malaysia
+            </p>
           </div>
         </div>
       </div>

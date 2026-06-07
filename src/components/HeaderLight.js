@@ -7,7 +7,7 @@ export default function HeaderLight({ withBorder = false }) {
       className={`${withBorder ? "border-b border-gray-400" : ""} sticky top-0 z-1000 bg-white`}
     >
       <div className="px-[clamp(2rem,3vw,4rem)] w-full">
-        <div className="container mx-auto flex justify-between py-4 lg:py-6">
+        <div className="container mx-auto flex justify-between py-2 lg:py-4">
           <Link href="/">
             <EquistoneLogo color="#000000" />
           </Link>
@@ -38,12 +38,12 @@ export default function HeaderLight({ withBorder = false }) {
               </div>
             </div>
           </div>
-          <div className="flex flex-row space-x-2 lg:space-x-6 items-center font-medium uppercase text-sm lg:text-base text-white">
+          <div className="flex flex-row space-x-2 lg:space-x-6 items-center font-medium uppercase text-sm lg:text-base text-light-primary">
             <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 font-semibold text-black border border-black uppercase">
               Contact
             </div>
-            <div className="flex flex-row space-x-10 lg:space-x-26 items-center font-medium uppercase text-sm lg:text-base text-white">
-              <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 bg-black font-semibold text-white">
+            <div className="flex flex-row space-x-10 lg:space-x-26 items-center font-medium uppercase text-sm lg:text-base text-white/80">
+              <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 bg-black font-semibold text-light-primary">
                 Partner With Us
               </div>
             </div>

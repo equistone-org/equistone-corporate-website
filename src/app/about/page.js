@@ -6,20 +6,20 @@ import FooterLight from "@/components/FooterLight";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col bg-primary-light font-sans text-black">
+    <div className="flex flex-col bg-light-primary font-sans text-dark-primary">
       <HeaderLight withBorder />
 
       {/* HERO */}
-      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-light-primary">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-12">
             {/* LEFT */}
-            <div className="lg:w-[65%]">    
-              <h1 className="mt-8 text-[clamp(3rem,7vw,6rem)] leading-[1] font-semibold text-black">
+            <div className="lg:w-[65%]">
+              <h1 className="mt-8 text-[clamp(3rem,7vw,6rem)] leading-22 font-semibold text-dark-primary">
                 Building Long-Term
                 <br />
                 Value Through
-                <span className="text-[#7f4f24]"> ICT Ventures.</span>
+                <span className="text-dark-orange"> ICT Ventures.</span>
               </h1>
 
               <p className="mt-10 text-[#3a4347] leading-8 text-lg lg:w-[90%]">
@@ -34,7 +34,7 @@ export default function AboutPage() {
               <div className="border-l border-gray-300 pl-6">
                 <div className="text-4xl font-semibold">2019</div>
 
-                <p className="mt-3 text-[#3a4347] leading-7">
+                <p className="mt-3 text-black/60 leading-7">
                   Incorporated in Kuala Lumpur, Malaysia
                 </p>
               </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <div className="border-l border-gray-300 pl-6 mt-10">
                 <div className="text-4xl font-semibold">50+</div>
 
-                <p className="mt-3 text-[#3a4347] leading-7">
+                <p className="mt-3 text-black/60 leading-7">
                   Clinics operating on Clinex
                 </p>
               </div>
@@ -52,12 +52,12 @@ export default function AboutPage() {
       </main>
 
       {/* COMPANY OVERVIEW */}
-      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-light-primary">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* LEFT CONTENT */}
             <div className="lg:col-span-2">
-              <h3 className="text-[clamp(2rem,2vw,4rem)] leading-[1.2] font-medium text-black">
+              <h3 className="text-[clamp(2rem,2vw,4rem)] leading-[1.2] font-medium text-dark-primary">
                 Capital, Strategy, and Technology — Under One Roof
               </h3>
 
@@ -86,17 +86,19 @@ export default function AboutPage() {
             {/* RIGHT SIDEBAR */}
             <div className="flex flex-col gap-8">
               <div className="border-l border-gray-300 pl-6">
-                <div className="text-4xl font-semibold text-black">ICT</div>
+                <div className="text-4xl font-black text-dark-orange">ICT</div>
 
-                <p className="mt-3 text-[#3a4347] leading-7">
+                <p className="mt-3 text-black/60 leading-7">
                   Primary focus sector — healthcare, fintech, enterprise
                 </p>
               </div>
 
               <div className="border-l border-gray-300 pl-6">
-                <div className="text-4xl font-semibold text-black">ASEAN</div>
+                <div className="text-4xl font-black text-dark-orange">
+                  ASEAN
+                </div>
 
-                <p className="mt-3 text-[#3a4347] leading-7">
+                <p className="mt-3 text-black/60 leading-7">
                   Long-term regional expansion strategy
                 </p>
               </div>
@@ -118,7 +120,7 @@ export default function AboutPage() {
       </main>
 
       {/* PROBLEM & SOLUTION */}
-      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-dark text-white">
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-dark-primary text-light-primary">
         <div className="container mx-auto">
           <div className="border-b border-white/20 pb-6">
             <h3 className="text-3xl font-semibold">Problem & Solution</h3>
@@ -135,13 +137,13 @@ export default function AboutPage() {
 
               <h4 className="mt-4 text-2xl font-semibold">The Problem</h4>
 
-              <p className="mt-6 text-white/70 leading-8">
+              <p className="mt-6 text-white/60 leading-8">
                 Many high-potential businesses struggle to scale due to limited
                 access to strategic capital, operational expertise, and digital
                 infrastructure.
               </p>
 
-              <p className="mt-6 text-white/70 leading-8">
+              <p className="mt-6 text-white/60 leading-8">
                 Fragmented advisory ecosystems and outdated systems create
                 inefficiencies that prevent businesses from becoming scalable,
                 future-ready ventures.
@@ -150,17 +152,17 @@ export default function AboutPage() {
 
             {/* Solution */}
             <div className="border border-white/10 p-10 bg-white/[0.03]">
-              <div className="text-sm text-white/50 font-semibold">02</div>
+              <div className="text-sm text-white/60 font-semibold">02</div>
 
               <h4 className="mt-4 text-2xl font-semibold">The Solution</h4>
 
-              <p className="mt-6 text-white/70 leading-8">
+              <p className="mt-6 text-white/60 leading-8">
                 Equistone bridges this gap by combining strategic investment,
                 advisory expertise, and technology execution into one integrated
                 value-creation platform.
               </p>
 
-              <p className="mt-6 text-white/70 leading-8">
+              <p className="mt-6 text-white/60 leading-8">
                 We enable organisations to modernise operations, unlock growth,
                 and build commercially successful ventures through hands-on
                 execution and scalable digital infrastructure.
@@ -171,11 +173,11 @@ export default function AboutPage() {
       </main>
 
       {/* CTA */}
-      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-primary-light">
+      <main className="flex z-2 relative w-full px-[clamp(2rem,3vw,4rem)] py-20 bg-light-primary">
         <div className="container mx-auto">
           <div className="border border-gray-300 p-12 flex flex-col lg:flex-row justify-between gap-10 items-start lg:items-center">
             <div>
-              <h3 className="text-3xl font-semibold text-black">
+              <h3 className="text-3xl font-semibold text-dark-primary">
                 Build Alongside Equistone
               </h3>
 
@@ -186,11 +188,11 @@ export default function AboutPage() {
             </div>
 
             <div className="flex gap-4">
-              <button className="px-5 py-3 bg-black text-white text-sm font-semibold">
+              <button className="px-5 py-3 bg-black text-light-primary text-sm font-semibold">
                 Partner With Us →
               </button>
 
-              <button className="px-5 py-3 border border-black text-black text-sm font-semibold">
+              <button className="px-5 py-3 border border-black text-dark-primary text-sm font-semibold">
                 Contact Us
               </button>
             </div>

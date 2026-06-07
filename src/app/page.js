@@ -1,249 +1,57 @@
 "use client";
+import { useRef } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import HeaderLight from "@/components/HeaderLight";
-import FooterLight from "@/components/FooterLight";
-import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-function JourneyTimeline() {
-  const [active, setActive] = useState("2019");
-  const titleRef = useRef(null);
-  const descRef = useRef(null);
-  const yearRef = useRef(null);
+import HeaderLight from "@/components/HeaderLight";
+import FooterLight from "@/components/FooterLight";
+import JourneyTimeline from "@/components/JourneyTimeline";
+import PartnerSlider from "@/components/PartnerSlider";
+import LineAnimatedLink from "@/components/LineAnimatedLink";
 
-  const data = [
-    {
-      year: "2019",
-      desc: "Equistone Sdn Bhd incorporated in Kuala Lumpur, Malaysia",
-    },
-    {
-      year: "2019–2023",
-      desc: "Actively evaluating investments across multiple ICT businesses and sectors",
-    },
-    {
-      year: "2024",
-      desc: "Clinex clinic management system development begins in-house at Equistone",
-    },
-    {
-      year: "2024–2025",
-      desc: "Clinex deployed — first GP clinics go live; Klinik Utama onboarded as key client",
-    },
-    {
-      year: "2025",
-      desc: "Strategic partnerships established: Payhalal, IntelliLabs AI, JomChat",
-    },
-    {
-      year: "2026",
-      desc: "50+ clinics live · 350,000+ patient records · ASEAN expansion underway",
-    },
-  ];
-
-  const activeItem = data.find((d) => d.year === active);
-
-  useEffect(() => {
-    const tl = gsap.timeline();
-
-    tl.fromTo(
-      titleRef.current,
-      { y: 10, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
-    )
-      .fromTo(
-        descRef.current,
-        { y: 10, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
-        "-=0.2",
-      )
-      .fromTo(
-        yearRef.current,
-        { scale: 0.95, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.5, ease: "power2.out" },
-        "-=0.3",
-      );
-  }, [active]);
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-      {/* LEFT: DESCRIPTION (FOCUS) */}{" "}
-      <div className="lg:col-span-3 mb-10">
-        <div className="relative">
-          {/* LINE */}
-          <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-gray-300 -translate-y-1/2" />
-
-          <div className="flex justify-between relative">
-            {data.map((item) => {
-              const isActive = active === item.year;
-
-              return (
-                <button
-                  key={item.year}
-                  onClick={() => setActive(item.year)}
-                  className="relative flex flex-col items-center text-center min-w-[100px] cursor-pointer"
-                >
-                  {/* DOT (overlapping line) */}
-                  <div
-                    className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition ${
-                      isActive
-                        ? "bg-black border-black scale-125"
-                        : "bg-white border-gray-400"
-                    }`}
-                  />
-
-                  {/* spacing so text doesn't collide with dot */}
-                  <div className="h-6" />
-
-                  {/* YEAR */}
-                  <div
-                    className={`mt-4 text-sm font-semibold transition ${
-                      isActive ? "text-green-dark-primary" : "text-gray-400"
-                    }`}
-                  >
-                    {item.year}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="lg:col-span-2">
-        <h3
-          ref={titleRef}
-          className="text-2xl font-semibold text-green-dark-primary"
-        >
-          {activeItem?.title}
-        </h3>
-
-        <p
-          ref={descRef}
-          className="mt-4 text-[#3a4347] leading-7 text-base lg:text-lg"
-        >
-          {activeItem?.desc}
-        </p>
-      </div>
-      <div className="lg:col-span-1 flex lg:justify-end">
-        <div ref={yearRef} className="text-right">
-          <div className="w-full text-right overflow-hidden">
-            <div className="inline-block whitespace-nowrap font-semibold text-green-dark-primary leading-none text-[clamp(3rem,6vw,6rem)]">
-              {activeItem?.year}
-            </div>
-          </div>
-
-          <div className="mt-4 h-[4px] w-20 bg-black ml-auto" />
-
-          <p className="mt-4 text-sm text-[#3a4347]">Selected milestone</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-function PartnerSlider() {
-  const trackRef = useRef(null);
-
-  const partners = [
-    {
-      name: "Payhalal Sdn Bhd",
-      src: "/collaborations/equistone-payhalal-logo.svg",
-      type: "FinTech Strategic Partner",
-    },
-    {
-      name: "IntelliLabs AI",
-      src: "/collaborations/equistone-klinikutama-logo.svg",
-      type: "AI Technology Partner",
-    },
-    {
-      name: "JomChat",
-      src: "/collaborations/equistone-intellilabs-logo.svg",
-      type: "Communications Partner",
-    },
-    {
-      name: "Klinik Utama Sdn Bhd",
-      src: "/collaborations/equistone-jomchat-logo.svg",
-      type: "Clinex Healthcare Client",
-    },
-  ];
-
-  useEffect(() => {
-    const el = trackRef.current;
-
-    gsap.set(el, { x: 0 });
-
-    const width = el.scrollWidth / 2;
-
-    gsap.to(el, {
-      x: -width,
-      duration: 25,
-      ease: "none",
-      repeat: -1,
-    });
-  }, []);
-
-  return (
-    <div className="overflow-hidden w-full bg-primary-dark">
-      <div ref={trackRef} className="flex w-max whitespace-nowrap">
-        {[...partners, ...partners].map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-3 px-8 py-4 border-r border-white/20"
-          >
-            <Image
-              src={item.src}
-              alt={item.name}
-              height={12}
-              width={12}
-              className="w-[78px] lg:w-[82px] h-auto"
-            />
-            <span className="text-white/60 text-sm">· {item.type}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import useStatsBarAnimation from "@/hooks/useStatsBarAnimation";
+import useOrbGradientAnimation from "@/hooks/useOrbGradientAnimation";
 
 export default function Home() {
-  const orb1 = useRef(null);
-  const orb2 = useRef(null);
-  const orb3 = useRef(null);
-  useEffect(() => {
-    gsap.to(orb1.current, {
-      x: 150,
-      y: -200,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
+  ///nanti asing/////
+  const underlineRef = useRef(null);
 
-    gsap.to(orb2.current, {
-      x: -180,
-      y: 120,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
+  const onEnter = () => {
+    gsap.to(underlineRef.current, {
+      scaleX: 1,
+      transformOrigin: "left",
+      duration: 0.3,
+      ease: "power2.out",
     });
+  };
 
-    gsap.to(orb3.current, {
-      x: 100,
-      y: 180,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
+  const onLeave = () => {
+    gsap.to(underlineRef.current, {
+      scaleX: 0,
+      transformOrigin: "right",
+      duration: 0.3,
+      ease: "power2.in",
     });
-  }, []);
+  };
+  ///nanti asing/////
+
+  const orbGradient1 = useRef(null);
+  const orbGradient2 = useRef(null);
+  const orbGradient3 = useRef(null);
+  const barRef = useRef(null);
+
+  useStatsBarAnimation(barRef);
+  useOrbGradientAnimation(orbGradient1, orbGradient2, orbGradient3);
 
   return (
-    <div className="flex-1 flex-col items-start justify-center bg-primary-light font-sans">
-      {" "}
+    <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
       <HeaderLight withBorder />
       <main className="relative h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-[99]">
-        <div className="absolute inset-0 z-0 overflow-hidden bg-secondary-light">
-          {/* Orb 1 */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-light-secondary">
           <div
-            ref={orb1}
+            ref={orbGradient1}
             className="absolute w-[600px] h-[600px] rounded-full blur-[20px] opacity-90"
             style={{
               background:
@@ -252,9 +60,8 @@ export default function Home() {
               left: "10%",
             }}
           />
-
           <div
-            ref={orb2}
+            ref={orbGradient2}
             className="absolute w-[500px] h-[800px] rounded-full blur-[40px] opacity-90"
             style={{
               background:
@@ -263,9 +70,8 @@ export default function Home() {
               left: "50%",
             }}
           />
-
           <div
-            ref={orb3}
+            ref={orbGradient3}
             className="absolute w-[800px] h-[1200px] rounded-full blur-[60px] opacity-90"
             style={{
               background:
@@ -275,93 +81,97 @@ export default function Home() {
             }}
           />
         </div>
-
-        {/* Content */}
         <div className="relative z-20 flex flex-col h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto justify-center items-center">
             <div className="col-span-2 py-12 px-[clamp(2rem,3vw,4rem)] lg:py-0 flex">
               <div className="w-full px-6">
                 <div className="mb-6 flex flex-row space-x-4">
-                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 border border-black font-semibold text-green-dark-primary uppercase">
+                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-1 border border-black font-semibold text-dark-primary uppercase rounded-full">
                     ICT Investment Holding
                   </div>
-                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 border border-black font-semibold text-green-dark-primary uppercase">
+                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-1 border border-black font-semibold text-dark-primary uppercase rounded-full">
                     Integra Tower · Kuala Lumpur
                   </div>
                 </div>
-                <h1 className="mb-8 font-semibold text-6 lg:text-[96px] xxl:text-[98px] text-green-dark-primary leading-20">
+                <h1 className="mb-8 font-semibold text-6 lg:text-[96px] xxl:text-[98px] text-dark-primary leading-20">
                   We Build What <br />
-                  <span className="text-[#7f4f24]">Others Only Fund.</span>
+                  <span className="text-dark-orange">Others Only Fund.</span>
                 </h1>
-                <p className="mb-22 font-semibold text-green-dark-primary">
+                <p className="mb-22 font-semibold text-dark-primary">
                   Equistone Sdn Bhd is Malaysia's purpose-driven investment
                   holding and venture-building company — combining strategic
                   capital, corporate advisory, and in-house technology execution
                   to create scalable ICT ventures.
                 </p>
                 <div className="flex flex-row space-x-4">
-                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 bg-black font-semibold text-white uppercase">
-                    Explore Our Ventures →
-                  </div>
-                  <div className="text-xs lg:text-sm px-3 lg:px-4 py-2 bg-black font-semibold text-white uppercase">
-                    Partner With Us →
-                  </div>
+                  <LineAnimatedLink href="/contact">
+                    Explore Our Ventures
+                  </LineAnimatedLink>
+                  <LineAnimatedLink href="/contact">
+                    Partner With Us
+                  </LineAnimatedLink>
                 </div>
                 <div className="mt-12 flex flex-row space-x-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 divide-x  divide-gray-300">
                     <div className="p-5">
-                      <div className="text-2xl font-bold text-green-dark-primary">
+                      <div className="text-2xl font-bold text-dark-primary">
                         2019
                       </div>
-                      <div className="mt-1 text-sm text-gray-800">
+                      <div className="mt-1 text-sm text-black/80">
                         Year incorporated
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <div className="text-2xl font-bold text-green-dark-primary">
+                      <div className="text-2xl font-bold text-dark-primary">
                         50+
                       </div>
-                      <div className="mt-1 text-sm text-gray-800">
+                      <div className="mt-1 text-sm text-black/80">
                         Live clinics on Clinex
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <div className="text-2xl font-bold text-green-dark-primary">
+                      <div className="text-2xl font-bold text-dark-primary">
                         350k+
                       </div>
-                      <div className="mt-1 text-sm text-gray-800">
+                      <div className="mt-1 text-sm text-black/80">
                         Patient records managed
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <div className="text-2xl font-bold text-green-dark-primary">
+                      <div className="text-2xl font-bold text-dark-primary">
                         ICT
                       </div>
-                      <div className="mt-1 text-sm text-gray-800">
+                      <div className="mt-1 text-sm text-black/80">
                         Primary focus sector
                       </div>
                     </div>
-                  </div>{" "}
+                  </div>
                 </div>
               </div>
-
-              {/* <h1 className="text-[clamp(4rem,6vw,6rem)] font-medium leading-[1.2] tracking-tight text-green-dark-primary flex items-start justify-center gap-4 lg:gap-6">
-                Unlocking value through clarity, strategy, and purpose
-              </h1> */}
             </div>
-
-            <div className="col-span-1 hidden lg:block"></div>
+            <div className="col-span-1 lg:block px-[clamp(2rem,3vw,4rem)]">
+              <div className="flex justify-end">
+                <Image
+                  src="/shared/equistone-halflogo-logo.svg"
+                  alt="Animate Equsitone"
+                  width={162}
+                  height={162}
+                  className="h-[34rem] w-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full flex-col font-sans bg-primary-light ">
-        {" "}
+
+      <main className="flex z-2 relative w-full flex-col font-sans bg-light-primary ">
         <PartnerSlider />
       </main>
-      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-light py-16 ">
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-light-primary py-16 ">
         <div className="container mx-auto">
           <div className="flex flex-row justify-between text-center">
             <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-[#00330f] flex gap-4">
@@ -373,9 +183,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-6">
-            {/* First Grid */}
             <div className="lg:col-span-2">
-              <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-green-dark-primary font-medium leading-[1.2]">
+              <h3 className="text-[clamp(4rem,2vw,6.2rem)] text-dark-primary font-medium leading-[1.2]">
                 Capital, Strategy, and Technology — Under One Roof
               </h3>
 
@@ -388,14 +197,23 @@ export default function Home() {
                 across Malaysia and the ASEAN region.
               </p>
 
-              {/* Features */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
                 <div className="border-l border-gray-300 pl-5">
-                  <h4 className="text-lg font-semibold text-green-dark-primary">
-                    Strategic Investment
-                  </h4>
+                  <div className="flex space-x-4">
+                    <div className="bg-dark-secondary p-4">
+                      <Image
+                        src="/icons/equistone-strategic-icon.svg"
+                        alt="strategic investment"
+                        width={22}
+                        height={22}
+                      />
+                    </div>
+                    <h4 className="text-lg font-semibold text-dark-primary">
+                      Strategic Investment
+                    </h4>
+                  </div>
 
-                  <p className="mt-3 text-[#3a4347] leading-7 text-sm">
+                  <p className="mt-3 text-black/60 leading-7 text-sm">
                     We identify high-potential opportunities in ICT sectors and
                     provide smart capital with hands-on strategic guidance — not
                     just a cheque.
@@ -403,11 +221,20 @@ export default function Home() {
                 </div>
 
                 <div className="border-l border-gray-300 pl-5">
-                  <h4 className="text-lg font-semibold text-green-dark-primary">
-                    Venture Building
-                  </h4>
-
-                  <p className="mt-3 text-[#3a4347] leading-7 text-sm">
+                  <div className="flex space-x-4">
+                    <div className="bg-dark-secondary p-4">
+                      <Image
+                        src="/icons/equistone-venture-icon.svg"
+                        alt="venture building"
+                        width={22}
+                        height={22}
+                      />
+                    </div>
+                    <h4 className="text-lg font-semibold text-dark-primary">
+                      Venture Building
+                    </h4>
+                  </div>
+                  <p className="mt-3 text-black/60 leading-7 text-sm">
                     We don't just fund — we build. Clinex is the proof:
                     designed, developed, and deployed in-house to 50+ Malaysian
                     clinics since 2024.
@@ -415,11 +242,20 @@ export default function Home() {
                 </div>
 
                 <div className="border-l border-gray-300 pl-5">
-                  <h4 className="text-lg font-semibold text-green-dark-primary">
-                    Sustainable Value Creation
-                  </h4>
-
-                  <p className="mt-3 text-[#3a4347] leading-7 text-sm">
+                  <div className="flex space-x-4">
+                    <div className="bg-dark-secondary p-4">
+                      <Image
+                        src="/icons/equistone-sustainable-icon.svg"
+                        alt="sustainable value creation"
+                        width={22}
+                        height={22}
+                      />
+                    </div>
+                    <h4 className="text-lg font-semibold text-dark-primary">
+                      Sustainable Value Creation
+                    </h4>
+                  </div>
+                  <p className="mt-3 text-black/60 leading-7 text-sm">
                     We specialise in strategic asset transformation and
                     sustainable development initiatives — aligning every venture
                     with Malaysia's NIMP 2030 and digital economy agenda.
@@ -427,56 +263,55 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="text-sm px-4 py-2 bg-primary-dark font-semibold text-white w-fit mt-10">
-                <Link href="/about">Read more</Link>
+              <div className="mt-8 w-fit">
+                <LineAnimatedLink href="https://clinexmy.com/" variant="green">
+                  Read more
+                </LineAnimatedLink>
               </div>
             </div>
 
-            {/* Right Column */}
             <div className="flex flex-col gap-8">
-              {/* Right Column */}
               <div className="flex flex-col gap-8">
                 <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
+                  <div className="text-4xl font-black text-dark-orange">
                     2019
                   </div>
 
-                  <p className="mt-3 text-[#3a4347] leading-7">
+                  <p className="mt-3 text-black/60 leading-7">
                     Year incorporated — Kuala Lumpur, Malaysia
                   </p>
                 </div>
 
                 <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
+                  <div className="text-4xl font-black text-dark-orange">
                     50+
                   </div>
 
-                  <p className="mt-3 text-[#3a4347] leading-7">
+                  <p className="mt-3 text-black/60 leading-7">
                     Clinics live on Clinex as of 2026
                   </p>
                 </div>
 
                 <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
+                  <div className="text-4xl font-black text-dark-orange">
                     ICT
                   </div>
 
-                  <p className="mt-3 text-[#3a4347] leading-7">
+                  <p className="mt-3 text-black/60 leading-7">
                     Primary focus sector — Malaysia & ASEAN
                   </p>
                 </div>
 
                 <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
+                  <div className="text-4xl font-black text-dark-orange">
                     2024
                   </div>
 
-                  <p className="mt-3 text-[#3a4347] leading-7">
+                  <p className="mt-3 text-black/60 leading-7">
                     Clinex development launched in-house
                   </p>
                 </div>
 
-                {/* Mission Statement */}
                 <div className="border-l border-black pl-6 mt-4">
                   <p className="italic text-[#1d2b2f] leading-8">
                     "Equistone's purpose is to become one of Malaysia's leading
@@ -495,54 +330,53 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-light py-20">
-        <div className="container mx-auto">
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-light-primary ">
+        <div className="container mx-auto py-20 border-t border-black/80">
           <div className="flex flex-row justify-between text-center">
             <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-[#00330f] flex gap-4">
               <span>•</span>
               Technology Ventures
             </h1>
-
             <p className="text-lg lg:text-2xl text-[#3a4347]">-2</p>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-6">
             <div className="lg:col-span-2">
-              <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-green-dark-primary font-medium leading-[1.2]">
+              <h3 className="text-[clamp(4rem,2vw,6.2rem)] text-dark-primary font-medium leading-[1.2]">
                 Ventures We've Built and Backed
               </h3>
-
               <p className="mt-6 text-[#3a4347] leading-8">
                 Equistone builds and supports scalable ICT ventures through a
                 unique combination of strategic investment, operational
                 execution, and in-house technology development.
               </p>
-
-              {/* Venture Card */}
-              {/* Header */}
-              <div className="border-b border-gray-300 px-6 py-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div className="border-b border-gray-300 px-6 py-5 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h4 className="text-2xl font-semibold text-green-dark-primary">
+                    <h4 className="text-2xl font-semibold text-dark-primary">
                       Clinex
                     </h4>
-
-                    <span className="text-xs px-3 py-1 bg-primary-dark text-white uppercase tracking-wide">
+                    <span className="ml-2 text-xs px-3 py-1 bg-dark-primary text-light-primary uppercase tracking-wide live-pulse rounded-full">
                       Flagship Venture · Live
                     </span>
                   </div>
-
-                  <p className="mt-3 text-[#3a4347] text-lg">
+                  <div className="col-span-1 lg:block flex items-start py-4 mt-3">
+                    <Image
+                      src="/shared/clinex-dark-logo.svg"
+                      alt="Clinex Logo"
+                      width={162}
+                      height={162}
+                      className="h-12 w-auto"
+                    />
+                  </div>
+                  <p className="text-[#3a4347] text-lg">
                     Malaysia's Leading Cloud-Based Clinic Management System
                   </p>
                 </div>
-
-                <div className="text-sm text-[#3a4347]">
+                <div className="text-sm text-[#3a4347] ">
                   Healthcare Technology
                 </div>
               </div>
-
-              {/* Body */}
               <div className="p-6 lg:p-8">
                 <p className="text-[#3a4347] leading-8">
                   Built entirely in-house by Equistone from 2024, Clinex is a
@@ -559,7 +393,6 @@ export default function Home() {
                   operator clients running on the Clinex platform.
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-3 mt-10">
                   {[
                     "Healthcare Technology",
@@ -570,89 +403,83 @@ export default function Home() {
                   ].map((tag, index) => (
                     <div
                       key={index}
-                      className="text-sm px-4 py-2 border border-gray-300 text-[#3a4347]"
+                      className="text-sm px-4 py-2 border border-gray-300 text-[#3a4347] rounded-full"
                     >
                       {tag}
                     </div>
                   ))}
                 </div>
 
-                {/* Footer */}
                 <div className="grid grid-cols-3 lg:items-center lg:justify-between gap-6 mt-10 pt-8 border-t border-gray-300">
-                  <div className="col-span-2">
-                    <h5 className="font-semibold text-green-dark-primary">
+                  <div className="col-span-3">
+                    <h5 className="font-semibold text-dark-primary">
                       About This Venture
                     </h5>
-
                     <p className="mt-2 text-sm text-[#3a4347] leading-7">
                       Clinex represents Equistone's long-term commitment to
                       building scalable healthcare infrastructure for Malaysia's
                       digital future.
                     </p>
-                  </div>
-                  <div className=" col-span-1 flex items-center justify-center">
-                    <div className="text-sm px-4 py-2 bg-primary-dark font-semibold text-white w-fit">
-                      <Link href="/ventures/clinex">Visit Clinex ↗</Link>
+                    <div className="flex items-start justify-start mt-4">
+                      <div className="mt-8 w-fit">
+                        <LineAnimatedLink
+                          href="https://clinexmy.com/"
+                          variant="green"
+                        >
+                          Visit Clinex
+                        </LineAnimatedLink>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* Right Column */}
-            <div className="flex flex-col gap-8">
-              {/* Right Column */}
+            <div ref={barRef} className="sticky top-0 z-20 bg-light-primary">
               <div className="flex flex-col gap-8">
-                <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
-                    50+
+                <div className="flex flex-col gap-8">
+                  <div className="border-l border-gray-300 pl-6">
+                    <div className="text-4xl font-black text-dark-orange">
+                      50+
+                    </div>
+                    <p className="mt-3 text-black/60 leading-7">
+                      Active clinics
+                    </p>
                   </div>
-
-                  <p className="mt-3 text-[#3a4347] leading-7">
-                    Active clinics
-                  </p>
-                </div>
-
-                <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
-                    350k+
+                  <div className="border-l border-gray-300 pl-6">
+                    <div className="text-4xl font-black text-dark-orange">
+                      350k+
+                    </div>
+                    <p className="mt-3 text-black/60 leading-7">
+                      Patient records
+                    </p>
                   </div>
-
-                  <p className="mt-3 text-[#3a4347] leading-7">
-                    Patient records
-                  </p>
-                </div>
-
-                <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
-                    1,500+
+                  <div className="border-l border-gray-300 pl-6">
+                    <div className="text-4xl font-black text-dark-orange">
+                      1,500+
+                    </div>
+                    <p className="mt-3 text-black/60 leading-7">
+                      Daily patient visits
+                    </p>
                   </div>
-
-                  <p className="mt-3 text-[#3a4347] leading-7">
-                    Daily patient visits
-                  </p>
-                </div>
-
-                <div className="border-l border-gray-300 pl-6">
-                  <div className="text-4xl font-semibold text-green-dark-primary">
-                    2024
+                  <div className="border-l border-gray-300 pl-6">
+                    <div className="text-4xl font-black text-dark-orange">
+                      2024
+                    </div>
+                    <p className="mt-3 text-black/60 leading-7">
+                      Development began
+                    </p>
                   </div>
-
-                  <p className="mt-3 text-[#3a4347] leading-7">
-                    Development began
-                  </p>
                 </div>
               </div>
             </div>
-
             <div className="flex flex-col gap-8 lg:col-span-2">
               <div className="border border-gray-300 bg-white px-12 py-8">
                 <div className="flex flex-col gap-8">
                   <div className="border-l border-gray-300 pl-6">
-                    <h4 className="text-2xl font-semibold text-green-dark-primary">
+                    <h4 className="text-2xl font-semibold text-dark-primary">
                       Next Venture — Actively Evaluating
                     </h4>
-
-                    <p className="mt-3 text-[#3a4347] leading-7">
+                    <p className="mt-3 text-black/60 leading-7">
                       Equistone continuously evaluates high-potential ICT
                       opportunities. Since incorporation in 2019, the company
                       has been actively identifying businesses for strategic
@@ -661,13 +488,10 @@ export default function Home() {
                       solution, deploy with partners, then scale across ASEAN.
                     </p>
                   </div>
-
-                  {/* Focus Areas */}
                   <div className="border-l border-gray-300 pl-6">
-                    <h4 className="text-lg font-semibold text-green-dark-primary">
+                    <h4 className="text-lg font-semibold text-dark-primary">
                       Focus Areas
                     </h4>
-
                     <div className="mt-4 flex flex-wrap gap-3">
                       {[
                         "Financial Technology",
@@ -678,18 +502,21 @@ export default function Home() {
                       ].map((item, index) => (
                         <span
                           key={index}
-                          className="text-sm px-4 py-2 border border-gray-300 text-[#3a4347]"
+                          className="text-sm px-4 py-2 border border-gray-300 text-[#3a4347] rounded-full"
                         >
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
-
-                  {/* CTA */}
                   <div className="mt-4">
-                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-primary-dark px-4 py-2 w-fit">
-                      Submit a Venture <span>→</span>
+                    <div className="mt-8 w-fit">
+                      <LineAnimatedLink
+                        href="https://clinexmy.com/"
+                        variant="green"
+                      >
+                        Submit a Venture
+                      </LineAnimatedLink>
                     </div>
                   </div>
                 </div>
@@ -698,245 +525,305 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-dark py-20 text-white">
+
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-dark-primary py-20 text-light-primary">
         <div className="container mx-auto">
           <div className="flex flex-row justify-between text-center ">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-white flex gap-4">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4">
               <span>•</span>
               Investment Philosophy
             </h1>
-            <p className="text-lg lg:text-2xl text-white">-3</p>
+            <p className="text-lg lg:text-2xl text-light-primary">-3</p>
           </div>
-          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-white font-medium leading-[1.2]">
+          <h3 className="text-[clamp(6rem,2vw,6.2rem)] text-light-primary font-medium leading-[1.2]">
             Four Pillars of Value Creation
           </h3>
-          <p className="mt-6 text-white/70 leading-8 lg:w-[70%]">
+          <p className="mt-6 text-white/60 leading-8 lg:w-[70%]">
             Equistone doesn't fund and forget. Every investment is backed by
             operational expertise, strategic advisory, and the willingness to
             build alongside our partners.
           </p>
-          {/* Pillars - 4 GRID */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="border-l border-white/20 pl-6">
-              <div className="text-sm text-white/60 font-semibold">01</div>
-              <h4 className="mt-2 text-lg font-semibold text-white">
-                Strategic Asset Transformation
-              </h4>
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                We target businesses and sectors where disciplined application
-                of technology and capital structure improvement unlocks
-                disproportionate value.
-              </p>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-strategic-img.svg"
+                  alt="Strategic Asset Transformation"
+                  width={162}
+                  height={46}
+                  className="w-full h-auto"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Strategic Asset Transformation
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  We target businesses and sectors where disciplined application
+                  of technology and capital structure improvement unlocks
+                  disproportionate value.
+                </p>
+              </div>
             </div>
-
-            <div className="border-l border-white/20 pl-6">
-              <div className="text-sm text-white/60 font-semibold">02</div>
-              <h4 className="mt-2 text-lg font-semibold text-white">
-                Venture Building Over Passive Holding
-              </h4>
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                We deploy operational capability alongside capital. Clinex
-                proves this model through in-house design, build, and deployment
-                since 2024.
-              </p>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-venture-img.svg"
+                  alt="Venture Building Over Passive Holding"
+                  width={162}
+                  height={46}
+                  className="w-full h-auto"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Venture Building Over Passive Holding
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  We deploy operational capability alongside capital. Clinex
+                  proves this model through in-house design, build, and
+                  deployment since 2024.
+                </p>
+              </div>
             </div>
-
-            <div className="border-l border-white/20 pl-6">
-              <div className="text-sm text-white/60 font-semibold">03</div>
-              <h4 className="mt-2 text-lg font-semibold text-white">
-                ICT-Enabled Sector Focus
-              </h4>
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                Focus on healthcare, fintech, communications, and enterprise
-                digitisation where technology creates defensible long-term
-                advantage.
-              </p>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-ict-img.svg"
+                  alt="ICT-Enabled Sector Focus"
+                  width={162}
+                  height={46}
+                  className="w-full h-auto"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    ICT-Enabled Sector Focus
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  Focus on healthcare, fintech, communications, and enterprise
+                  digitisation where technology creates defensible long-term
+                  advantage.
+                </p>
+              </div>
             </div>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-sustainable-img.svg"
+                  alt="Sustainable Development Orientation"
+                  width={162}
+                  height={46}
+                  className="w-full h-auto"
+                />
 
-            <div className="border-l border-white/20 pl-6">
-              <div className="text-sm text-white/60 font-semibold">04</div>
-              <h4 className="mt-2 text-lg font-semibold text-white">
-                Sustainable Development Orientation
-              </h4>
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                Aligning every venture with Malaysia’s NIMP 2030, Digital
-                Economy Blueprint, and ESG principles for long-term value
-                creation.
-              </p>
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Sustainable Development Orientation
+                  </h4>
+                </div>
+              </div>
+
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  Aligning every venture with Malaysia’s NIMP 2030, Digital
+                  Economy Blueprint, and ESG principles for long-term value
+                  creation.
+                </p>
+              </div>
             </div>
           </div>
-          {/* CTA */}
-          <div className="mt-10 border-t border-white/20 pt-6">
-            <button className="text-sm px-5 py-2 bg-white text-green-dark-primary font-semibold">
-              Explore Our Investment Strategy →
-            </button>
+          <div className="mt-8 w-fit">
+            <LineAnimatedLink href="https://clinexmy.com/" variant="white">
+              Explore Our Investment Strategy
+            </LineAnimatedLink>
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-dark">
-        <div className="container mx-auto border-t border-gray-600 py-20">
-          {/* Header */}
-          {/* <div className="border-b border-white/20 pb-6">
-            <h3 className="text-2xl lg:text-3xl font-semibold text-white">
-              Business Sectors
-            </h3>
-
-            <p className="mt-3 text-sm uppercase tracking-widest text-white/60">
-              ICT Sectors We Operate In
-            </p>
-          </div> */}
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-dark-primary">
+        <div className="container mx-auto border-t border-white/80 py-20">
           <div className="flex flex-row justify-between text-center ">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-white flex gap-4">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4">
               <span>•</span>
               Business Sectors
             </h1>
-            <p className="text-lg lg:text-2xl text-white">-4</p>
+            <p className="text-lg lg:text-2xl text-light-primary">-4</p>
           </div>
-          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-white font-medium leading-[1.2]">
+          <h3 className="text-[clamp(6rem,2vw,6.2rem)] text-light-primary font-medium leading-[1.2]">
             ICT Sectors We Operate In
           </h3>
-          {/* Intro */}
-          <p className="mt-6 text-white/70 leading-8 lg:w-[75%]">
+          <p className="mt-6 text-white/60 leading-8 lg:w-[75%]">
             Equistone focuses on industries where digital technology creates
             durable structural advantages — fully aligned with Malaysia's
             national digital transformation priorities.
           </p>
-
-          {/* 3 GRID */}
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Healthcare */}
-            <div className="border-l border-white/20 pl-6">
-              <h4 className="text-lg font-semibold text-white">
-                Healthcare Technology
-              </h4>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-healthcare-img.svg"
+                  alt="Healthcare Technology"
+                  width={162}
+                  height={46}
+                  className="w-full h-72 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Healthcare Technology
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  Digitising Malaysia's private healthcare sector — from clinic
+                  management systems to patient data platforms. Our flagship
+                  venture Clinex is deployed and actively growing in this
+                  sector, with Klinik Utama as a key operator client.
+                </p>
+                <button className="mt-6 text-sm font-semibold text-light-primary underline">
+                  Explore sector →
+                </button>
+              </div>
+            </div>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-financial-img.svg"
+                  alt="Financial Technology"
+                  width={162}
+                  height={46}
+                  className="w-full h-72 object-cover"
+                />
 
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                Digitising Malaysia's private healthcare sector — from clinic
-                management systems to patient data platforms. Our flagship
-                venture Clinex is deployed and actively growing in this sector,
-                with Klinik Utama as a key operator client.
-              </p>
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Financial Technology
+                  </h4>
+                </div>
+              </div>
 
-              <button className="mt-6 text-sm font-semibold text-white underline">
-                Explore sector →
-              </button>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  Strategic investment in payment technology, digital financial
+                  infrastructure, and financial services digitisation. Strategic
+                  partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic
+                  fintech ecosystem.
+                </p>
+
+                <button className="mt-6 text-sm font-semibold text-light-primary underline">
+                  Explore sector →
+                </button>
+              </div>
             </div>
 
-            {/* Fintech */}
-            <div className="border-l border-white/20 pl-6">
-              <h4 className="text-lg font-semibold text-white">
-                Financial Technology
-              </h4>
+            <div className="border-l border-white/20">
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src="/home/equistone-enterpriseict-img.svg"
+                  alt="Enterprise ICT & Digital Transformation"
+                  width={162}
+                  height={46}
+                  className="w-full h-72 object-cover"
+                />
 
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                Strategic investment in payment technology, digital financial
-                infrastructure, and financial services digitisation. Strategic
-                partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic
-                fintech ecosystem.
-              </p>
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-3 py-2">
+                  <h4 className="text-lg font-semibold text-light-primary">
+                    Enterprise ICT & Digital Transformation
+                  </h4>
+                </div>
+              </div>
 
-              <button className="mt-6 text-sm font-semibold text-white underline">
-                Explore sector →
-              </button>
-            </div>
+              <div className="pl-6">
+                <p className="mt-3 text-sm text-white/60 leading-7">
+                  Advisory, investment, and platform development for Malaysian
+                  enterprises undergoing digital transformation — modernising
+                  operations and unlocking technology-driven growth. Supports
+                  IntelliLabs AI and JomChat partnerships.
+                </p>
 
-            {/* Enterprise ICT */}
-            <div className="border-l border-white/20 pl-6">
-              <h4 className="text-lg font-semibold text-white">
-                Enterprise ICT & Digital Transformation
-              </h4>
-
-              <p className="mt-3 text-sm text-white/70 leading-7">
-                Advisory, investment, and platform development for Malaysian
-                enterprises undergoing digital transformation — modernising
-                operations and unlocking technology-driven growth. Supports
-                IntelliLabs AI and JomChat partnerships.
-              </p>
-
-              <button className="mt-6 text-sm font-semibold text-white underline">
-                Explore sector →
-              </button>
+                <button className="mt-6 text-sm font-semibold text-light-primary underline">
+                  Explore sector →
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full bg-primary-light px-[clamp(2rem,3vw,4rem)] py-20 font-sans text-green-dark-primary">
+      <main className="flex z-2 relative w-full bg-light-primary px-[clamp(2rem,3vw,4rem)] py-20 font-sans text-dark-primary">
         <div className="container mx-auto">
-          {/* Header */}
-          {/* <div className="border-b border-gray-300 pb-6">
-            <h3 className="text-2xl lg:text-3xl font-semibold text-green-dark-primary">
-              Our Journey
-            </h3>
-
-            <p className="mt-3 text-sm uppercase tracking-widest text-[#3a4347]">
-              Key Milestones
-            </p>
-          </div> */}
-          <div className="flex flex-row justify-between text-center ">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tighttext-green-dark-primary flex gap-4">
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4">
               <span>•</span>
               Our Journey
             </h1>
-            <p className="text-lg lg:text-2xl text-green-dark-primary">-5</p>
+            <p className="text-lg lg:text-2xl text-dark-primary">-5</p>
           </div>
-          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-green-dark-primary font-medium leading-[1.2]">
+          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-dark-primary font-medium leading-[1.2]">
             Key Milestones
           </h3>
-          {/* Timeline */}
           <div className="mt-12 overflow-x-auto scrollbar-hide">
             <JourneyTimeline />
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-primary-light text-green-dark-primary">
-        <div className="container mx-auto border-t border-gray-200 py-20">
-          {/* Header */}
-          {/* <div className="border-b border-gray-300 pb-6">
-            <h3 className="text-2xl lg:text-3xl font-semibold text-green-dark-primary">
-              Partners & Clients
-            </h3>
-
-            <p className="mt-3 text-sm uppercase tracking-widest text-[#3a4347]">
-              Building an Ecosystem of Value
-            </p>
-          </div> */}
+      <main className="flex z-2 relative w-full flex-col px-[clamp(2rem,3vw,4rem)] font-sans bg-light-primary text-dark-primary">
+        <div className="container mx-auto border-t border-black/80 py-20">
           <div className="flex flex-row justify-between text-center ">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tighttext-green-dark-primary flex gap-4">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4">
               <span>•</span>
               Partners & Clients
             </h1>
-            <p className="text-lg lg:text-2xl text-green-dark-primary">-5</p>
+            <p className="text-lg lg:text-2xl text-dark-primary">-6</p>
           </div>
-          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-green-dark-primary font-medium leading-[1.2]">
+          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-dark-primary font-medium leading-[1.2]">
             Building an Ecosystem of Value
           </h3>
-          {/* Intro */}
+
           <p className="mt-6 text-[#3a4347] leading-8 lg:w-[75%]">
             Equistone works with strategic partners who bring domain expertise
             and market access — and deploys technology ventures like Clinex to
             operators who use them to transform their businesses.
           </p>
 
-          {/* 4 GRID */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Payhalal */}
             <div className="border-l border-gray-300 pl-6">
-              <h4 className="text-lg font-semibold text-green-dark-primary">
+              <div className="flex justify-start h-12">
+                <Image
+                  src="../collaborations/equistone-payhalal-dark-logo.svg"
+                  alt="Payhalal"
+                  width={162}
+                  height={46}
+                  className="w-auto h-8"
+                />
+              </div>
+              <h4 className="text-lg mt-6 font-semibold text-dark-primary">
                 Payhalal Sdn Bhd
               </h4>
-
               <p className="mt-2 text-sm text-[#3a4347]">
                 Financial Technology
               </p>
-
-              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347]">
+              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347] rounded-full">
                 Strategic Partner
               </span>
             </div>
 
-            {/* IntelliLabs */}
             <div className="border-l border-gray-300 pl-6">
-              <h4 className="text-lg font-semibold text-green-dark-primary">
+              <div className="flex justify-start h-12">
+                <Image
+                  src="../collaborations/equistone-intellilabs-dark-logo.svg"
+                  alt="Payhalal"
+                  width={162}
+                  height={46}
+                  className="w-auto h-8"
+                />
+              </div>
+              <h4 className="text-lg mt-6 font-semibold text-dark-primary">
                 IntelliLabs AI
               </h4>
 
@@ -944,14 +831,22 @@ export default function Home() {
                 Artificial Intelligence
               </p>
 
-              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347]">
+              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347] rounded-full">
                 Strategic Partner
               </span>
             </div>
 
-            {/* JomChat */}
             <div className="border-l border-gray-300 pl-6">
-              <h4 className="text-lg font-semibold text-green-dark-primary">
+              <div className="flex justify-start h-12">
+                <Image
+                  src="../collaborations/equistone-jomchat-dark-logo.svg"
+                  alt="Payhalal"
+                  width={162}
+                  height={46}
+                  className="w-auto h-8"
+                />
+              </div>
+              <h4 className="text-lg mt-6 font-semibold text-dark-primary">
                 JomChat
               </h4>
 
@@ -959,14 +854,21 @@ export default function Home() {
                 Communications Technology
               </p>
 
-              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347]">
+              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347] rounded-full">
                 Strategic Partner
               </span>
             </div>
-
-            {/* Klinik Utama */}
             <div className="border-l border-gray-300 pl-6">
-              <h4 className="text-lg font-semibold text-green-dark-primary">
+              <div className="flex justify-start h-12">
+                <Image
+                  src="../collaborations/equistone-klinikutama-dark-logo.svg"
+                  alt="Payhalal"
+                  width={162}
+                  height={46}
+                  className="w-auto h-12"
+                />
+              </div>
+              <h4 className="text-lg mt-6 font-semibold text-dark-primary">
                 Klinik Utama Sdn Bhd
               </h4>
 
@@ -974,49 +876,33 @@ export default function Home() {
                 Multi-Branch GP Clinics · Malaysia
               </p>
 
-              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347]">
+              <span className="inline-block mt-4 text-xs px-3 py-1 border border-gray-300 text-[#3a4347] rounded-full">
                 Clinex Healthcare Client
               </span>
             </div>
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full bg-primary-light px-[clamp(2rem,3vw,4rem)] font-sans text-green-dark-primary">
-        <div className="container mx-auto border-t border-gray-200 py-20">
-          {/* Header */}
-          {/* <div className="border-b border-gray-300 pb-6">
-            <h3 className="text-2xl lg:text-3xl font-semibold text-green-dark-primary">
-              Thought Leadership
-            </h3>
-
-            <p className="mt-3 text-sm uppercase tracking-widest text-[#3a4347]">
-              Latest Insights
-            </p>
-
-            <div className="mt-4 text-sm text-green-dark-primary font-semibold underline cursor-pointer w-fit">
-              View All Insights →
-            </div>
-          </div> */}
+      <main className="flex z-2 relative w-full bg-light-primary px-[clamp(2rem,3vw,4rem)] font-sans text-dark-primary">
+        <div className="container mx-auto border-t border-black/80 py-20">
           <div className="flex flex-row justify-between text-center ">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tighttext-green-dark-primary flex gap-4">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4">
               <span>•</span>
               Thought Leadership
             </h1>
-            <p className="text-lg lg:text-2xl text-green-dark-primary">-6</p>
+            <p className="text-lg lg:text-2xl text-dark-primary">-7</p>
           </div>
-          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-green-dark-primary font-medium leading-[1.2]">
+          <h3 className="text-[clamp(2rem,2vw,4.2rem)] text-dark-primary font-medium leading-[1.2]">
             Latest Insights
-          </h3>{" "}
-          <div className="mt-4 text-sm text-green-dark-primary font-semibold underline cursor-pointer w-fit">
+          </h3>
+          <div className="mt-4 text-sm text-dark-primary font-semibold underline cursor-pointer w-fit">
             View All Insights →
           </div>
-          {/* GRID */}
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Article 1 */}
             <div className="border-l border-gray-300 pl-6">
               <p className="text-sm text-[#3a4347]">Healthcare Technology</p>
 
-              <h4 className="mt-3 text-lg font-semibold text-green-dark-primary leading-snug">
+              <h4 className="mt-3 text-lg font-semibold text-dark-primary leading-snug">
                 How Clinex Was Built: From a Clinic Floor Problem to 50 Deployed
                 Clinics
               </h4>
@@ -1034,16 +920,14 @@ export default function Home() {
                 <span>June 2026</span>
               </div>
 
-              <div className="mt-4 text-sm font-semibold text-green-dark-primary underline cursor-pointer">
+              <div className="mt-4 text-sm font-semibold text-dark-primary underline cursor-pointer">
                 Read →
               </div>
             </div>
-
-            {/* Article 2 */}
             <div className="border-l border-gray-300 pl-6">
               <p className="text-sm text-[#3a4347]">Investment & Strategy</p>
 
-              <h4 className="mt-3 text-lg font-semibold text-green-dark-primary leading-snug">
+              <h4 className="mt-3 text-lg font-semibold text-dark-primary leading-snug">
                 Venture Building vs Venture Capital: Why Equistone Chose to
                 Build First
               </h4>
@@ -1060,16 +944,14 @@ export default function Home() {
                 <span>May 2026</span>
               </div>
 
-              <div className="mt-4 text-sm font-semibold text-green-dark-primary underline cursor-pointer">
+              <div className="mt-4 text-sm font-semibold text-dark-primary underline cursor-pointer">
                 Read →
               </div>
             </div>
-
-            {/* Article 3 */}
             <div className="border-l border-gray-300 pl-6">
               <p className="text-sm text-[#3a4347]">Digital Economy</p>
 
-              <h4 className="mt-3 text-lg font-semibold text-green-dark-primary leading-snug">
+              <h4 className="mt-3 text-lg font-semibold text-dark-primary leading-snug">
                 Malaysia's NIMP 2030: ICT Investment Opportunities for Private
                 Companies
               </h4>
@@ -1086,20 +968,19 @@ export default function Home() {
                 <span>April 2026</span>
               </div>
 
-              <div className="mt-4 text-sm font-semibold text-green-dark-primary underline cursor-pointer">
+              <div className="mt-4 text-sm font-semibold text-dark-primary underline cursor-pointer">
                 Read →
               </div>
             </div>
           </div>
         </div>
       </main>
-      <main className="flex z-2 relative w-full bg-primary-light px-[clamp(2rem,3vw,4rem)] py-20 font-sans text-green-dark-primary">
+      <main className="flex z-2 relative w-full bg-light-primary px-[clamp(2rem,3vw,4rem)] py-20 font-sans text-dark-primary">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16">
-            {/* Investors */}
             <div className="border border-gray-300 bg-white p-10 flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-semibold text-green-dark-primary">
+                <h3 className="text-2xl font-semibold text-dark-primary">
                   For Investors & Co-Investors
                 </h3>
 
@@ -1124,16 +1005,15 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-
-              <button className="mt-8 w-fit px-5 py-2 bg-black text-white text-sm font-semibold">
-                Partner With Us →
-              </button>
+              <div className="mt-8 w-fit">
+                <LineAnimatedLink href="/contact">
+                  Partner With Us
+                </LineAnimatedLink>
+              </div>
             </div>
-
-            {/* Founders */}
             <div className="border border-gray-300 bg-white p-10 flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-semibold text-green-dark-primary">
+                <h3 className="text-2xl font-semibold text-dark-primary">
                   For Founders & Operators
                 </h3>
 
@@ -1156,13 +1036,14 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-
-              <button className="mt-8 w-fit px-5 py-2 bg-black text-white text-sm font-semibold">
-                Submit Your Venture →
-              </button>
+              <div className="mt-8 w-fit">
+                <LineAnimatedLink href="/submit">
+                  Submit Your Venture
+                </LineAnimatedLink>
+              </div>
             </div>
-          </div>{" "}
-        </div>{" "}
+          </div>
+        </div>
       </main>
       <FooterLight />
     </div>
