@@ -60,16 +60,30 @@ export default function PartnerSlider() {
         {[...partners, ...partners].map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 px-8 py-4 border-r border-white/20"
+            className="
+          flex items-center
+          gap-[clamp(0.5rem,1vw,0.75rem)]
+          px-[clamp(1rem,2.5vw,2rem)]
+          py-[clamp(0.75rem,1.5vw,1.25rem)]
+          border-r border-white/20
+        "
           >
             <Image
               src={item.src}
               alt={item.name}
               height={78}
               width={78}
-              className="w-[78px] lg:w-[82px] h-auto"
+              className="w-[clamp(3rem,5vw,4.5rem)] h-auto"
             />
-            <span className="text-white/60 text-sm">· {item.type}</span>
+
+            <span
+              className="
+            text-white/60
+            text-[clamp(0.75rem,1vw,0.9rem)]
+          "
+            >
+              · {item.type}
+            </span>
           </div>
         ))}
       </div>

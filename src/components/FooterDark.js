@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full sticky bottom-0 h-fit z-0 bg-dark-primary">
+    <footer className="w-full lg:sticky lg:bottom-0 h-fit z-0 bg-dark-primary">
       <div className="mx-auto border-t border-white/20 text-light-primary px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}

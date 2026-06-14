@@ -62,11 +62,23 @@ export default function JourneyTimeline() {
   }, [active]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-      <div className="lg:col-span-3 mb-10">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,4vw,4rem)] items-start">
+      {/* TIMELINE NAV */}
+      <div className="lg:col-span-3 mb-[clamp(2rem,4vw,3rem)]">
         <div className="relative">
-          <div className="absolute top-1/2 left-0 right-0 border-t border-dashed border-gray-600 -translate-y-1/2" />
-          <div className="flex justify-between relative">
+          {/* LINE */}
+          <div
+            className="
+          absolute
+          left-[7px] top-0 bottom-0
+          border-l border-dashed border-gray-600
+          lg:left-0 lg:right-0 lg:top-1/2 lg:bottom-auto
+          lg:border-l-0 lg:border-t
+          lg:-translate-y-1/2
+        "
+          />
+
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:justify-between">
             {data.map((item) => {
               const isActive = active === item.year;
 
@@ -74,23 +86,39 @@ export default function JourneyTimeline() {
                 <button
                   key={item.year}
                   onClick={() => setActive(item.year)}
-                  className="relative flex flex-col items-center text-center min-w-[100px] cursor-pointer"
+                  className="relative flex flex-row items-center gap-4 lg:flex-col lg:items-center lg:text-center min-w-[clamp(60px,8vw,100px)] cursor-pointer"
                 >
+                  {/* DOT */}
                   <div
-                    className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition ${
-                      isActive
-                        ? "bg-black border-black scale-125"
-                        : "bg-white border-gray-400"
-                    }`}
+                    className={`
+                  absolute left-[7px] top-1/2 -translate-x-1/2 -translate-y-1/2
+                  lg:left-auto lg:translate-x-0 lg:top-1/2
+                  w-[clamp(0.6rem,1vw,0.875rem)]
+                  h-[clamp(0.6rem,1vw,0.875rem)]
+                  rounded-full border-2 transition
+                  ${
+                    isActive
+                      ? "bg-black border-black scale-125"
+                      : "bg-white border-gray-400"
+                  }
+                `}
                   />
-                  <div className="h-6" />
 
+                  {/* SPACER */}
+                  <div className="w-6 lg:w-0 h-0 lg:h-[clamp(1rem,2vw,1.5rem)]" />
+
+                  {/* YEAR LABEL */}
                   <div
-                    className={`mt-4 text-sm transition ${
-                      isActive
-                        ? "text-dark-primary font-semibold"
-                        : "text-black/60 font-normal"
-                    }`}
+                    className={`
+                  mt-0 lg:mt-[clamp(0.75rem,1vw,1rem)]
+                  text-[clamp(0.75rem,1vw,0.875rem)]
+                  transition
+                  ${
+                    isActive
+                      ? "text-dark-primary font-semibold"
+                      : "text-black/60 font-normal"
+                  }
+                `}
                   >
                     {item.year}
                   </div>
@@ -101,29 +129,41 @@ export default function JourneyTimeline() {
         </div>
       </div>
 
+      {/* CONTENT */}
       <div className="lg:col-span-3 flex flex-col justify-start">
-        <h3 ref={titleRef} className="text-2xl font-semibold text-dark-primary">
+        {/* TITLE */}
+        <h3
+          ref={titleRef}
+          className="text-[clamp(1.25rem,2vw,1.75rem)] font-semibold text-dark-primary"
+        >
           {activeItem?.title}
         </h3>
 
+        {/* DESCRIPTION */}
         <p
           ref={descRef}
-          className="mt-4 text-[#3a4347] leading-7 text-base lg:text-lg"
+          className="mt-[clamp(1rem,1.5vw,1.5rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8]"
         >
           {activeItem?.desc}
         </p>
 
-          <div ref={yearRef} className="flex justify-start flex flex-col">
-            <div className="w-full overflow-hidden">
-              <div className="inline-block whitespace-nowrap font-semibold text-green-dark-primary leading-none text-[clamp(3rem,6vw,6rem)]">
-                {activeItem?.year}
-              </div>
+        {/* YEAR DISPLAY */}
+        <div
+          ref={yearRef}
+          className="flex flex-col justify-start mt-[clamp(2rem,3vw,3rem)]"
+        >
+          <div className="w-full overflow-hidden">
+            <div className="inline-block whitespace-nowrap font-semibold text-green-dark-primary leading-none text-[clamp(2.5rem,6vw,6rem)]">
+              {activeItem?.year}
             </div>
-
-            <div className="mt-4 h-[4px] w-20 bg-black mr-auto" />
-
-            <p className="mt-4 text-sm text-[#3a4347]">Selected milestone</p>
           </div>
+
+          <div className="mt-[clamp(0.75rem,1vw,1rem)] h-[3px] w-[clamp(3rem,6vw,5rem)] bg-black mr-auto" />
+
+          <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.75rem,1vw,0.875rem)] text-[#3a4347]">
+            Selected milestone
+          </p>
+        </div>
       </div>
     </div>
   );
