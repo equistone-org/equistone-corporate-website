@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="w-full lg:sticky lg:bottom-0 h-fit z-0 bg-dark-primary">
-      <div className="mx-auto border-t border-white/20 text-light-primary px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
+      <div className="mx-auto border-t-2 border-white/20 text-light-primary px-[clamp(1rem,3vw,3rem)] py-[clamp(1rem,3vw,2rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}
           <div className="flex flex-col lg:flex-row justify-between gap-12">
@@ -100,8 +100,19 @@ export default function Footer() {
                     <Link href="#">Clinex — Healthcare Tech</Link>
                   </li>
                   <li>
-                    <a href="https://clinexmy.com" className="underline">
-                      clinexmy.com ↗
+                    <a
+                      href="https://clinexmy.com"
+                      target="_blank"
+                      className="underline flex flex-row space-x-2 items-center"
+                    >
+                      <span>clinexmy.com</span>
+                      <Image
+                        src="/icons/equistone-arrow-light-icon.svg"
+                        alt="Arrow"
+                        width={12}
+                        height={12}
+                        className="h-2 w-auto"
+                      />
                     </a>
                   </li>
                 </ul>

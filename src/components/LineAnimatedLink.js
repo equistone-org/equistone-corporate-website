@@ -9,6 +9,7 @@ export default function LineAnimatedLink({
   href,
   children,
   variant = "default",
+  arrowVariant = "dark", // 👈 add this
 }) {
   const lineRef = useRef(null);
 
@@ -35,7 +36,8 @@ export default function LineAnimatedLink({
 
   const styles = {
     default: "bg-black px-5 py-2 text-light-primary",
-    green: "text-sm px-6 py-2 bg-dark-primary font-semibold text-light-primary w-fit",
+    green:
+      "text-sm px-6 py-2 bg-dark-primary font-semibold text-light-primary w-fit",
     white: "text-sm px-6 py-2 bg-white text-dark-primary font-semibold",
   };
 
@@ -43,6 +45,12 @@ export default function LineAnimatedLink({
     default: "bg-dark-orange",
     green: "bg-dark-orange",
     white: "bg-dark-orange",
+  };
+
+  const arrowSrc = {
+    dark: "/icons/equistone-arrow-dark-icon.svg",
+    light: "/icons/equistone-arrow-light-icon.svg",
+    orange: "/icons/equistone-arrow-orange-icon.svg",
   };
 
   return (
@@ -57,7 +65,7 @@ export default function LineAnimatedLink({
       <span>{children}</span>
 
       <Image
-        src="/icons/equistone-arrow-light-icon.svg"
+        src={arrowSrc[arrowVariant]} // 👈 dynamic
         alt="Arrow"
         width={12}
         height={12}

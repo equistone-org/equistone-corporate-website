@@ -93,7 +93,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto items-center">
             {/* LEFT */}
             <div className="col-span-2 flex items-center py-[clamp(2rem,5vw,4rem)] px-[clamp(1.5rem,3vw,4rem)]">
-              <div className="w-full px-4 sm:px-6 lg:px-0">
+              <div className="w-full px-2 sm:px-6 lg:px-0">
                 {/* TAGS */}
                 <div className="mb-[clamp(1rem,2vw,1.5rem)] flex flex-wrap gap-3">
                   <div className="text-xs lg:text-sm px-3 lg:px-4 py-1 border border-black font-semibold text-dark-primary uppercase rounded-full">
@@ -120,10 +120,13 @@ export default function Home() {
 
                 {/* CTA */}
                 <div className="flex flex-wrap gap-4">
-                  <LineAnimatedLink href="/contact">
+                  {/* <LineAnimatedLink href="/contact">
+                    Explore Our Ventures
+                  </LineAnimatedLink> */}
+                  <LineAnimatedLink href="/contact" arrowVariant="light">
                     Explore Our Ventures
                   </LineAnimatedLink>
-                  <LineAnimatedLink href="/contact">
+                  <LineAnimatedLink href="/contact" arrowVariant="light">
                     Partner With Us
                   </LineAnimatedLink>
                 </div>
@@ -184,7 +187,7 @@ export default function Home() {
       <main className="flex z-2 relative w-full flex-col font-sans bg-light-primary ">
         <PartnerSlider />
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1.5rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)]">
+      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)]">
         <div className="container mx-auto">
           <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
@@ -195,7 +198,7 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-[#3a4347]">-1</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,4vw,5rem)] mt-[clamp(1.5rem,3vw,2.5rem)]">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,2vw,5rem)] mt-[clamp(0.2rem,2vw,0.4rem)]">
             {/* LEFT */}
             <div className="lg:col-span-2">
               <h3 className="text-[clamp(2rem,5vw,4rem)] text-dark-primary font-medium leading-[1.1]">
@@ -289,7 +292,20 @@ export default function Home() {
               </div>
 
               <div className="mt-[clamp(2rem,3vw,3rem)] w-fit">
-                <LineAnimatedLink href="https://clinexmy.com/" variant="green">
+                {/* <LineAnimatedLink
+                  href="https://clinexmy.com/"
+                  variant="green"
+                  img
+                  for
+                  arrow
+                >
+                  Read more
+                </LineAnimatedLink> */}
+                <LineAnimatedLink
+                  href="/contact"
+                  arrowVariant="light"
+                  variant="green"
+                >
                   Read more
                 </LineAnimatedLink>
               </div>
@@ -353,7 +369,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1.5rem,3vw,4rem)]">
+      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)]">
         {" "}
         <div className="container mx-auto max-w-[1600px] py-[clamp(4rem,8vw,8rem)] border-t border-black/80">
           {" "}
@@ -364,9 +380,9 @@ export default function Home() {
             </h1>
             <p className="text-lg lg:text-2xl text-[#3a4347]">-2</p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-[clamp(0.2rem,2vw,0.4rem)]">
             <div className="lg:col-span-2">
-              <h3 className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(2rem,5vw,4rem)] text-[#3a4347] text-dark-primary font-medium leading-[1.2]">
+              <h3 className="text-[clamp(2rem,5vw,4rem)] text-[#3a4347] text-dark-primary font-medium leading-[1.2]">
                 Ventures We've Built and Backed
               </h3>
               <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8]">
@@ -448,6 +464,7 @@ export default function Home() {
                       <div className="mt-8 w-fit">
                         <LineAnimatedLink
                           href="https://clinexmy.com/"
+                          arrowVariant="light"
                           variant="green"
                         >
                           Visit Clinex
@@ -540,6 +557,7 @@ export default function Home() {
                     <div className="mt-8 w-fit">
                       <LineAnimatedLink
                         href="https://clinexmy.com/"
+                        arrowVariant="light"
                         variant="green"
                       >
                         Submit a Venture
@@ -552,7 +570,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1.5rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)] text-light-primary">
+      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)] text-light-primary">
         <div className="container mx-auto max-w-[1600px]">
           {/* HEADER */}
           <div className="flex flex-row justify-between text-center">
@@ -567,7 +585,7 @@ export default function Home() {
           </div>
 
           {/* TITLE */}
-          <h3 className="text-[clamp(2.4rem,5vw,5.2rem)] text-light-primary font-medium leading-[1.1]">
+          <h3 className="text-[clamp(2.4rem,5vw,5.2rem)] mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1]">
             Four Pillars of Value Creation
           </h3>
 
@@ -588,10 +606,10 @@ export default function Home() {
                   alt="Strategic Asset Transformation"
                   width={162}
                   height={46}
-                  className="w-full h-auto"
+                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Strategic Asset Transformation
                   </h4>
@@ -615,10 +633,10 @@ export default function Home() {
                   alt="Venture Building Over Passive Holding"
                   width={162}
                   height={46}
-                  className="w-full h-auto"
+                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Venture Building Over Passive Holding
                   </h4>
@@ -642,10 +660,10 @@ export default function Home() {
                   alt="ICT-Enabled Sector Focus"
                   width={162}
                   height={46}
-                  className="w-full h-auto"
+                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     ICT-Enabled Sector Focus
                   </h4>
@@ -669,10 +687,10 @@ export default function Home() {
                   alt="Sustainable Development Orientation"
                   width={162}
                   height={46}
-                  className="w-full h-auto"
+                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Sustainable Development Orientation
                   </h4>
@@ -691,13 +709,17 @@ export default function Home() {
 
           {/* CTA */}
           <div className="mt-[clamp(2rem,4vw,3rem)] w-fit">
-            <LineAnimatedLink href="https://clinexmy.com/" variant="white">
+            <LineAnimatedLink
+              href="https://clinexmy.com/"
+              arrowVariant="dark"
+              variant="white"
+            >
               Explore Our Investment Strategy
             </LineAnimatedLink>
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1.5rem,3vw,4rem)]">
+      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)]">
         <div className="container mx-auto max-w-[1600px] border-t border-white/80 py-[clamp(4rem,8vw,8rem)]">
           {/* HEADER */}
           <div className="flex flex-row justify-between text-center">
@@ -712,7 +734,7 @@ export default function Home() {
           </div>
 
           {/* TITLE */}
-          <h3 className="text-[clamp(2.4rem,5vw,5.2rem)] text-light-primary font-medium leading-[1.1]">
+          <h3 className="text-[clamp(2.4rem,5vw,5.2rem)]  mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1] ">
             ICT Sectors We Operate In
           </h3>
 
@@ -733,25 +755,25 @@ export default function Home() {
                   alt="Healthcare Technology"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(14rem,30vh,18rem)] object-cover"
+                  className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Healthcare Technology
                   </h4>
                 </div>
               </div>
 
-              <div className="pl-[clamp(1rem,1.5vw,1.5rem)]">
+              <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
+                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Digitising Malaysia's private healthcare sector — from clinic
                   management systems to patient data platforms. Our flagship
                   venture Clinex is deployed and actively growing in this
                   sector, with Klinik Utama as a key operator client.
                 </p>
-
-                <button className="mt-[clamp(1.5rem,2vw,2rem)] text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
+                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
                   Explore sector →
                 </button>
               </div>
@@ -765,25 +787,25 @@ export default function Home() {
                   alt="Financial Technology"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(14rem,30vh,18rem)] object-cover"
+                  className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Financial Technology
                   </h4>
                 </div>
               </div>
 
-              <div className="pl-[clamp(1rem,1.5vw,1.5rem)]">
+              <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
+                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Strategic investment in payment technology, digital financial
                   infrastructure, and financial services digitisation. Strategic
                   partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic
                   fintech ecosystem.
                 </p>
-
-                <button className="mt-[clamp(1.5rem,2vw,2rem)] text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
+                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
                   Explore sector →
                 </button>
               </div>
@@ -797,25 +819,25 @@ export default function Home() {
                   alt="Enterprise ICT & Digital Transformation"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(14rem,30vh,18rem)] object-cover"
+                  className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-sm px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Enterprise ICT & Digital Transformation
                   </h4>
                 </div>
               </div>
 
-              <div className="pl-[clamp(1rem,1.5vw,1.5rem)]">
+              <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
+                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Advisory, investment, and platform development for Malaysian
                   enterprises undergoing digital transformation — modernising
                   operations and unlocking technology-driven growth. Supports
                   IntelliLabs AI and JomChat partnerships.
                 </p>
-
-                <button className="mt-[clamp(1.5rem,2vw,2rem)] text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
+                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
                   Explore sector →
                 </button>
               </div>
@@ -823,7 +845,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1.5rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
+      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
           {/* HEADER */}
           <div className="flex flex-row justify-between text-center">
@@ -848,7 +870,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans text-dark-primary px-[clamp(1.5rem,3vw,4rem)]">
+      <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans text-dark-primary px-[clamp(1rem,3vw,4rem)]">
         <div className="container mx-auto border-t border-black/80 py-[clamp(4rem,8vw,6rem)]">
           {/* HEADER */}
           <div className="flex flex-row justify-between text-center">
@@ -978,7 +1000,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1.5rem,3vw,4rem)] font-sans text-dark-primary">
+      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] font-sans text-dark-primary">
         <div className="container mx-auto border-t border-black/80 py-[clamp(4rem,8vw,6rem)]">
           {/* HEADER */}
           <div className="flex flex-row justify-between text-center">
@@ -1091,7 +1113,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1.5rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
+      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(2rem,4vw,3rem)] mt-[clamp(2rem,5vw,4rem)]">
             {/* CARD 1 */}

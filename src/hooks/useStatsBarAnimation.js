@@ -14,26 +14,26 @@ export default function useStatsBarAnimation(ref) {
 
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-    // optional: kill any existing triggers
+    // kill old trigger for safety
     ScrollTrigger.getAll().forEach((t) => {
       if (t.trigger === el) t.kill();
     });
 
+    if (isMobile) return; // ❌ disable on mobile completely
+
     gsap.fromTo(
       el,
       {
-        paddingTop: isMobile ? 0 : 112,
+        paddingTop: 0,
       },
       {
-        paddingTop: isMobile ? 0 : 112, // no animation difference on mobile
+        paddingTop: 112,
         ease: "power2.out",
-        scrollTrigger: isMobile
-          ? null
-          : {
-              trigger: el,
-              start: "top 60%",
-              toggleActions: "play none none reverse",
-            },
+        scrollTrigger: {
+          trigger: el,
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+        },
       },
     );
   }, [ref]);

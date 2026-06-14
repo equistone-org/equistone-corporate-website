@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="relative w-full lg:sticky lg:bottom-0 z-0 bg-light-primary">
       {" "}
-      <div className="border-t border-black text-black/60 px-[clamp(1.5rem,3vw,3rem)] py-[clamp(2rem,5vw,4rem)]">
+      <div className="border-t-2 border-black/20 text-black/60 px-[clamp(1rem,3vw,3rem)] py-[clamp(2rem,5vw,4rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}
           <div className="flex flex-col lg:flex-row justify-between gap-[clamp(2rem,4vw,4rem)]">
@@ -115,9 +115,16 @@ export default function Footer() {
                     <a
                       href="https://clinexmy.com"
                       target="_blank"
-                      className="underline"
+                      className="underline flex flex-row space-x-2 items-center"
                     >
-                      clinexmy.com ↗
+                      <span>clinexmy.com</span>
+                      <Image
+                        src="/icons/equistone-arrow-dark-icon.svg"
+                        alt="Arrow"
+                        width={12}
+                        height={12}
+                        className="h-2 w-auto"
+                      />
                     </a>
                   </li>
                 </ul>

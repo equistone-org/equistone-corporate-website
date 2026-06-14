@@ -62,7 +62,7 @@ export default function JourneyTimeline() {
   }, [active]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,4vw,4rem)] items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(1.2rem,2.6vw,2rem)] items-start">
       {/* TIMELINE NAV */}
       <div className="lg:col-span-3 mb-[clamp(2rem,4vw,3rem)]">
         <div className="relative">
@@ -99,7 +99,7 @@ export default function JourneyTimeline() {
                   ${
                     isActive
                       ? "bg-black border-black scale-125"
-                      : "bg-white border-gray-400"
+                      : "bg-white border-gray-600"
                   }
                 `}
                   />
