@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -43,6 +43,33 @@ export default function Home() {
   const orbGradient2 = useRef(null);
   const orbGradient3 = useRef(null);
   const barRef = useRef(null);
+
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    const dots = wrapRef.current.querySelectorAll(".dot");
+
+    // initial state (random depth)
+    gsap.set(dots, {
+      scale: 0.2,
+      opacity: 0.5,
+    });
+
+    // movement loop (wave motion)
+    gsap.to(dots, {
+      y: "random(-20, 20)",
+      x: "random(-20, 20)",
+      scale: "random(0.2, 1.2)",
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      stagger: {
+        each: 0.01,
+        from: "random",
+      },
+    });
+  }, []);
 
   useStatsBarAnimation(barRef);
   useOrbGradientAnimation(orbGradient1, orbGradient2, orbGradient3);
@@ -92,7 +119,7 @@ export default function Home() {
         <div className="relative z-20 flex flex-col h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto items-center">
             {/* LEFT */}
-            <div className="col-span-2 flex items-center py-[clamp(2rem,5vw,4rem)] px-[clamp(1.5rem,3vw,4rem)]">
+            <div className="col-span-3 flex items-center py-[clamp(2rem,2vw,4rem)] px-[clamp(1.5rem,2vw,2rem)]">
               <div className="w-full px-2 sm:px-6 lg:px-0">
                 {/* TAGS */}
                 <div className="mb-[clamp(1rem,2vw,1.5rem)] flex flex-wrap gap-3">
@@ -105,13 +132,13 @@ export default function Home() {
                 </div>
 
                 {/* TITLE */}
-                <h1 className="mb-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[1.05] text-[clamp(2.2rem,5vw,6rem)] lg:text-[clamp(3.5rem,4vw,6rem)] text-dark-primary">
-                  We Build What <br />
-                  <span className="text-dark-orange">Others Only Fund.</span>
+                <h1 className="mb-[clamp(1rem,2vw,1.2rem)] font-semibold leading-[1.05] text-[clamp(2.2rem,5vw,6rem)] lg:text-[clamp(3.5rem,4vw,6rem)] text-dark-primary">
+                  We Build What
+                  <span className="text-dark-orange"> Others Only Fund.</span>
                 </h1>
 
                 {/* PARAGRAPH */}
-                <p className="mb-[clamp(2rem,4vw,3rem)] font-medium text-dark-primary text-[clamp(0.95rem,1.2vw,1.1rem)] leading-[1.6] lg:w-[90%]">
+                <p className="mb-[clamp(2rem,4vw,4rem)] font-medium text-dark-primary text-[clamp(0.95rem,1.2vw,1.1rem)] leading-[1.6] lg:w-[90%]">
                   Equistone Sdn Bhd is Malaysia's purpose-driven investment
                   holding and venture-building company — combining strategic
                   capital, corporate advisory, and in-house technology execution
@@ -159,7 +186,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="p-[clamp(0.75rem,2vw,1.25rem)] border-r sm:border-none border-gray-300">
+                  <div className="p-[clamp(0.75rem,2vw,1.25rem)] border-r border-gray-300">
                     <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
                       ICT
                     </div>
@@ -172,14 +199,21 @@ export default function Home() {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="hidden lg:flex justify-end px-[clamp(1.5rem,3vw,4rem)]">
-              <Image
-                src="/shared/equistone-halflogo-logo.svg"
-                alt="Equistone Logo"
-                width={162}
-                height={162}
-                className="h-[clamp(18rem,40vh,34rem)] w-auto"
-              />
+            <div className="hidden lg:flex col-span-3 z-2">
+              <div className="relative h-[42rem] w-full overflow-hidden bg-transparent">
+                <div ref={wrapRef} className="absolute inset-0">
+                  {Array.from({ length: 400 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className="dot absolute w-1 h-1 bg-black rounded-full"
+                      style={{
+                        left: `${(i % 20) * 5}%`,
+                        top: `${Math.floor(i / 20) * 5}%`,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -190,12 +224,13 @@ export default function Home() {
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)]">
         <div className="container mx-auto">
           <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
-              <span>•</span>
+            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary items-center">
+              <span className="w-2 h-2 rounded-full bg-black block"></span>
               About Equistone
             </h1>
-
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-[#3a4347]">-1</p>
+            <p className="text-lg lg:text-2xl text-[#3a4347] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-black block"></span>1
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,2vw,5rem)] mt-[clamp(0.2rem,2vw,0.4rem)]">
@@ -353,7 +388,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="border-l border-black pl-[clamp(1rem,1.5vw,1.5rem)] mt-[clamp(1.5rem,2vw,2rem)]">
+              <div className="border border-gray-400 p-[clamp(1rem,1.5vw,1.5rem)] mt-[clamp(1.5rem,2vw,2rem)]">
                 <p className="italic text-[#1d2b2f] leading-[1.9] text-[clamp(0.95rem,1.1vw,1.125rem)]">
                   "Equistone's purpose is to become one of Malaysia's leading
                   platforms for purpose-driven investments, strategic advisory,
@@ -370,15 +405,16 @@ export default function Home() {
         </div>
       </main>
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)]">
-        {" "}
         <div className="container mx-auto max-w-[1600px] py-[clamp(4rem,8vw,8rem)] border-t border-black/80">
-          {" "}
           <div className="flex flex-row justify-between text-center">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-[#00330f] flex gap-4">
-              <span>•</span>
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
               Technology Ventures
             </h1>
-            <p className="text-lg lg:text-2xl text-[#3a4347]">-2</p>
+            <p className="text-lg lg:text-2xl text-dark-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              2
+            </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-[clamp(0.2rem,2vw,0.4rem)]">
             <div className="lg:col-span-2">
@@ -573,7 +609,7 @@ export default function Home() {
       <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)] text-light-primary">
         <div className="container mx-auto max-w-[1600px]">
           {/* HEADER */}
-          <div className="flex flex-row justify-between text-center">
+          {/* <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-light-primary">
               <span>•</span>
               Investment Philosophy
@@ -582,8 +618,17 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-light-primary">
               -3
             </p>
+          </div> */}
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
+              Investment Philosophy
+            </h1>
+            <p className="text-lg lg:text-2xl text-light-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
+              3
+            </p>
           </div>
-
           {/* TITLE */}
           <h3 className="text-[clamp(2.4rem,5vw,5.2rem)] mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1]">
             Four Pillars of Value Creation
@@ -722,7 +767,7 @@ export default function Home() {
       <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)]">
         <div className="container mx-auto max-w-[1600px] border-t border-white/80 py-[clamp(4rem,8vw,8rem)]">
           {/* HEADER */}
-          <div className="flex flex-row justify-between text-center">
+          {/* <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-light-primary">
               <span>•</span>
               Business Sectors
@@ -731,8 +776,17 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-light-primary">
               -4
             </p>
+          </div> */}
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
+              Business Sectors
+            </h1>
+            <p className="text-lg lg:text-2xl text-light-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
+              4
+            </p>
           </div>
-
           {/* TITLE */}
           <h3 className="text-[clamp(2.4rem,5vw,5.2rem)]  mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1] ">
             ICT Sectors We Operate In
@@ -848,7 +902,7 @@ export default function Home() {
       <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
           {/* HEADER */}
-          <div className="flex flex-row justify-between text-center">
+          {/* <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
               <span>•</span>
               Our Journey
@@ -857,13 +911,22 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
               -5
             </p>
-          </div>
+          </div> */}
 
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              Our Journey
+            </h1>
+            <p className="text-lg lg:text-2xl text-dark-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              5
+            </p>
+          </div>
           {/* TITLE */}
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Key Milestones
           </h3>
-
           {/* TIMELINE WRAPPER */}
           <div className="mt-[clamp(2rem,4vw,3rem)] overflow-x-auto scrollbar-hide">
             <JourneyTimeline />
@@ -871,9 +934,9 @@ export default function Home() {
         </div>
       </main>
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans text-dark-primary px-[clamp(1rem,3vw,4rem)]">
-        <div className="container mx-auto border-t border-black/80 py-[clamp(4rem,8vw,6rem)]">
+        <div className="container mx-auto border-t border-black/80 py-[clamp(1.2rem,3.2vw,4.6rem)]">
           {/* HEADER */}
-          <div className="flex flex-row justify-between text-center">
+          {/* <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
               <span>•</span>
               Partners & Clients
@@ -882,8 +945,17 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
               -6
             </p>
+          </div> */}
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              Partners & Clients
+            </h1>
+            <p className="text-lg lg:text-2xl text-dark-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              6
+            </p>
           </div>
-
           {/* TITLE */}
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Building an Ecosystem of Value
@@ -1001,9 +1073,9 @@ export default function Home() {
         </div>
       </main>
       <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] font-sans text-dark-primary">
-        <div className="container mx-auto border-t border-black/80 py-[clamp(4rem,8vw,6rem)]">
+        <div className="container mx-auto border-t border-black/80 py-[clamp(1.2rem,3.2vw,4.6rem)]">
           {/* HEADER */}
-          <div className="flex flex-row justify-between text-center">
+          {/* <div className="flex flex-row justify-between text-center">
             <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
               <span>•</span>
               Thought Leadership
@@ -1012,8 +1084,17 @@ export default function Home() {
             <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
               -7
             </p>
+          </div> */}
+          <div className="flex flex-row justify-between text-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              Thought Leadership
+            </h1>
+            <p className="text-lg lg:text-2xl text-dark-primary flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
+              7
+            </p>
           </div>
-
           {/* TITLE */}
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Latest Insights
@@ -1113,9 +1194,9 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
+      <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(1.2rem,3.2vw,4.6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(2rem,4vw,3rem)] mt-[clamp(2rem,5vw,4rem)]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(2rem,4vw,3rem)] mt-[clamp(1.2rem,4vw,3.2rem)]">
             {/* CARD 1 */}
             <div className="border border-gray-300 bg-white p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col justify-between">
               <div>
