@@ -14,17 +14,17 @@ export default function PartnerSlider() {
       type: "FinTech Strategic Partner",
     },
     {
-      name: "IntelliLabs AI",
+      name: "Klinik Utama",
       src: "/collaborations/equistone-klinikutama-logo.svg",
       type: "Clinex Healthcare Client",
     },
+    // {
+    //   name: "JomChat",
+    //   src: "/collaborations/equistone-intellilabs-logo.svg",
+    //   type: "AI Technology Partner",
+    // },
     {
-      name: "JomChat",
-      src: "/collaborations/equistone-intellilabs-logo.svg",
-      type: "AI Technology Partner",
-    },
-    {
-      name: "Klinik Utama Sdn Bhd",
+      name: "Jomchat",
       src: "/collaborations/equistone-jomchat-logo.svg",
       type: "Communications Partner",
     },
@@ -42,7 +42,7 @@ export default function PartnerSlider() {
         { x: 0 },
         {
           x: -singleWidth,
-          duration: 25,
+          duration: 32,
           ease: "none",
           repeat: -1,
         },

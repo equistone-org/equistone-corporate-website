@@ -78,6 +78,10 @@ body {
   .bg-dark-orange {
     background-color: #bc6c25;
   }
+
+  .bg-light-green {
+    background-color: #6a994e;
+  }
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

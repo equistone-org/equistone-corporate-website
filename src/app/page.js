@@ -77,9 +77,8 @@ export default function Home() {
   return (
     <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
       <Sidebar open={open} setOpen={setOpen} theme="light" />
-      <HeaderLight withBorder onMenu={() => setOpen(true)} />{" "}
-      <main className="relative h-[100dvh] lg:h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-[99]">
-        {/* BACKGROUND ORBS */}
+      <HeaderLight withBorder onMenu={() => setOpen(true)} />
+      <main className="relative h-dvh lg:h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-99">
         <div className="absolute inset-0 z-0 overflow-hidden bg-light-secondary">
           <div
             ref={orbGradient1}
@@ -115,13 +114,10 @@ export default function Home() {
           />
         </div>
 
-        {/* CONTENT WRAPPER */}
         <div className="relative z-20 flex flex-col h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto items-center">
-            {/* LEFT */}
             <div className="col-span-3 flex items-center py-[clamp(2rem,2vw,4rem)] px-[clamp(1.5rem,2vw,2rem)]">
               <div className="w-full px-2 sm:px-6 lg:px-0">
-                {/* TAGS */}
                 <div className="mb-[clamp(1rem,2vw,1.5rem)] flex flex-wrap gap-3">
                   <div className="text-xs lg:text-sm px-3 lg:px-4 py-1 border border-black font-semibold text-dark-primary uppercase rounded-full">
                     ICT Investment Holding
@@ -130,22 +126,16 @@ export default function Home() {
                     Integra Tower · Kuala Lumpur
                   </div>
                 </div>
-
-                {/* TITLE */}
                 <h1 className="mb-[clamp(1rem,2vw,1.2rem)] font-semibold leading-[1.05] text-[clamp(2.2rem,5vw,6rem)] lg:text-[clamp(3.5rem,4vw,6rem)] text-dark-primary">
                   We Build What
                   <span className="text-dark-orange"> Others Only Fund.</span>
                 </h1>
-
-                {/* PARAGRAPH */}
                 <p className="mb-[clamp(2rem,4vw,4rem)] font-medium text-dark-primary text-[clamp(0.95rem,1.2vw,1.1rem)] leading-[1.6] lg:w-[90%]">
                   Equistone Sdn Bhd is Malaysia's purpose-driven investment
                   holding and venture-building company — combining strategic
                   capital, corporate advisory, and in-house technology execution
                   to create scalable ICT ventures.
                 </p>
-
-                {/* CTA */}
                 <div className="flex flex-wrap gap-4">
                   {/* <LineAnimatedLink href="/contact">
                     Explore Our Ventures
@@ -349,7 +339,7 @@ export default function Home() {
             {/* RIGHT */}
             <div className="flex flex-col gap-[clamp(1.5rem,2vw,2rem)]">
               <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                   2019
                 </div>
 
@@ -359,7 +349,7 @@ export default function Home() {
               </div>
 
               <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                   50+
                 </div>
 
@@ -369,7 +359,7 @@ export default function Home() {
               </div>
 
               <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                   ICT
                 </div>
 
@@ -379,7 +369,7 @@ export default function Home() {
               </div>
 
               <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                   2024
                 </div>
 
@@ -518,7 +508,7 @@ export default function Home() {
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-8">
                   <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                    <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                    <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                       50+
                     </div>
                     <p className="mt-3 text-black/60 leading-7">
@@ -526,7 +516,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                    <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                    <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                       350k+
                     </div>
                     <p className="mt-3 text-black/60 leading-7">
@@ -534,7 +524,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                    <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                    <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                       1,500+
                     </div>
                     <p className="mt-3 text-black/60 leading-7">
@@ -542,7 +532,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
-                    <div className="text-[clamp(2rem,4vw,3rem)] font-black text-dark-orange">
+                    <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
                       2024
                     </div>
                     <p className="mt-3 text-black/60 leading-7">
@@ -820,7 +810,6 @@ export default function Home() {
               </div>
 
               <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
-                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Digitising Malaysia's private healthcare sector — from clinic
                   management systems to patient data platforms. Our flagship
@@ -852,7 +841,6 @@ export default function Home() {
               </div>
 
               <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
-                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Strategic investment in payment technology, digital financial
                   infrastructure, and financial services digitisation. Strategic
@@ -884,12 +872,11 @@ export default function Home() {
               </div>
 
               <div className="pl-[clamp(1rem,1.5vw,1.5rem)] flex flex-col justify-between items-start h-auto md:h-[clamp(8rem,18vw,12rem)]">
-                {" "}
                 <p className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-white/60 leading-[1.8]">
                   Advisory, investment, and platform development for Malaysian
                   enterprises undergoing digital transformation — modernising
                   operations and unlocking technology-driven growth. Supports
-                  IntelliLabs AI and JomChat partnerships.
+                  JomChat partnerships.
                 </p>
                 <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
                   Explore sector →
@@ -996,7 +983,7 @@ export default function Home() {
             </div>
 
             {/* CARD 2 */}
-            <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
+            {/* <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <div className="flex justify-start h-[clamp(2.5rem,4vw,3rem)]">
                 <Image
                   src="../collaborations/equistone-intellilabs-dark-logo.svg"
@@ -1018,7 +1005,7 @@ export default function Home() {
               <span className="inline-block mt-[clamp(1rem,1.5vw,1.25rem)] text-[clamp(0.65rem,0.8vw,0.75rem)] px-3 py-1 border border-gray-300 text-[#3a4347] rounded-full">
                 Strategic Partner
               </span>
-            </div>
+            </div> */}
 
             {/* CARD 3 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
@@ -1086,7 +1073,7 @@ export default function Home() {
             </p>
           </div> */}
           <div className="flex flex-row justify-between text-center">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 items-center">
               <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
               Thought Leadership
             </h1>

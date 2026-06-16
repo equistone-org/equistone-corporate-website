@@ -8,16 +8,13 @@ export default function HeaderLight({ withBorder = false, onMenu }) {
       <header
         className={`${withBorder ? "border-b border-gray-400" : ""} sticky top-0 z-100 bg-white  flex items-center justify-between`}
       >
-        {" "}
         <button
           onClick={onMenu}
           className="lg:hidden text-xs px-3 py-2 border border-black text-black uppercase font-semibold"
         >
           =
         </button>
-
         <div className="px-[clamp(0.02rem,3vw,4rem)] w-full">
-          {" "}
           <div className="container mx-auto flex items-center justify-between py-[clamp(0.5rem,1vw,1rem)]">
             <>
               {/* Desktop */}

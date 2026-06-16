@@ -27,10 +27,10 @@ export default function JourneyTimeline() {
       year: "2024–2025",
       desc: "Clinex deployed — first GP clinics go live; Klinik Utama onboarded as key client",
     },
-    {
-      year: "2025",
-      desc: "Strategic partnerships established: Payhalal, IntelliLabs AI, JomChat",
-    },
+    // {
+    //   year: "2025",
+    //   desc: "Strategic partnerships established: Payhalal, IntelliLabs AI, JomChat",
+    // },
     {
       year: "2026",
       desc: "50+ clinics live · 350,000+ patient records · ASEAN expansion underway",

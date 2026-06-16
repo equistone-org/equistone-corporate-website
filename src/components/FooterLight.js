@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative w-full lg:sticky lg:bottom-0 z-0 bg-light-primary">
-      {" "}
       <div className="border-t-2 border-black/20 text-black/60 px-[clamp(1rem,3vw,3rem)] py-[clamp(2rem,5vw,4rem)]">
         <div className="container mx-auto">
           {/* TOP SECTION */}
