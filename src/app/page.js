@@ -5,39 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import Sidebar from "@/components/Sidebar";
-
 import HeaderLight from "@/components/HeaderLight";
 import FooterLight from "@/components/FooterLight";
 import JourneyTimeline from "@/components/JourneyTimeline";
 import PartnerSlider from "@/components/PartnerSlider";
 import LineAnimatedLink from "@/components/LineAnimatedLink";
-
 import useStatsBarAnimation from "@/hooks/useStatsBarAnimation";
 import useOrbGradientAnimation from "@/hooks/useOrbGradientAnimation";
 
 export default function Home() {
-  ///nanti asing/////
-  const underlineRef = useRef(null);
   const [open, setOpen] = useState(false);
-
-  const onEnter = () => {
-    gsap.to(underlineRef.current, {
-      scaleX: 1,
-      transformOrigin: "left",
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const onLeave = () => {
-    gsap.to(underlineRef.current, {
-      scaleX: 0,
-      transformOrigin: "right",
-      duration: 0.3,
-      ease: "power2.in",
-    });
-  };
-  ///nanti asing/////
 
   const orbGradient1 = useRef(null);
   const orbGradient2 = useRef(null);
@@ -78,6 +55,7 @@ export default function Home() {
     <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
       <Sidebar open={open} setOpen={setOpen} theme="light" />
       <HeaderLight withBorder onMenu={() => setOpen(true)} />
+
       <main className="relative h-dvh lg:h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-99">
         <div className="absolute inset-0 z-0 overflow-hidden bg-light-secondary">
           <div
@@ -137,9 +115,6 @@ export default function Home() {
                   to create scalable ICT ventures.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  {/* <LineAnimatedLink href="/contact">
-                    Explore Our Ventures
-                  </LineAnimatedLink> */}
                   <LineAnimatedLink href="/contact" arrowVariant="light">
                     Explore Our Ventures
                   </LineAnimatedLink>
@@ -148,7 +123,6 @@ export default function Home() {
                   </LineAnimatedLink>
                 </div>
 
-                {/* STATS */}
                 <div className="mt-[clamp(2rem,4vw,3rem)] grid grid-cols-2 sm:grid-cols-4 divide-x divide-gray-300">
                   <div className="p-[clamp(0.75rem,2vw,1.25rem)]">
                     <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
@@ -166,7 +140,6 @@ export default function Home() {
                       Live clinics
                     </div>
                   </div>
-
                   <div className="p-[clamp(0.75rem,2vw,1.25rem)]">
                     <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
                       350k+
@@ -188,7 +161,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE */}
             <div className="hidden lg:flex col-span-3 z-2">
               <div className="relative h-[42rem] w-full overflow-hidden bg-transparent">
                 <div ref={wrapRef} className="absolute inset-0">
@@ -208,9 +180,11 @@ export default function Home() {
           </div>
         </div>
       </main>
+
       <main className="flex z-2 relative w-full flex-col font-sans bg-light-primary ">
         <PartnerSlider />
       </main>
+
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)]">
         <div className="container mx-auto">
           <div className="flex flex-row justify-between text-center">
@@ -224,13 +198,12 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(2rem,2vw,5rem)] mt-[clamp(0.2rem,2vw,0.4rem)]">
-            {/* LEFT */}
             <div className="lg:col-span-2">
               <h3 className="text-[clamp(2rem,5vw,4rem)] text-dark-primary font-medium leading-[1.1]">
                 Capital, Strategy, and Technology — Under One Roof
               </h3>
 
-              <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8]">
+              <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8] text-justify">
                 Equistone Sdn Bhd is a Malaysian investment holding and digital
                 solutions company that builds long-term value through a model no
                 traditional holding company uses — we invest, advise, and build
@@ -240,7 +213,6 @@ export default function Home() {
               </p>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-[clamp(1.5rem,2vw,2rem)] mt-[clamp(2rem,4vw,4rem)]">
-                {/* CARD 1 */}
                 <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
                   <div className="flex space-x-[clamp(0.75rem,1vw,1rem)]">
                     <div className="bg-dark-secondary p-[clamp(0.75rem,1vw,1rem)]">
@@ -265,7 +237,6 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* CARD 2 */}
                 <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
                   <div className="flex space-x-[clamp(0.75rem,1vw,1rem)]">
                     <div className="bg-dark-secondary p-[clamp(0.75rem,1vw,1rem)]">
@@ -290,7 +261,6 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* CARD 3 */}
                 <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
                   <div className="flex space-x-[clamp(0.75rem,1vw,1rem)]">
                     <div className="bg-dark-secondary p-[clamp(0.75rem,1vw,1rem)]">
@@ -317,15 +287,6 @@ export default function Home() {
               </div>
 
               <div className="mt-[clamp(2rem,3vw,3rem)] w-fit">
-                {/* <LineAnimatedLink
-                  href="https://clinexmy.com/"
-                  variant="green"
-                  img
-                  for
-                  arrow
-                >
-                  Read more
-                </LineAnimatedLink> */}
                 <LineAnimatedLink
                   href="/contact"
                   arrowVariant="light"
@@ -336,7 +297,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT */}
             <div className="flex flex-col gap-[clamp(1.5rem,2vw,2rem)]">
               <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
                 <div className="text-[clamp(2rem,3.6vw,2.8rem)] font-black text-dark-orange">
@@ -394,10 +354,11 @@ export default function Home() {
           </div>
         </div>
       </main>
+
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)]">
-        <div className="container mx-auto max-w-[1600px] py-[clamp(4rem,8vw,8rem)] border-t border-black/80">
+        <div className="container mx-auto max-w-400 py-[clamp(4rem,8vw,8rem)] border-t border-black/80">
           <div className="flex flex-row justify-between text-center">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary gap-4 flex items-center">
               <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
               Technology Ventures
             </h1>
@@ -411,7 +372,7 @@ export default function Home() {
               <h3 className="text-[clamp(2rem,5vw,4rem)] text-[#3a4347] text-dark-primary font-medium leading-[1.2]">
                 Ventures We've Built and Backed
               </h3>
-              <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8]">
+              <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8] text-justify">
                 Equistone builds and supports scalable ICT ventures through a
                 unique combination of strategic investment, operational
                 execution, and in-house technology development.
@@ -443,8 +404,8 @@ export default function Home() {
                   Healthcare Technology
                 </div>
               </div>
-              <div className="p-[clamp(1.5rem,3vw,2.5rem)]">
-                <p className="text-[#3a4347] leading-8">
+              <div className="p-[clamp(1.2rem,3vw,2.5rem)]">
+                <p className="text-[#3a4347] leading-8 text-justify">
                   Built entirely in-house by Equistone from 2024, Clinex is a
                   fully integrated clinic management platform for Malaysian GP
                   clinics and multi-branch healthcare groups. Covering smart
@@ -454,7 +415,7 @@ export default function Home() {
                   clinics with 1,500+ daily patient visits across Malaysia.
                 </p>
 
-                <p className="mt-6 text-[#3a4347] leading-8">
+                <p className="mt-6 text-[#3a4347] leading-8 text-justify">
                   Klinik Utama Sdn Bhd is one of Equistone's flagship healthcare
                   operator clients running on the Clinex platform.
                 </p>
@@ -481,7 +442,7 @@ export default function Home() {
                     <h5 className="font-semibold text-dark-primary">
                       About This Venture
                     </h5>
-                    <p className="mt-2 text-sm text-[#3a4347] leading-7">
+                    <p className="mt-2 text-sm text-[#3a4347] leading-7 text-justify">
                       Clinex represents Equistone's long-term commitment to
                       building scalable healthcare infrastructure for Malaysia's
                       digital future.
@@ -549,7 +510,7 @@ export default function Home() {
                     <h4 className="text-[clamp(1.5rem,2vw,2rem)] font-semibold text-dark-primary">
                       Next Venture — Actively Evaluating
                     </h4>
-                    <p className="mt-3 text-black/60 leading-7">
+                    <p className="mt-3 text-black/60 leading-7 text-justify">
                       Equistone continuously evaluates high-potential ICT
                       opportunities. Since incorporation in 2019, the company
                       has been actively identifying businesses for strategic
@@ -596,21 +557,11 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)] text-light-primary">
-        <div className="container mx-auto max-w-[1600px]">
-          {/* HEADER */}
-          {/* <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-light-primary">
-              <span>•</span>
-              Investment Philosophy
-            </h1>
 
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-light-primary">
-              -3
-            </p>
-          </div> */}
+      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)] text-light-primary">
+        <div className="container mx-auto max-w-400">
           <div className="flex flex-row justify-between text-center">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4 flex items-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4 items-center">
               <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
               Investment Philosophy
             </h1>
@@ -619,21 +570,18 @@ export default function Home() {
               3
             </p>
           </div>
-          {/* TITLE */}
+
           <h3 className="text-[clamp(2.4rem,5vw,5.2rem)] mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1]">
             Four Pillars of Value Creation
           </h3>
 
-          {/* DESCRIPTION */}
           <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-white/60 leading-[1.8] lg:w-[70%]">
             Equistone doesn't fund and forget. Every investment is backed by
             operational expertise, strategic advisory, and the willingness to
             build alongside our partners.
           </p>
 
-          {/* GRID */}
           <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[clamp(1.5rem,2vw,2rem)]">
-            {/* CARD 1 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -660,7 +608,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CARD 2 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -687,7 +634,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CARD 3 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -714,7 +660,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CARD 4 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -742,7 +687,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="mt-[clamp(2rem,4vw,3rem)] w-fit">
             <LineAnimatedLink
               href="https://clinexmy.com/"
@@ -754,19 +698,9 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)]">
-        <div className="container mx-auto max-w-[1600px] border-t border-white/80 py-[clamp(4rem,8vw,8rem)]">
-          {/* HEADER */}
-          {/* <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-light-primary">
-              <span>•</span>
-              Business Sectors
-            </h1>
 
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-light-primary">
-              -4
-            </p>
-          </div> */}
+      <main className="relative z-2 flex w-full flex-col bg-dark-primary font-sans px-[clamp(1rem,3vw,4rem)]">
+        <div className="container mx-auto max-w-400 border-t border-white/80 py-[clamp(4rem,8vw,8rem)]">
           <div className="flex flex-row justify-between text-center">
             <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-light-primary flex gap-4 flex items-center">
               <span className="w-2 h-2 rounded-full bg-light-primary block"></span>
@@ -777,21 +711,18 @@ export default function Home() {
               4
             </p>
           </div>
-          {/* TITLE */}
+
           <h3 className="text-[clamp(2.4rem,5vw,5.2rem)]  mt-[clamp(0.2rem,2vw,0.4rem)] text-light-primary font-medium leading-[1.1] ">
             ICT Sectors We Operate In
           </h3>
 
-          {/* DESCRIPTION */}
           <p className="mt-[clamp(1.5rem,3vw,2rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-white/60 leading-[1.8] lg:w-[75%]">
             Equistone focuses on industries where digital technology creates
             durable structural advantages — fully aligned with Malaysia's
             national digital transformation priorities.
           </p>
 
-          {/* GRID */}
           <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 lg:grid-cols-3 gap-[clamp(1.5rem,2vw,2rem)]">
-            {/* CARD 1 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -816,13 +747,16 @@ export default function Home() {
                   venture Clinex is deployed and actively growing in this
                   sector, with Klinik Utama as a key operator client.
                 </p>
-                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
-                  Explore sector →
-                </button>
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineBlack"
+                  arrowVariant="light"
+                >
+                  Explore sector
+                </LineAnimatedLink>
               </div>
             </div>
 
-            {/* CARD 2 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -847,13 +781,16 @@ export default function Home() {
                   partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic
                   fintech ecosystem.
                 </p>
-                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
-                  Explore sector →
-                </button>
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineBlack"
+                  arrowVariant="light"
+                >
+                  Explore sector
+                </LineAnimatedLink>
               </div>
             </div>
 
-            {/* CARD 3 */}
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -878,30 +815,23 @@ export default function Home() {
                   operations and unlocking technology-driven growth. Supports
                   JomChat partnerships.
                 </p>
-                <button className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-light-primary underline">
-                  Explore sector →
-                </button>
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineBlack"
+                  arrowVariant="light"
+                >
+                  Explore sector
+                </LineAnimatedLink>
               </div>
             </div>
           </div>
         </div>
       </main>
+
       <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
-          {/* HEADER */}
-          {/* <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
-              <span>•</span>
-              Our Journey
-            </h1>
-
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
-              -5
-            </p>
-          </div> */}
-
           <div className="flex flex-row justify-between text-center">
-            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
+            <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary gap-4 flex items-center">
               <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
               Our Journey
             </h1>
@@ -910,29 +840,17 @@ export default function Home() {
               5
             </p>
           </div>
-          {/* TITLE */}
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Key Milestones
           </h3>
-          {/* TIMELINE WRAPPER */}
           <div className="mt-[clamp(2rem,4vw,3rem)] overflow-x-auto scrollbar-hide">
             <JourneyTimeline />
           </div>
         </div>
       </main>
+
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans text-dark-primary px-[clamp(1rem,3vw,4rem)]">
         <div className="container mx-auto border-t border-black/80 py-[clamp(1.2rem,3.2vw,4.6rem)]">
-          {/* HEADER */}
-          {/* <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
-              <span>•</span>
-              Partners & Clients
-            </h1>
-
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
-              -6
-            </p>
-          </div> */}
           <div className="flex flex-row justify-between text-center">
             <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 flex items-center">
               <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
@@ -943,21 +861,18 @@ export default function Home() {
               6
             </p>
           </div>
-          {/* TITLE */}
+
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Building an Ecosystem of Value
           </h3>
 
-          {/* DESCRIPTION */}
-          <p className="mt-[clamp(1rem,2vw,1.5rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8] lg:w-[75%]">
+          <p className="mt-[clamp(1rem,2vw,1.5rem)] text-[clamp(0.95rem,1.1vw,1.125rem)] text-[#3a4347] leading-[1.8] lg:w-[75%] text-justify">
             Equistone works with strategic partners who bring domain expertise
             and market access — and deploys technology ventures like Clinex to
             operators who use them to transform their businesses.
           </p>
 
-          {/* GRID */}
           <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[clamp(1.5rem,2vw,2rem)]">
-            {/* CARD 1 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <div className="flex justify-start h-[clamp(2.5rem,4vw,3rem)]">
                 <Image
@@ -1007,7 +922,6 @@ export default function Home() {
               </span>
             </div> */}
 
-            {/* CARD 3 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <div className="flex justify-start h-[clamp(2.5rem,4vw,3rem)]">
                 <Image
@@ -1032,7 +946,6 @@ export default function Home() {
               </span>
             </div>
 
-            {/* CARD 4 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <div className="flex justify-start h-[clamp(2.5rem,4vw,3rem)]">
                 <Image
@@ -1059,19 +972,9 @@ export default function Home() {
           </div>
         </div>
       </main>
+
       <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] font-sans text-dark-primary">
         <div className="container mx-auto border-t border-black/80 py-[clamp(1.2rem,3.2vw,4.6rem)]">
-          {/* HEADER */}
-          {/* <div className="flex flex-row justify-between text-center">
-            <h1 className="flex gap-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.875rem,1.2vw,1.125rem)] font-normal leading-[1.2] tracking-tight text-dark-primary">
-              <span>•</span>
-              Thought Leadership
-            </h1>
-
-            <p className="text-[clamp(1rem,2vw,1.5rem)] text-dark-primary">
-              -7
-            </p>
-          </div> */}
           <div className="flex flex-row justify-between text-center">
             <h1 className="text-lg font-normal leading-[1.2] tracking-tight text-dark-primary flex gap-4 items-center">
               <span className="w-2 h-2 rounded-full bg-dark-primary block"></span>
@@ -1082,48 +985,46 @@ export default function Home() {
               7
             </p>
           </div>
-          {/* TITLE */}
+
           <h3 className="mt-[clamp(1rem,2vw,2rem)] text-[clamp(2rem,4vw,4.2rem)] font-medium leading-[1.1] text-dark-primary">
             Latest Insights
           </h3>
 
-          {/* VIEW ALL */}
           <div className="mt-[clamp(0.5rem,1vw,1rem)] text-[clamp(0.8rem,1vw,0.95rem)] font-semibold underline cursor-pointer w-fit">
             View All Insights →
           </div>
 
-          {/* GRID */}
           <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 lg:grid-cols-3 gap-[clamp(1.5rem,2.5vw,2rem)]">
-            {/* CARD 1 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <p className="text-[clamp(0.75rem,1vw,0.875rem)] text-[#3a4347]">
                 Healthcare Technology
               </p>
-
               <h4 className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(1rem,1.2vw,1.125rem)] font-semibold text-dark-primary leading-[1.4]">
                 How Clinex Was Built: From a Clinic Floor Problem to 50 Deployed
                 Clinics
               </h4>
-
               <p className="mt-[clamp(1rem,1.5vw,1.5rem)] text-[clamp(0.85rem,1vw,0.95rem)] text-[#3a4347] leading-[1.8]">
                 The journey from identifying a structural gap in Malaysian
                 healthcare IT in 2024 to a fully deployed system trusted by 50+
                 GP clinics — and what we learned about venture building along
                 the way.
               </p>
-
               <div className="mt-[clamp(1rem,1.5vw,1.5rem)] text-[clamp(0.75rem,1vw,0.875rem)] text-[#3a4347] flex gap-3">
                 <span>8 min</span>
                 <span>·</span>
                 <span>June 2026</span>
               </div>
-
               <div className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] font-semibold text-dark-primary underline cursor-pointer">
-                Read →
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineWhite"
+                  arrowVariant="dark"
+                >
+                  Read
+                </LineAnimatedLink>
               </div>
             </div>
 
-            {/* CARD 2 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <p className="text-[clamp(0.75rem,1vw,0.875rem)] text-[#3a4347]">
                 Investment & Strategy
@@ -1146,12 +1047,17 @@ export default function Home() {
                 <span>May 2026</span>
               </div>
 
-              <div className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] font-semibold text-dark-primary underline cursor-pointer">
-                Read →
+              <div className="mt-[clamp(0.75rem,1vw,1rem)]">
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineWhite"
+                  arrowVariant="dark"
+                >
+                  Read
+                </LineAnimatedLink>
               </div>
             </div>
 
-            {/* CARD 3 */}
             <div className="border-l border-gray-300 pl-[clamp(1rem,1.5vw,1.5rem)]">
               <p className="text-[clamp(0.75rem,1vw,0.875rem)] text-[#3a4347]">
                 Digital Economy
@@ -1174,17 +1080,23 @@ export default function Home() {
                 <span>April 2026</span>
               </div>
 
-              <div className="mt-[clamp(0.75rem,1vw,1rem)] text-[clamp(0.85rem,1vw,0.95rem)] font-semibold text-dark-primary underline cursor-pointer">
-                Read →
+              <div className="mt-[clamp(0.75rem,1vw,1rem)]">
+                <LineAnimatedLink
+                  href="https://example.com"
+                  variant="underlineWhite"
+                  arrowVariant="dark"
+                >
+                  Read
+                </LineAnimatedLink>
               </div>
             </div>
           </div>
         </div>
       </main>
+
       <main className="relative z-2 flex w-full bg-light-primary px-[clamp(1rem,3vw,4rem)] py-[clamp(1.2rem,3.2vw,4.6rem)] font-sans text-dark-primary">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(2rem,4vw,3rem)] mt-[clamp(1.2rem,4vw,3.2rem)]">
-            {/* CARD 1 */}
             <div className="border border-gray-300 bg-white p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col justify-between">
               <div>
                 <h3 className="text-[clamp(1.25rem,2vw,1.75rem)] font-semibold text-dark-primary">
@@ -1214,13 +1126,12 @@ export default function Home() {
               </div>
 
               <div className="mt-[clamp(1.5rem,3vw,2rem)] w-fit">
-                <LineAnimatedLink href="/contact">
+                <LineAnimatedLink href="/contact" arrowVariant="light">
                   Partner With Us
                 </LineAnimatedLink>
               </div>
             </div>
 
-            {/* CARD 2 */}
             <div className="border border-gray-300 bg-white p-[clamp(1.5rem,3vw,2.5rem)] flex flex-col justify-between">
               <div>
                 <h3 className="text-[clamp(1.25rem,2vw,1.75rem)] font-semibold text-dark-primary">
@@ -1248,7 +1159,7 @@ export default function Home() {
               </div>
 
               <div className="mt-[clamp(1.5rem,3vw,2rem)] w-fit">
-                <LineAnimatedLink href="/submit">
+                <LineAnimatedLink href="/contact" arrowVariant="light">
                   Submit Your Venture
                 </LineAnimatedLink>
               </div>
@@ -1256,6 +1167,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+
       <FooterLight />
     </div>
   );

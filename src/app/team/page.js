@@ -1,12 +1,14 @@
 "use client";
 
+import gsap from "gsap";
+
 import Image from "next/image";
 import HeaderDark from "@/components/HeaderDark";
 import FooterDark from "@/components/FooterDark";
 import Sidebar from "@/components/Sidebar";
 
-import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
+
 const contentMap = {
   afiq: {
     title: "Chief Executive Officer",
@@ -64,7 +66,11 @@ const contentMap = {
       "Bachelor of Accounting, International Islamic University Malaysia (IIUM). Certified Internal Auditor (CIA).",
   },
 };
+
 function DesktopTeamDetail({ index, detailRef, type, image, name }) {
+  const content = contentMap[type];
+  if (!content) return null;
+
   return (
     <div
       ref={(el) => (detailRef.current[index] = el)}
@@ -81,34 +87,29 @@ function DesktopTeamDetail({ index, detailRef, type, image, name }) {
               className="object-cover"
             />
           </div>
-          {/* CONTENT */}
+
           <div className="flex flex-col space-y-4 max-w-3xl">
-            {/* NAME */}
             <div>
               <p className="uppercase font-semibold text-[#22333B] tracking-wide">
                 {name}
               </p>
 
               <p className="text-xs uppercase tracking-widest text-black/80 mt-1">
-                {contentMap[type].title}
+                {content.title}
               </p>
             </div>
 
-            {/* DIVIDER */}
-            <div className="w-12 h-[4px] bg-light-green"></div>
+            <div className="w-12 h-1 bg-light-green"></div>
 
             <p className="text-black/40700 leading-relaxed text-sm">
-              {contentMap[type].description}
+              {content.description}
             </p>
 
-            {/* EDUCATION */}
             <div className="pt-2">
               <p className="text-xs uppercase tracking-widest text-black/60">
                 Education & Certification
               </p>
-              <p className="text-sm text-black/60 mt-1">
-                {contentMap[type].education}
-              </p>
+              <p className="text-sm text-black/60 mt-1">{content.education}</p>
             </div>
           </div>
         </div>
@@ -126,14 +127,14 @@ function MobileTeamDetail({ open, type }) {
     <div className="lg:hidden overflow-hidden transition-all duration-300">
       <div
         className={`${
-          open ? "max-h-[800px] opacity-100 mt-4" : "max-h-0 opacity-0"
+          open ? "max-h-200 opacity-100 mt-4" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-light-secondary py-4 border-y border-gray-600 flex gap-6">
+        <div className="mb-4 bg-light-secondary py-4 border-y border-gray-600 flex gap-6">
           <div className="flex flex-col">
-            <div className="w-12 h-[4px] bg-light-green mb-2" />
+            <div className="w-12 h-1 bg-light-green mb-2" />
 
-            <p className="text-sm text-black/70 leading-relaxed mb-6">
+            <p className="text-sm text-black/70 leading-relaxed mb-6 text-justify">
               {content.description}
             </p>
 
@@ -150,11 +151,11 @@ function MobileTeamDetail({ open, type }) {
   );
 }
 
-/* ================= PAGE ================= */
 export default function AboutPage() {
   const [openIndex, setOpenIndex] = useState(null);
-  const detailRef = useRef([]);
   const [open, setOpen] = useState(false);
+
+  const detailRef = useRef([]);
 
   useLayoutEffect(() => {
     detailRef.current.forEach((el, i) => {
@@ -172,6 +173,7 @@ export default function AboutPage() {
     <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
       <Sidebar open={open} setOpen={setOpen} theme="dark" />
       <HeaderDark withBorder onMenu={() => setOpen(true)} />
+
       <main className="flex z-2 w-full relative min-h-screen flex-col bg-light-primary font-sans">
         <section className="flex mt-[clamp(2rem,4vw,3rem)] lg:mt-[clamp(3rem,5vw,4rem)] flex-col items-start w-full">
           <div className="container mx-auto">
@@ -187,7 +189,6 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* CEO BLOCK */}
           <div className="grid grid-cols-1 lg:grid-cols-3 mt-[clamp(2rem,4vw,3rem)] text-dark-primary w-full">
             <div
               onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
@@ -195,7 +196,7 @@ export default function AboutPage() {
             >
               <div className="container mx-auto flex justify-center">
                 <div className="flex flex-col">
-                  {/* CARD */}
+
                   <div
                     onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
                     className="cursor-pointer flex justify-between"
@@ -220,10 +221,9 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  {/* MOBILE DETAIL (INLINE UNDER CARD) */}
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 0 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 0 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 0} type="afiq" />
                     </div>
@@ -240,10 +240,8 @@ export default function AboutPage() {
               name="MUHAMAD AFIQ BIN IDRIS"
             />
 
-            {/* SECOND ROW (3 TEAM CARDS) */}
             <div className="col-span-1 lg:col-span-3 bg-light-secondary border-b border-gray-400 px-[clamp(0.2rem,3vw,4rem)] pt-[clamp(1.5rem,3vw,2rem)] pb-6 sm:pb-0">
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-[clamp(1.5rem,2vw,2rem)]">
-                {/* ================= SYED ================= */}
 
                 <div className="flex flex-col">
                   <div
@@ -272,14 +270,14 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 1 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 1 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 1} type="syed" />
                     </div>
                   </div>
                 </div>
 
-                {/* ================= AMIRUL ================= */}
+
                 <div className="flex flex-col">
                   <div
                     onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
@@ -307,14 +305,13 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 2 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 2 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 2} type="amirul" />
                     </div>
                   </div>
                 </div>
 
-                {/* ================= DANIAL ================= */}
                 <div className="flex flex-col">
                   <div
                     onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
@@ -342,7 +339,7 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 3 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 3 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 3} type="danial" />
                     </div>
@@ -402,14 +399,13 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 4 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 4 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 4} type="khairul" />
                     </div>
                   </div>
                 </div>
 
-                {/* ================= AMIRUL ================= */}
                 <div className="flex flex-col">
                   <div
                     onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
@@ -437,14 +433,13 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 5 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 5 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 5} type="aidil" />
                     </div>
                   </div>
                 </div>
 
-                {/* ================= DANIAL ================= */}
                 <div className="flex flex-col">
                   <div
                     onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
@@ -472,84 +467,12 @@ export default function AboutPage() {
 
                   <div className="lg:hidden overflow-hidden transition-all duration-300">
                     <div
-                      className={`${openIndex === 6 ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                      className={`${openIndex === 6 ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
                     >
                       <MobileTeamDetail open={openIndex === 6} type="wan" />
                     </div>
                   </div>
                 </div>
-
-                {/* <div
-                  onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
-                  className="cursor-pointer flex justify-between"
-                >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2 w-[60%]">
-                    <p className="uppercase font-semibold text-sm lg:text-base">
-                      KHAIRULANWAR BIN IDRIS
-                    </p>
-                    <p className="text-sm uppercase tracking-widest text-black/80 mt-1">
-                      Chief Technology Officer
-                    </p>
-                  </div>
-
-                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
-                    <Image
-                      src="/team/img_5.png"
-                      alt="Khairul"
-                      width={162}
-                      height={42}
-                      className="w-42 h-auto"
-                    />
-                  </div>
-                </div>
-
-                <div
-                  onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
-                  className="cursor-pointer flex justify-between"
-                >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2 w-[60%]">
-                    <p className="uppercase font-semibold text-sm lg:text-base">
-                      MOHAMAD AIDIL MAULA ABD. RAHIM
-                    </p>
-                    <p className="text-sm uppercase tracking-widest text-black/80 mt-1">
-                      Chief Technical Officer
-                    </p>
-                  </div>
-
-                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
-                    <Image
-                      src="/team/img_6.png"
-                      alt="Aidil"
-                      width={162}
-                      height={42}
-                      className="w-42 h-auto"
-                    />
-                  </div>
-                </div>
-
-                <div
-                  onClick={() => setOpenIndex(openIndex === 6 ? null : 6)}
-                  className="cursor-pointer flex justify-between"
-                >
-                  <div className="mt-[clamp(1rem,3vw,2rem)] border-l border-gray-300 px-6 flex flex-col space-y-2 w-[60%]">
-                    <p className="uppercase font-semibold text-sm lg:text-base">
-                      WAN AQMARUR RAZIN BIN WAN AZLAN
-                    </p>
-                    <p className="text-sm uppercase tracking-widest text-black/80 mt-1">
-                      Chief Audit Officer
-                    </p>
-                  </div>
-
-                  <div className="w-[120px] sm:w-[150px] lg:w-[180px] flex items-end justify-end">
-                    <Image
-                      src="/team/img_7.png"
-                      alt="Wan"
-                      width={162}
-                      height={42}
-                      className="w-42 h-auto"
-                    />
-                  </div>
-                </div> */}
               </div>
             </div>
 
@@ -577,6 +500,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
+      
       <FooterDark />
     </div>
   );
