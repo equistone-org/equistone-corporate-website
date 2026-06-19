@@ -581,7 +581,7 @@ export default function Home() {
             build alongside our partners.
           </p>
 
-          <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[clamp(1.5rem,2vw,2rem)]">
+          <div className="mt-[clamp(2rem,4vw,4rem)] grid grid-cols-1 md:grid-cols-2 gap-[clamp(1.5rem,2vw,2rem)]">
             <div className="border-l border-white/20">
               <div className="relative w-full overflow-hidden">
                 <Image
@@ -589,10 +589,10 @@ export default function Home() {
                   alt="Strategic Asset Transformation"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
+                  className="w-full h-[clamp(10rem,20vw,16rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Strategic Asset Transformation
                   </h4>
@@ -615,10 +615,10 @@ export default function Home() {
                   alt="Venture Building Over Passive Holding"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
+                  className="w-full h-[clamp(10rem,20vw,16rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Venture Building Over Passive Holding
                   </h4>
@@ -641,10 +641,10 @@ export default function Home() {
                   alt="ICT-Enabled Sector Focus"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
+                  className="w-full h-[clamp(10rem,20vw,16rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     ICT-Enabled Sector Focus
                   </h4>
@@ -667,10 +667,10 @@ export default function Home() {
                   alt="Sustainable Development Orientation"
                   width={162}
                   height={46}
-                  className="w-full h-[clamp(10rem,20vw,14rem)] object-cover"
+                  className="w-full h-[clamp(10rem,20vw,16rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Sustainable Development Orientation
                   </h4>
@@ -733,7 +733,7 @@ export default function Home() {
                   className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Healthcare Technology
                   </h4>
@@ -767,7 +767,7 @@ export default function Home() {
                   className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Financial Technology
                   </h4>
@@ -801,7 +801,7 @@ export default function Home() {
                   className="w-full h-[clamp(12rem,28vh,18rem)] object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-none px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
+                <div className="absolute bottom-0 left-0 w-full px-[clamp(0.75rem,1vw,1rem)] py-[clamp(0.5rem,0.75vw,0.75rem)]">
                   <h4 className="text-[clamp(1rem,1.25vw,1.25rem)] font-semibold text-light-primary">
                     Enterprise ICT & Digital Transformation
                   </h4>
