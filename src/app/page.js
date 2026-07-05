@@ -54,7 +54,7 @@ export default function Home() {
       <Sidebar open={open} setOpen={setOpen} theme="light" />
       <HeaderLight withBorder onMenu={() => setOpen(true)} />
 
-      <main className="relative h-dvh lg:h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-99">
+      <main className="relative h-screen lg:h-[calc(100dvh-80px)] w-full overflow-hidden font-sans z-99">
         <div className="absolute inset-0 z-0 overflow-hidden bg-light-secondary">
           <div
             ref={orbGradient1}
