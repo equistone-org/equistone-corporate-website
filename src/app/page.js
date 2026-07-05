@@ -21,32 +21,30 @@ export default function Home() {
   const orbGradient3 = useRef(null);
   const barRef = useRef(null);
 
-  const wrapRef = useRef(null);
+  // const wrapRef = useRef(null);
 
-  useEffect(() => {
-    const dots = wrapRef.current.querySelectorAll(".dot");
+  // useEffect(() => {
+  //   const dots = wrapRef.current.querySelectorAll(".dot");
 
-    // initial state (random depth)
-    gsap.set(dots, {
-      scale: 0.2,
-      opacity: 0.5,
-    });
+  //   gsap.set(dots, {
+  //     scale: 0.2,
+  //     opacity: 0.5,
+  //   });
 
-    // movement loop (wave motion)
-    gsap.to(dots, {
-      y: "random(-20, 20)",
-      x: "random(-20, 20)",
-      scale: "random(0.2, 1.2)",
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      stagger: {
-        each: 0.01,
-        from: "random",
-      },
-    });
-  }, []);
+  //   gsap.to(dots, {
+  //     y: "random(-20, 20)",
+  //     x: "random(-20, 20)",
+  //     scale: "random(0.2, 1.2)",
+  //     duration: 1.5,
+  //     repeat: -1,
+  //     yoyo: true,
+  //     ease: "sine.inOut",
+  //     stagger: {
+  //       each: 0.01,
+  //       from: "random",
+  //     },
+  //   });
+  // }, []);
 
   useStatsBarAnimation(barRef);
   useOrbGradientAnimation(orbGradient1, orbGradient2, orbGradient3);
@@ -93,8 +91,8 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 flex flex-col h-full">
-          <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full flex-1 container mx-auto items-center">
-            <div className="col-span-3 flex items-center py-[clamp(2rem,2vw,4rem)] px-[clamp(1.5rem,2vw,2rem)]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full flex-1 container mx-auto items-center">
+            <div className="col-span-1 flex items-center py-[clamp(2rem,2vw,4rem)] px-[clamp(1.5rem,2vw,2rem)]">
               <div className="w-full px-2 sm:px-6 lg:px-0">
                 <div className="mb-[clamp(1rem,2vw,1.5rem)] flex flex-wrap gap-3">
                   <div className="text-xs lg:text-sm px-3 lg:px-4 py-1 border border-black font-semibold text-dark-primary uppercase rounded-full">
@@ -122,10 +120,29 @@ export default function Home() {
                     Partner With Us
                   </LineAnimatedLink>
                 </div>
-
-                <div className="mt-[clamp(2rem,4vw,3rem)] grid grid-cols-2 sm:grid-cols-4 divide-x divide-gray-300">
+              </div>
+            </div>
+            <div className="relative col-span-1 flex items-center justify-center py-[clamp(2rem,2vw,4rem)] px-[clamp(1.5rem,2vw,2rem)]">
+              {/* <div className="absolute inset-0 hidden lg:flex pointer-events-none z-[2] h-full">
+                <div className="relative h-full w-full overflow-hidden bg-transparent">
+                  <div ref={wrapRef} className="absolute inset-0">
+                    {Array.from({ length: 400 }).map((_, i) => (
+                      <span
+                        key={i}
+                        className="dot absolute w-1 h-1 bg-black rounded-full"
+                        style={{
+                          left: `${(i % 20) * 5}%`,
+                          top: `${Math.floor(i / 20) * 5}%`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div> */}
+              <div className="w-full px-2 sm:px-6 lg:px-0">
+                <div className="mt-[clamp(2rem,4vw,3rem)] grid grid-cols-2 sm:grid-cols-2 divide-x divide-gray-600 gap-8">
                   <div className="p-[clamp(0.75rem,2vw,1.25rem)]">
-                    <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
+                    <div className="text-[clamp(1.2rem,2vw,2.8rem)] font-bold text-dark-primary">
                       2019
                     </div>
                     <div className="text-[clamp(0.7rem,1vw,0.85rem)] text-black/80">
@@ -133,7 +150,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="p-[clamp(0.75rem,2vw,1.25rem)]">
-                    <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
+                    <div className="text-[clamp(1.2rem,2vw,2.8rem)] font-bold text-dark-primary">
                       50+
                     </div>
                     <div className="text-[clamp(0.7rem,1vw,0.85rem)] text-black/80">
@@ -141,7 +158,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="p-[clamp(0.75rem,2vw,1.25rem)]">
-                    <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
+                    <div className="text-[clamp(1.2rem,2vw,2.8rem)] font-bold text-dark-primary">
                       350k+
                     </div>
                     <div className="text-[clamp(0.7rem,1vw,0.85rem)] text-black/80">
@@ -149,8 +166,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="p-[clamp(0.75rem,2vw,1.25rem)] border-r border-gray-300">
-                    <div className="text-[clamp(1.2rem,2vw,1.8rem)] font-bold text-dark-primary">
+                  <div className="p-[clamp(0.75rem,2vw,1.25rem)] border-r border-gray-600">
+                    <div className="text-[clamp(1.2rem,2vw,2.8rem)] font-bold text-dark-primary">
                       ICT
                     </div>
                     <div className="text-[clamp(0.7rem,1vw,0.85rem)] text-black/80">
@@ -158,24 +175,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="hidden lg:flex col-span-3 z-2">
-              <div className="relative h-[42rem] w-full overflow-hidden bg-transparent">
-                <div ref={wrapRef} className="absolute inset-0">
-                  {Array.from({ length: 400 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className="dot absolute w-1 h-1 bg-black rounded-full"
-                      style={{
-                        left: `${(i % 20) * 5}%`,
-                        top: `${Math.floor(i / 20) * 5}%`,
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
+              </div>{" "}
             </div>
           </div>
         </div>
