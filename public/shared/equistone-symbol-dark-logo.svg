@@ -3,14 +3,14 @@
   <defs>
     <style>
       .cls-1 {
-        stroke: #111010;
-	fill: #111010;
+        stroke: #dda15e;
+	fill: #dda15e;
         stroke-miterlimit: 10;
         stroke-width: 2.31px;
       }
 
       .cls-2 {
-        fill: #dda15e;
+        fill: #111010;
       }
 
       .cls-3 {
