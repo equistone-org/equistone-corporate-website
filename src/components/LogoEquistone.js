@@ -4,7 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function EquistoneLogo({ color = "currentColor" }) {
+export default function EquistoneLogo({
+  color = "currentColor",
+  secColor = "secCurrentColor",
+}) {
   const svgRef = useRef(null);
   const lettersRef = useRef([]);
   const logoRef = useRef(null);
@@ -68,14 +71,18 @@ export default function EquistoneLogo({ color = "currentColor" }) {
   return (
     <svg
       viewBox="0 0 410.06 70.06"
-      style={{ color }} // ✅ ADD HERE
+      style={{
+        "--color": color,
+        "--secColor": secColor,
+      }}
       className="h-auto w-[140px] lg:w-[200px]"
     >
       <defs>
         <style>{`
-          .cls-1 { clip-path: url(#clippath); }
-          .cls-2 { fill: currentColor ; }
-          .cls-3 { fill: currentColor; }
+            .cls-1 { clip-path: url(#clippath); }
+          .cls-2 { fill: var(--color); }
+          .cls-3 { fill: var(--color); }
+          .cls-4 { fill: var(--secColor); }
         `}</style>
 
         <clipPath id="clippath">
@@ -162,7 +169,7 @@ export default function EquistoneLogo({ color = "currentColor" }) {
         <g id="logo" ref={logoRef}>
           <path className="cls-2" d="m58.12,19.34c.21.1.43.22.66.34" />
           <path
-            className="cls-3"
+            className="cls-4"
             d="m48.82,20.93c-3.47-3.6-8.13-5.63-13.12-5.72-1.04-.02-2.09.05-3.09.21l-2.93.45,2.6,1.42c1.38.75,2.66,1.68,3.81,2.76l.25.23.34.03c7.05.67,12.47,6.76,12.35,13.85-.13,7.08-5.76,12.97-12.82,13.4l-.33.02-.25.21c-1.2,1.02-2.53,1.91-3.95,2.66l-2.57,1.35,2.85.52c1.01.19,2.04.29,3.06.31.12,0,.23,0,.35,0,10.16,0,18.52-8.18,18.71-18.38.09-4.99-1.77-9.72-5.25-13.32Z"
           />
           <g className="cls-1">

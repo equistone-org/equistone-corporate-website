@@ -20,7 +20,7 @@ export default function HeaderLight({ withBorder = false, onMenu }) {
               {/* Desktop */}
               <div className="hidden lg:flex items-center gap-4">
                 <Link href="/" className="shrink-0">
-                  <EquistoneLogo color="#000000" />
+                  <EquistoneLogo color="#000000" secColor="#dda15e"/>
                 </Link>
               </div>
 

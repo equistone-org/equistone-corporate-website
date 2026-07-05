@@ -25,7 +25,7 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
           </Link> */}
           <div className="hidden lg:flex items-center gap-4">
             <Link href="/" className="shrink-0">
-              <EquistoneLogo color="#FFFFFF" />
+              <EquistoneLogo color="#FFFFFF" secColor="#dda15e"/>
             </Link>
           </div>
 
