@@ -204,7 +204,6 @@ export default function Home() {
             <div
               className={`border-x border-white/10 ${LINE_LIGHT} flex flex-col lg:min-h-[calc(100dvh-80px)]`}
             >
-
               <div className="grid grid-cols-1 lg:grid-cols-4 flex-1">
                 <div
                   className={`lg:col-span-2 ${PAD} flex flex-col justify-between gap-[clamp(2rem,5vw,5rem)] border-white/10  border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
@@ -419,7 +418,7 @@ export default function Home() {
             </div>
 
             <Image
-              src="/shared/clinex-dark-logo.svg"
+              src="/shared/equistone-clinex-logo.svg"
               alt="Clinex Logo"
               width={162}
               height={162}

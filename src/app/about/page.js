@@ -180,7 +180,7 @@ export default function AboutPage() {
               Track Record
             </p>
             <Image
-              src="/shared/clinex-dark-logo.svg"
+              src="/shared/equistone-clinex-logo.svg"
               alt="Clinex Logo"
               width={162}
               height={162}
