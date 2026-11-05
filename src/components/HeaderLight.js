@@ -42,7 +42,7 @@ export default function HeaderLight({ withBorder = false, onMenu }) {
               <Link href="/investment">INVESTMENT</Link>
               <Link href="/sectors">SECTORS</Link>
               <Link href="/insights">INSIGHTS</Link>
-              <Link href="/team">TEAM</Link>
+              {/* <Link href="/team">TEAM</Link> */}
             </div>
             {/* CTA */}
             <div className="hidden lg:flex items-center gap-3">

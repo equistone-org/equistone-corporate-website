@@ -181,9 +181,9 @@ export default function Home() {
         </div>
       </main>
 
-      <main className="flex z-2 relative w-full flex-col font-sans bg-light-primary ">
+      {/* <main className="flex z-2 relative w-full flex-col font-sans bg-light-primary ">
         <PartnerSlider />
-      </main>
+      </main> */}
 
       <main className="relative z-2 flex w-full flex-col bg-light-primary font-sans px-[clamp(1rem,3vw,4rem)] py-[clamp(4rem,8vw,8rem)]">
         <div className="container mx-auto">

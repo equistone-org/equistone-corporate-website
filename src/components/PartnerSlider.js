@@ -18,11 +18,6 @@ export default function PartnerSlider() {
       src: "/collaborations/equistone-klinikutama-logo.svg",
       type: "Clinex Healthcare Client",
     },
-    // {
-    //   name: "JomChat",
-    //   src: "/collaborations/equistone-intellilabs-logo.svg",
-    //   type: "AI Technology Partner",
-    // },
     {
       name: "Jomchat",
       src: "/collaborations/equistone-jomchat-logo.svg",
