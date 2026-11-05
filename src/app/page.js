@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,6 @@ import FooterLight from "@/components/FooterLight";
 import JourneyTimeline from "@/components/JourneyTimeline";
 // import PartnerSlider from "@/components/PartnerSlider";
 import LineAnimatedLink from "@/components/LineAnimatedLink";
-import useOrbGradientAnimation from "@/hooks/useOrbGradientAnimation";
 
 import {
   PAD,
@@ -193,61 +192,22 @@ const MOSAIC_CELLS = [
 export default function Home() {
   const [open, setOpen] = useState(false);
 
-  const orbGradient1 = useRef(null);
-  const orbGradient2 = useRef(null);
-  const orbGradient3 = useRef(null);
-
-  useOrbGradientAnimation(orbGradient1, orbGradient2, orbGradient3);
-
   return (
     <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
       <Sidebar open={open} setOpen={setOpen} theme="light" />
       <HeaderLight withBorder onMenu={() => setOpen(true)} />
 
       {/* ============================ HERO ============================ */}
-      <main className="relative w-full overflow-hidden font-sans z-99 text-dark-primary">
-        <div className="absolute inset-0 z-0 overflow-hidden bg-light-secondary">
-          <div
-            ref={orbGradient1}
-            className="absolute w-[clamp(280px,40vw,600px)] h-[clamp(280px,40vw,600px)] rounded-full blur-[20px] opacity-90"
-            style={{
-              background:
-                "radial-gradient(circle, #e7c8a0 0%, transparent 70%)",
-              top: "15%",
-              left: "5%",
-            }}
-          />
-          <div
-            ref={orbGradient2}
-            className="absolute w-[clamp(260px,35vw,500px)] h-[clamp(400px,55vw,800px)] rounded-full blur-[40px] opacity-90"
-            style={{
-              background:
-                "radial-gradient(circle, #deb68a 0%, transparent 70%)",
-              top: "55%",
-              left: "45%",
-            }}
-          />
-          <div
-            ref={orbGradient3}
-            className="absolute w-[clamp(300px,50vw,800px)] h-[clamp(500px,70vw,1200px)] rounded-full blur-[60px] opacity-90"
-            style={{
-              background:
-                "radial-gradient(circle, #d4a373 0%, transparent 70%)",
-              top: "10%",
-              left: "65%",
-            }}
-          />
-        </div>
-
+      <main className="relative w-full overflow-hidden font-sans z-99 text-light-primary bg-light-secondary">
         <div className="relative z-20 px-[clamp(0.02rem,3vw,4rem)]">
           <div className="container mx-auto">
             <div
-              className={`border-x ${LINE_LIGHT} flex flex-col lg:min-h-[calc(100dvh-80px)]`}
+              className={`border-x border-white/10 ${LINE_LIGHT} flex flex-col lg:min-h-[calc(100dvh-80px)]`}
             >
-              {/* Top row — headline + image mosaic */}
+
               <div className="grid grid-cols-1 lg:grid-cols-4 flex-1">
                 <div
-                  className={`lg:col-span-2 ${PAD} flex flex-col justify-between gap-[clamp(2rem,5vw,5rem)] border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
+                  className={`lg:col-span-2 ${PAD} flex flex-col justify-between gap-[clamp(2rem,5vw,5rem)] border-white/10  border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <p className="text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-widest leading-[1.6] opacity-80">
@@ -256,10 +216,10 @@ export default function Home() {
                       Est. 2019
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
+                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/60 font-semibold uppercase rounded-full">
                         ICT Investment Holding
                       </span>
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
+                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/60 font-semibold uppercase rounded-full">
                         Integra Tower · Kuala Lumpur
                       </span>
                     </div>
@@ -293,12 +253,11 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Bottom row — intro + stats */}
               <div
-                className={`grid grid-cols-2 lg:grid-cols-6 border-t ${LINE_LIGHT}`}
+                className={`grid grid-cols-2 lg:grid-cols-6 border-white/10 border-t ${LINE_LIGHT}`}
               >
                 <div
-                  className={`col-span-2 ${PAD} flex flex-col gap-[clamp(1.25rem,2vw,2rem)] border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
+                  className={`col-span-2 ${PAD} flex flex-col gap-[clamp(1.25rem,2vw,2rem)] border-white/10 border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
                 >
                   <p className="font-medium text-[clamp(0.9rem,1.05vw,1rem)] leading-[1.7]">
                     Equistone Sdn Bhd is Malaysia&apos;s purpose-driven
@@ -324,7 +283,7 @@ export default function Home() {
                     <div className="text-[clamp(2rem,3.4vw,3.2rem)] font-semibold leading-none">
                       {s.value}
                     </div>
-                    <div className="mt-[clamp(0.75rem,1vw,1rem)] pt-[clamp(0.75rem,1vw,1rem)] border-t border-black/40 text-[clamp(0.7rem,0.85vw,0.85rem)] text-black/70">
+                    <div className="mt-[clamp(0.75rem,1vw,1rem)] pt-[clamp(0.75rem,1vw,1rem)] border-t border-white/40 text-[clamp(0.7rem,0.85vw,0.85rem)]">
                       {s.label}
                     </div>
                   </div>
