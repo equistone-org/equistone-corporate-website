@@ -8,11 +8,11 @@
 /* Text selection highlight */
 @layer base {
   ::selection {
-    @apply bg-green-200 text-green-900;
+    @apply bg-amber-200 text-gray-900;
   }
 
   .dark ::selection {
-    @apply bg-green-600 text-white;
+    @apply bg-amber-600 text-white;
   }
 }
 

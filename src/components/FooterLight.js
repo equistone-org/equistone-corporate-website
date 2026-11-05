@@ -34,7 +34,7 @@ export default function Footer() {
               </p>
 
               <p className="mt-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] text-[#3a4347]">
-                admin@equistone.com
+                admin@equistone.com.my
               </p>
 
               <a

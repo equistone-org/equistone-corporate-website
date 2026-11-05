@@ -31,7 +31,7 @@ export default function Sidebar({ open, setOpen, theme = "light" }) {
       {open && (
         <div
           onClick={handleClose}
-          className={`fixed inset-0 ${t.overlay} z-[998]`}
+          className={`fixed inset-0 ${t.overlay} z-998`}
         />
       )}
 
@@ -42,12 +42,11 @@ export default function Sidebar({ open, setOpen, theme = "light" }) {
           ${t.bg}
           ${t.text}
           border-r ${t.border}
-          z-[999]
+          z-999
           transition-transform duration-300 lg:hidden
           ${open ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        {/* HEADER */}
         <div className={`flex justify-between p-4 border-b ${t.border}`}>
           <button
             onClick={handleClose}
@@ -74,12 +73,11 @@ export default function Sidebar({ open, setOpen, theme = "light" }) {
           <Link onClick={handleClose} href="/insights">
             Insights
           </Link>
-          <Link onClick={handleClose} href="/team">
+          {/* <Link onClick={handleClose} href="/team">
             Team
-          </Link>
+          </Link> */}
         </nav>
 
-        {/* FOOTER CTA */}
         <div
           className={`absolute bottom-0 left-0 w-full p-4 border-t flex flex-col gap-2 ${t.bg} ${t.border}`}
         >

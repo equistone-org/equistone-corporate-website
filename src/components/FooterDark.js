@@ -33,7 +33,9 @@ export default function Footer() {
                 Malaysia
               </p>
 
-              <p className="mt-2 text-sm text-white/60">admin@equistone.com</p>
+              <p className="mt-2 text-sm text-white/60">
+                admin@equistone.com.my
+              </p>
 
               <a
                 href="https://linkedin.com"

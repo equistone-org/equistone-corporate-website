@@ -21,7 +21,7 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
         <div className="container mx-auto flex items-center justify-between py-[clamp(0.5rem,1vw,1rem)]">
           <div className="hidden lg:flex items-center gap-4">
             <Link href="/" className="shrink-0">
-              <EquistoneLogo color="#FFFFFF" secColor="#dda15e"/>
+              <EquistoneLogo color="#FFFFFF" secColor="#dda15e" />
             </Link>
           </div>
 
@@ -42,15 +42,15 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
             <Link href="/insights">INSIGHTS</Link>
             {/* <Link href="/team">TEAM</Link> */}
           </div>
-            <div className="hidden lg:flex items-center gap-3">
-              <div className="text-xs lg:text-sm px-3 py-2 font-semibold text-white border border-white uppercase">
-                Contact
-              </div>
-
-              <div className="text-xs lg:text-sm px-3 py-2 bg-white font-semibold text-[#22333B] uppercase">
-                Partner With Us
-              </div>
+          <div className="hidden lg:flex items-center gap-3">
+            <div className="text-xs lg:text-sm px-3 py-2 font-semibold text-white border border-white uppercase">
+              Contact
             </div>
+
+            <div className="text-xs lg:text-sm px-3 py-2 bg-white font-semibold text-[#22333B] uppercase">
+              Partner With Us
+            </div>
+          </div>
         </div>
       </div>
     </header>
