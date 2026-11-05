@@ -236,7 +236,7 @@ export default function Home() {
                       c.show ? (
                         <div
                           key={i}
-                          className="bg-dark-primary"
+                          className="bg-light-primary"
                           style={{
                             backgroundImage:
                               "url(/home/equistone-strategic-img.jpg)",
@@ -328,7 +328,7 @@ export default function Home() {
           </div>
 
           {/* Image */}
-          <div className="relative bg-dark-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
               src="/home/equistone-venture-img.jpg"
               alt="Equistone venture building"
@@ -477,7 +477,7 @@ export default function Home() {
           </div>
 
           {/* Image */}
-          <div className="relative md:col-span-2 bg-dark-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="relative md:col-span-2 bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
               src="/home/equistone-healthcare-img.svg"
               alt="Healthcare technology"

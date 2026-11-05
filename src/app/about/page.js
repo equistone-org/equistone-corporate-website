@@ -21,7 +21,10 @@ import {
 const HERO_STATS = [
   { value: "2019", label: "Year incorporated — Kuala Lumpur, Malaysia" },
   { value: "50+", label: "Clinics live on Clinex as of 2026" },
-  { value: "ICT", label: "Primary focus sector — healthcare, fintech, enterprise" },
+  {
+    value: "ICT",
+    label: "Primary focus sector — healthcare, fintech, enterprise",
+  },
   { value: "ASEAN", label: "Long-term regional expansion strategy" },
 ];
 
@@ -64,7 +67,9 @@ export default function AboutPage() {
 
       {/* ============================ HERO ============================ */}
       <Band>
-        <div className={`grid grid-cols-1 lg:grid-cols-4 border-b ${LINE_LIGHT}`}>
+        <div
+          className={`grid grid-cols-1 lg:grid-cols-4 border-b ${LINE_LIGHT}`}
+        >
           <div
             className={`${PAD} flex flex-row lg:flex-col justify-between items-start gap-6 border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
           >
@@ -100,7 +105,7 @@ export default function AboutPage() {
               show ? (
                 <div
                   key={i}
-                  className="bg-dark-primary"
+                  className="bg-light-primary"
                   style={{
                     backgroundImage: "url(/home/equistone-sustainable-img.jpg)",
                     backgroundSize: "400% 100%",
@@ -145,10 +150,10 @@ export default function AboutPage() {
               Overview
             </p>
             <p className="text-[clamp(0.95rem,1.05vw,1.05rem)] text-[#3a4347] leading-[1.8]">
-              Equistone Sdn. Bhd. (“ESB”) is a Malaysian-based investment holding
-              and digital solutions company focused on building long-term value
-              through strategic investments, advisory services, and technology
-              enablement.
+              Equistone Sdn. Bhd. (“ESB”) is a Malaysian-based investment
+              holding and digital solutions company focused on building
+              long-term value through strategic investments, advisory services,
+              and technology enablement.
             </p>
             <p className="text-[clamp(0.95rem,1.05vw,1.05rem)] text-[#3a4347] leading-[1.8]">
               With a multidisciplinary team experienced in corporate finance,
@@ -159,7 +164,7 @@ export default function AboutPage() {
           </div>
 
           {/* Image */}
-          <div className="relative bg-dark-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
               src="/home/equistone-strategic-img.jpg"
               alt="Equistone strategic investment"
@@ -206,11 +211,11 @@ export default function AboutPage() {
               Corporate Mission Statement
             </p>
             <p className="italic text-[#1d2b2f] leading-[1.7] text-[clamp(1rem,1.3vw,1.3rem)]">
-              &ldquo;Equistone&apos;s purpose is to become one of Malaysia&apos;s
-              leading platforms for purpose-driven investments, strategic
-              advisory, and technology-backed value creation — supporting
-              partners, clients, and ecosystems throughout their growth
-              journeys.&rdquo;
+              &ldquo;Equistone&apos;s purpose is to become one of
+              Malaysia&apos;s leading platforms for purpose-driven investments,
+              strategic advisory, and technology-backed value creation —
+              supporting partners, clients, and ecosystems throughout their
+              growth journeys.&rdquo;
             </p>
             <p className="text-[clamp(0.75rem,0.9vw,0.875rem)] font-semibold text-[#3a4347]">
               Equistone Sdn Bhd
@@ -283,7 +288,11 @@ export default function AboutPage() {
               <LineAnimatedLink href="/contact" arrowVariant="light">
                 Partner With Us
               </LineAnimatedLink>
-              <LineAnimatedLink href="/contact" arrowVariant="light" variant="green">
+              <LineAnimatedLink
+                href="/contact"
+                arrowVariant="light"
+                variant="green"
+              >
                 Contact Us
               </LineAnimatedLink>
             </div>
