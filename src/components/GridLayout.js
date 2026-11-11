@@ -45,7 +45,12 @@ export function Tag({ children, dark = false }) {
 }
 
 /** Full-width band with a centred, vertically ruled frame. */
-export function Band({ dark = false, children, className = "", sectionClassName = "" }) {
+export function Band({
+  dark = false,
+  children,
+  className = "",
+  sectionClassName = "",
+}) {
   return (
     <section
       className={`relative z-2 w-full font-sans px-[clamp(0.02rem,3vw,4rem)] pt-16 ${sectionClassName} ${
@@ -55,9 +60,7 @@ export function Band({ dark = false, children, className = "", sectionClassName 
       }`}
     >
       <div className="container mx-auto">
-        <div
-          className={`border ${dark ? LINE_DARK : LINE_LIGHT} ${className}`}
-        >
+        <div className={`border ${dark ? LINE_DARK : LINE_LIGHT} ${className}`}>
           {children}
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
       </button>
 
       <div className="px-[clamp(0.02rem,3vw,4rem)] w-full">
-        <div className="container mx-auto flex items-center justify-between py-[clamp(0.5rem,1vw,1rem)]">
+        <div className="container mx-auto flex items-center justify-between py-[clamp(0rem,calc(2vw-0.75rem),0.5rem)]">
           <div className="hidden lg:flex items-center gap-4">
             <Link href="/" className="shrink-0">
               <EquistoneLogo color="#FFFFFF" secColor="#dda15e" />

@@ -10,17 +10,17 @@ export default function HeaderLight({ withBorder = false, onMenu }) {
       >
         <button
           onClick={onMenu}
-          className="lg:hidden text-xs px-3 py-2 border border-black text-black uppercase font-semibold"
+          className="lg:hidden text-xs px-3 py-2 border border-black/40 text-black uppercase font-semibold"
         >
           =
         </button>
         <div className="px-[clamp(0.02rem,3vw,4rem)] w-full">
-          <div className="container mx-auto flex items-center justify-between py-[clamp(0.5rem,1vw,1rem)]">
+          <div className="container mx-auto flex items-center justify-between py-[clamp(0rem,calc(2vw-0.75rem),0.5rem)]">
             <>
               {/* Desktop */}
               <div className="hidden lg:flex items-center gap-4">
                 <Link href="/" className="shrink-0">
-                  <EquistoneLogo color="#000000" secColor="#dda15e"/>
+                  <EquistoneLogo color="#000000" secColor="#dda15e" />
                 </Link>
               </div>
 

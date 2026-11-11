@@ -3,16 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Light mode only: stop browsers from darkening form controls/scrollbars */
+  color-scheme: light;
 }
 
 /* Text selection highlight */
 @layer base {
   ::selection {
     @apply bg-amber-200 text-gray-900;
-  }
-
-  .dark ::selection {
-    @apply bg-amber-600 text-white;
   }
 }
 
@@ -22,14 +20,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-global);
   --font-mono: monospace; /* optional */
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -44,7 +34,7 @@ body {
   }
 
   .bg-light-secondary {
-    background-color: #2e2c0d;
+    background-color: #fefdf7;
   }
 
   .text-light-primary {

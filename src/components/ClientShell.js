@@ -11,7 +11,6 @@ export default function ClientShell({ children }) {
       <Sidebar
         open={sidebarOpen}
         setOpen={setSidebarOpen}
-        theme="light"
       />
 
       <main className="min-h-screen">
