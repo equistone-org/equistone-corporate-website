@@ -8,7 +8,7 @@ export default function Sidebar({ open, setOpen }) {
   const t = {
     bg: "bg-white",
     text: "text-black",
-    border: "border-black",
+    border: "border-black/40",
     overlay: "bg-black/40",
     buttonPrimary: "bg-black text-white",
   };
@@ -37,7 +37,7 @@ export default function Sidebar({ open, setOpen }) {
         <div className={`flex justify-between p-4 border-b ${t.border}`}>
           <button
             onClick={handleClose}
-            className={`text-sm px-2 py-1 border ${t.border}`}
+            className={`text-sm px-2 py-1 border`}
           >
             Close
           </button>
