@@ -237,7 +237,7 @@ export default function TeamPage() {
   return (
     <div className="flex flex-col bg-light-primary font-sans text-dark-primary">
       <HeaderLight withBorder onMenu={() => setOpen(true)} />
-      <Sidebar open={open} setOpen={setOpen} theme="light" />
+      <Sidebar open={open} setOpen={setOpen} />
 
       {/* ============================ HERO ============================ */}
       <Band>

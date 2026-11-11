@@ -2,29 +2,16 @@
 
 import Link from "next/link";
 
-export default function Sidebar({ open, setOpen, theme = "light" }) {
+export default function Sidebar({ open, setOpen }) {
   const handleClose = () => setOpen(false);
 
-  const styles = {
-    light: {
-      bg: "bg-white",
-      text: "text-black",
-      border: "border-black",
-      overlay: "bg-black/40",
-      buttonPrimary: "bg-black text-white",
-      buttonSecondary: "bg-white text-black",
-    },
-    dark: {
-      bg: "bg-dark-secondary",
-      text: "text-white",
-      border: "border-white",
-      overlay: "bg-black/60",
-      buttonPrimary: "bg-white text-black",
-      buttonSecondary: "bg-transparent text-white border border-white",
-    },
+  const t = {
+    bg: "bg-white",
+    text: "text-black",
+    border: "border-black",
+    overlay: "bg-black/40",
+    buttonPrimary: "bg-black text-white",
   };
-
-  const t = styles[theme] || styles.light;
 
   return (
     <>
