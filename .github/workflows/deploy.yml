@@ -2,7 +2,7 @@ name: Deploy Equistone Website
 
 on:
   push:
-    branches: [main]
+    branches: [env/production]
   workflow_dispatch:
 
 permissions:
