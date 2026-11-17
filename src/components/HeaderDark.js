@@ -36,6 +36,7 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
           </div>
           <div className="hidden lg:flex flex-row items-center font-medium uppercase text-sm text-white/80 gap-8">
             <Link href="/about">ABOUT</Link>
+            <Link href="/products">PRODUCTS</Link>
             <Link href="/ventures">VENTURES</Link>
             <Link href="/investment">INVESTMENT</Link>
             <Link href="/sectors">SECTORS</Link>

@@ -48,6 +48,9 @@ export default function Sidebar({ open, setOpen }) {
           <Link onClick={handleClose} href="/about">
             About
           </Link>
+          <Link onClick={handleClose} href="/products">
+            Products
+          </Link>
           <Link onClick={handleClose} href="/ventures">
             Ventures
           </Link>

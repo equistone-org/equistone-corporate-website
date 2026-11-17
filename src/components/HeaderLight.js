@@ -38,6 +38,7 @@ export default function HeaderLight({ withBorder = false, onMenu }) {
             {/* NAV (desktop only) */}
             <div className="hidden lg:flex flex-row items-center font-medium uppercase text-sm text-black gap-8">
               <Link href="/about">ABOUT</Link>
+              <Link href="/products">PRODUCTS</Link>
               <Link href="/ventures">VENTURES</Link>
               <Link href="/investment">INVESTMENT</Link>
               <Link href="/sectors">SECTORS</Link>

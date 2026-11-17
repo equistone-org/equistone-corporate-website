@@ -76,6 +76,7 @@ export function SectionHead({
   title,
   intro,
   action,
+  logo,
   dark = false,
 }) {
   const line = dark ? LINE_DARK : LINE_LIGHT;
@@ -99,9 +100,12 @@ export function SectionHead({
       <div
         className={`lg:col-span-3 ${PAD} flex flex-col justify-end gap-[clamp(1rem,1.5vw,1.5rem)] lg:min-h-[clamp(14rem,20vw,18rem)]`}
       >
-        {action && <div className="flex justify-end">{action}</div>}
+        {action && <div className="flex justify-end">{action}</div>}{" "}
+        {kicker && <Tag dark={dark}>{kicker}</Tag>}
         <div className="mt-auto flex flex-col gap-[clamp(0.75rem,1vw,1rem)]">
-          {kicker && <Tag dark={dark}>{kicker}</Tag>}
+          {logo && (
+            <div className="mb-[clamp(0.25rem,1vw,0.75rem)]">{logo}</div>
+          )}
           <h2 className="uppercase font-semibold leading-[1.02] tracking-tight text-[clamp(2rem,4.4vw,4.4rem)]">
             {title}
           </h2>
