@@ -40,7 +40,7 @@ export default function HeaderDark({ withBorder = false, onMenu }) {
             <Link href="/investment">INVESTMENT</Link>
             <Link href="/sectors">SECTORS</Link>
             <Link href="/insights">INSIGHTS</Link>
-            {/* <Link href="/team">TEAM</Link> */}
+            <Link href="/team">TEAM</Link>
           </div>
           <div className="hidden lg:flex items-center gap-3">
             <div className="text-xs lg:text-sm px-3 py-2 font-semibold text-white border border-white uppercase">

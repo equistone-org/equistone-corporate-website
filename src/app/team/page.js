@@ -19,79 +19,79 @@ import {
 const TEAM = [
   {
     name: "Muhamad Afiq bin Idris",
-    role: "Chief Executive Officer",
+    role: "Business Lead",
     image: "/team/img_1.png",
     description:
-      "Leads the overall corporate vision and strategic direction of the organization, focusing on sustainable growth, governance excellence, and long-term value creation.",
+      "Guides Equistone's direction, sets business priorities, and brings the team together to build sustainable growth.",
     education:
       "Bachelor of Business Administration (BBA), Universiti Malaya. Executive Leadership Program, INSEAD.",
   },
   {
     name: "Syed Mohd Zahir bin Syed Ahmad Zabidi",
-    role: "Chief Strategic Officer",
+    role: "Strategy & Business Development Lead",
     image: "/team/img_2.png",
     description:
-      "Provides executive oversight across business operations with a focus on strategic expansion, operational discipline, and organizational performance.",
+      "Develops business strategies, explores new opportunities and partnerships, and supports the company's growth plans.",
     education:
       "MBA, Universiti Kebangsaan Malaysia. Certified Strategic Management Professional, London Business School.",
   },
   {
     name: "Amirul Rashid bin Azmee",
-    role: "Chief Financial Officer",
+    role: "Finance Lead",
     image: "/team/img_3.png",
     description:
-      "Oversees financial planning, capital management, and regulatory compliance, ensuring financial stability and reporting integrity.",
+      "Manages budgets, financial planning, cash flow, and reporting to support responsible business decisions.",
     education:
       "Bachelor of Accounting (Hons), Universiti Teknologi MARA (UiTM). Chartered Accountant (CA Malaysia).",
   },
   {
     name: "Mohd Danial Ariff bin Mohd Zamri",
-    role: "Chief Operation Officer",
+    role: "Operations Lead",
     image: "/team/img_4.png",
     description:
-      "Manages operational execution across all divisions, ensuring efficiency, scalability, and consistent service delivery standards.",
+      "Coordinates day-to-day operations, improves internal processes, and helps the team deliver projects effectively.",
     education:
       "Bachelor of Operations Management, Universiti Putra Malaysia. Lean Six Sigma Black Belt Certification.",
   },
   {
     name: "Khairulanwar bin Idris",
-    role: "Chief Technology Officer",
+    role: "Technology & Product Lead",
     image: "/team/img_5.png",
     description:
-      "Leads technology strategy, system architecture, and digital transformation initiatives to support scalable innovation.",
+      "Shapes the technology and product direction, evaluates new solutions, and helps turn ideas into useful products.",
     education:
       "Bachelor of Computer Science, Universiti Sains Malaysia (USM). AWS Certified Solutions Architect.",
   },
   {
     name: "Mohamad Aidil Maula Abd. Rahim",
-    role: "Chief Technical Officer",
+    role: "Engineering & Infrastructure Lead",
     image: "/team/img_6.png",
     description:
-      "Responsible for engineering execution, infrastructure stability, and technical delivery across enterprise systems.",
+      "Leads hands-on engineering delivery, maintains reliable infrastructure, and supports development and deployment across projects.",
     education:
       "Bachelor of Software Engineering, Multimedia University (MMU). Microsoft Certified Azure Engineer.",
   },
   {
     name: "Wan Aqmarur Razin bin Wan Azlan",
-    role: "Chief Audit Officer",
+    role: "Governance & Compliance Lead",
     image: "/team/img_7.png",
     description:
-      "Provides independent oversight of governance, compliance, and internal control frameworks to ensure organizational integrity.",
+      "Supports company governance, internal controls, compliance processes, and risk awareness as the business grows.",
     education:
       "Bachelor of Accounting, International Islamic University Malaysia (IIUM). Certified Internal Auditor (CIA).",
   },
 ];
 
-/* Reporting hierarchy — each tier lists indexes into TEAM. */
+/* Team display groups — each group lists indexes into TEAM. */
 const TIERS = [
   {
-    label: "Executive Leadership",
-    note: "Sets the corporate vision and strategic direction.",
+    label: "Business Direction",
+    note: "Guides company priorities and coordinates the team.",
     members: [0],
   },
   {
-    label: "C-Suite Officers",
-    note: "Report to the Chief Executive Officer.",
+    label: "Core Team",
+    note: "Leads key functions and works together to deliver.",
     members: [1, 2, 3, 4, 5, 6],
   },
 ];
@@ -253,7 +253,7 @@ export default function TeamPage() {
               Equistone Sdn Bhd
             </p>
             <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
-              {TEAM.length} Leaders
+              {TEAM.length} Team Members
             </span>
           </div>
 
@@ -271,20 +271,23 @@ export default function TeamPage() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/15">
-          <StatTile value="07" label="Leadership team" />
+          <StatTile
+            value={String(TEAM.length).padStart(2, "0")}
+            label="Core team"
+          />
           <StatTile value="2019" label="Building since" />
           <StatTile value="ICT" label="Core expertise" />
           <StatTile value="KL" label="Headquartered — Integra Tower" />
         </div>
       </Band>
 
-      {/* ============================ 01 LEADERSHIP ============================ */}
+      {/* ============================ 01 OUR TEAM ============================ */}
       <Band sectionClassName="pb-16">
         <SectionHead
           index={1}
-          label="Leadership"
+          label="Our Team"
           title="Meet the Team"
-          intro="Our leadership structure, from executive leadership down. Select a profile to read about each leader's role, education, and certifications."
+          intro="Meet the people behind Equistone. Select a profile to learn about each team member's role, education, and certifications."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-px bg-black/15">

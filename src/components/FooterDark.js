@@ -55,7 +55,7 @@ export default function Footer() {
                     <Link href="#">About Equistone</Link>
                   </li>
                   <li>
-                    <Link href="#">Leadership Team</Link>
+                    <Link href="/team">Leadership Team</Link>
                   </li>
                   <li>
                     <Link href="#">Our Ventures</Link>

@@ -60,9 +60,9 @@ export default function Sidebar({ open, setOpen }) {
           <Link onClick={handleClose} href="/insights">
             Insights
           </Link>
-          {/* <Link onClick={handleClose} href="/team">
+          <Link onClick={handleClose} href="/team">
             Team
-          </Link> */}
+          </Link>
         </nav>
 
         <div
