@@ -205,34 +205,9 @@ export default function Home() {
             <div
               className={`border-x  ${LINE_LIGHT} flex flex-col lg:min-h-[calc(100dvh-80px)]`}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-4 flex-1">
-                <div
-                  className={`lg:col-span-2 ${PAD} flex flex-col justify-between gap-[clamp(2rem,5vw,5rem)]  border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <p className="text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-widest leading-[1.6] opacity-80">
-                      Equistone Sdn Bhd
-                      <br />
-                      Est. 2019
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
-                        ICT Investment Holding
-                      </span>
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
-                        Integra Tower · Kuala Lumpur
-                      </span>
-                    </div>
-                  </div>
-
-                  <h1 className="font-semibold leading-[1.02] tracking-tight text-[clamp(2.6rem,5.4vw,6rem)]">
-                    We Build What
-                    <span className="text-dark-orange"> Others Only Fund.</span>
-                  </h1>
-                </div>
-
-                <div className={`lg:col-span-2 relative ${PAD}`}>
-                  <div className="grid grid-cols-3 grid-rows-2 gap-[3px] h-full min-h-[clamp(16rem,38vw,34rem)]">
+              <div className="grid grid-cols-1  flex-1">
+                <div className="relative">
+                  {/* <div className="grid grid-cols-3 grid-rows-2 gap-[3px] h-full min-h-[clamp(16rem,38vw,34rem)]">
                     {MOSAIC_CELLS.map((c, i) =>
                       c.show ? (
                         <div
@@ -249,6 +224,69 @@ export default function Home() {
                         <div key={i} />
                       ),
                     )}
+                  </div> */}
+                  <div
+                    className="glass-cube-scene relative h-full min-h-[clamp(32rem,62vw,44rem)] flex flex-col items-center bg-light-primary p-[clamp(1.25rem,3vw,2.5rem)] text-white"
+                    style={{
+                      backgroundImage: "url(/home/equistone-glass-img.svg)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    {/* Top bar */}
+                    <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-start gap-4 pr-[clamp(2rem,3.5vw,3rem)] md:pr-0">
+                      <p className="text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-widest leading-[1.6] text-dark-primary">
+                        Equistone Sdn Bhd
+                        <br />
+                        Est. 2019
+                      </p>
+                      <div className="flex flex-wrap justify-center gap-2">
+                        <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/70 font-semibold uppercase rounded-full">
+                          ICT Investment Holding
+                        </span>
+                        <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/70 font-semibold uppercase rounded-full">
+                          Integra Tower · Kuala Lumpur
+                        </span>
+                      </div>
+                    </div>
+
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-[clamp(1.25rem,3vw,2.5rem)] right-[clamp(1rem,2.5vw,2rem)] [writing-mode:vertical-rl] rotate-180 font-medium tracking-tight leading-none text-dark-primary text-[clamp(1.1rem,1.8vw,1.6rem)]"
+                    >
+                      equistone<span className="text-dark-orange">.</span>
+                    </span>
+
+                    {/* Glass cube */}
+                    {/* <div
+                      aria-hidden="true"
+                      className="pointer-events-none flex-1 flex flex-col items-center justify-center py-[clamp(1.5rem,3vw,2.5rem)]"
+                    >
+                      <div className="glass-cube">
+                        {Array.from({ length: 6 }, (_, i) => (
+                          <span key={i} className="glass-cube-face" />
+                        ))}
+                      </div>
+                      <div className="glass-cube-shadow" />
+                    </div> */}
+
+                    {/* Headline */}
+                    <div className="flex flex-col items-center text-center gap-[clamp(0.75rem,1.4vw,1.25rem)] max-w-[56rem]">
+                      <span className="grid place-items-center size-[clamp(1.6rem,2.2vw,2rem)] rounded-full border border-white/90 text-[clamp(0.7rem,0.85vw,0.8rem)] font-medium">
+                        01
+                      </span>
+                      <h1 className="font-normal leading-[1.02] tracking-tight text-[clamp(4.4rem,6.4vw,8.5rem)]">
+                        We Build What
+                        <span className="text-gray-50 font-black">
+                          {" "}
+                          Others Only Fund.
+                        </span>
+                      </h1>
+                      <p className="text-white/85 leading-[1.5] max-w-[26rem] text-[clamp(0.8rem,1vw,0.95rem)]">
+                        Strategic capital, corporate advisory and in-house
+                        technology — under one roof since 2019.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -581,7 +619,7 @@ export default function Home() {
                 <ArrowUpRight className="lg:hidden" />
               </div>
               <div
-                className={`hidden lg:flex ${PAD} items-start justify-between gap-6`}
+                className={`hidden lg:flex  items-start justify-between gap-6`}
               >
                 <div className="relative w-full aspect-16/10 overflow-hidden">
                   <Image
@@ -592,7 +630,6 @@ export default function Home() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <ArrowUpRight />
               </div>
             </div>
           ))}

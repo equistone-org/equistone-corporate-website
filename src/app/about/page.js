@@ -166,7 +166,7 @@ export default function AboutPage() {
           {/* Image */}
           <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
-              src="/home/equistone-strategic-img.jpg"
+              src="/home/equistone-sustainable-img.jpg"
               alt="Equistone strategic investment"
               fill
               sizes="(min-width:1024px) 25vw, 50vw"
