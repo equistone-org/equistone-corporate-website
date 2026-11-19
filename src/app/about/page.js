@@ -23,7 +23,8 @@ const HERO_STATS = [
   { value: "50+", label: "Clinics live on Clinex as of 2026" },
   {
     value: "ICT",
-    label: "Primary focus sector — healthcare, fintech, enterprise",
+    // [finance-hidden] label: "Primary focus sector — healthcare, fintech, enterprise",
+    label: "Primary focus sector — healthcare, enterprise",
   },
   { value: "ASEAN", label: "Long-term regional expansion strategy" },
 ];

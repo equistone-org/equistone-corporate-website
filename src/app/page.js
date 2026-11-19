@@ -68,7 +68,8 @@ const PHILOSOPHY = [
   {
     title: "ICT-Enabled Sector Focus",
     img: "/home/equistone-ict-img.svg",
-    desc: "Focus on healthcare, fintech, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
+    // [finance-hidden] desc: "Focus on healthcare, fintech, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
+    desc: "Focus on healthcare, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
   },
   {
     title: "Sustainable Development Orientation",
@@ -83,11 +84,12 @@ const SECTORS = [
     img: "/home/equistone-healthcare-img.svg",
     desc: "Digitising Malaysia's private healthcare sector — from clinic management systems to patient data platforms. Our flagship venture Clinex is deployed and actively growing in this sector, with Klinik Utama as a key operator client.",
   },
-  {
-    title: "Financial Technology",
-    img: "/home/equistone-financial-img.svg",
-    desc: "Strategic investment in payment technology, digital financial infrastructure, and financial services digitisation. Strategic partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic fintech ecosystem.",
-  },
+  // [finance-hidden] Fintech sector hidden — company no longer pursuing finance field.
+  // {
+  //   title: "Financial Technology",
+  //   img: "/home/equistone-financial-img.svg",
+  //   desc: "Strategic investment in payment technology, digital financial infrastructure, and financial services digitisation. Strategic partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic fintech ecosystem.",
+  // },
   {
     title: "Enterprise ICT & Digital Transformation",
     img: "/home/equistone-enterpriseict-img.svg",
@@ -96,12 +98,13 @@ const SECTORS = [
 ];
 
 const PARTNERS = [
-  {
-    name: "Payhalal Sdn Bhd",
-    logo: "/collaborations/equistone-payhalal-dark-logo.svg",
-    sector: "Financial Technology",
-    role: "Strategic Partner",
-  },
+  // [finance-hidden]
+  // {
+  //   name: "Payhalal Sdn Bhd",
+  //   logo: "/collaborations/equistone-payhalal-dark-logo.svg",
+  //   sector: "Financial Technology",
+  //   role: "Strategic Partner",
+  // },
   // {
   //   name: "IntelliLabs AI",
   //   logo: "/collaborations/equistone-intellilabs-dark-logo.svg",
@@ -155,7 +158,8 @@ const CTAS = [
     kicker: "Invest Alongside Equistone",
     desc: "We are building Malaysia's next generation of ICT ventures. If you are a strategic investor or co-investor seeking ICT sector exposure backed by a team that builds operationally — let's talk.",
     points: [
-      "ICT sector focus — healthcare, fintech, enterprise",
+      // [finance-hidden] "ICT sector focus — healthcare, fintech, enterprise",
+      "ICT sector focus — healthcare, enterprise",
       "Venture-building model — operational expertise included",
       "Incorporated 2019 · KL-based · Active ASEAN expansion",
     ],
@@ -166,9 +170,10 @@ const CTAS = [
     kicker: "Build Your Venture With Equistone",
     desc: "Have a high-potential ICT venture that needs smart capital, strategic advisory, or technology execution support? Equistone brings more than funding — we bring the team that built Clinex from the ground up since 2024.",
     points: [
-      "Corporate finance and capital structuring expertise",
+      // [finance-hidden] "Corporate finance and capital structuring expertise",
       "In-house technology development capability",
-      "Strategic partner network — fintech, AI, communications",
+      // [finance-hidden] "Strategic partner network — fintech, AI, communications",
+      "Strategic partner network — AI, communications",
     ],
     cta: "Submit Your Venture",
   },
@@ -552,7 +557,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                "Financial Technology",
+                // [finance-hidden] "Financial Technology",
                 "Enterprise ICT",
                 "Digital Infrastructure",
                 "Sustainable Technology",
@@ -646,7 +651,8 @@ export default function Home() {
           intro="Equistone focuses on industries where digital technology creates durable structural advantages — fully aligned with Malaysia's national digital transformation priorities."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/15">
+        {/* [finance-hidden] was md:grid-cols-3 — back to 3 if Fintech sector is restored */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/15">
           {SECTORS.map((s, i) => (
             <div key={s.title} className="group bg-dark-primary flex flex-col">
               <div className="relative w-full h-[clamp(12rem,20vw,18rem)] overflow-hidden">
