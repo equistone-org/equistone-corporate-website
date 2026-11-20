@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import Image from "next/image";
 
 import HeaderLight from "@/components/HeaderLight";
@@ -33,22 +33,6 @@ const HERO_STATS = [
 /* Image strip cut into 4 cells, one left open. */
 const STRIP_CELLS = [true, true, false, true];
 const STRIP_GAP = 3; // px between cells
-
-/* Mask that shows only the visible cells (gaps + open cells cut out), so one
-   continuous fluted-glass layer can sit behind the whole strip. */
-const STRIP_MASK = (() => {
-  const n = STRIP_CELLS.length;
-  const col = `((100% - ${(n - 1) * STRIP_GAP}px) / ${n})`;
-  const at = (k, extra = 0) =>
-    `calc(${k} * ${col} + ${k * STRIP_GAP + extra}px)`;
-  const stops = STRIP_CELLS.flatMap((show, k) => {
-    const c = show ? "#000" : "transparent";
-    const start = at(k);
-    const end = `calc(${k + 1} * ${col} + ${k * STRIP_GAP}px)`;
-    return [`${c} ${start}`, `${c} ${end}`, `transparent ${end}`];
-  });
-  return `linear-gradient(90deg, ${stops.join(", ")})`;
-})();
 
 const PROBLEM_SOLUTION = [
   {
@@ -119,14 +103,28 @@ export default function AboutPage() {
 
         {/* Image strip */}
         <div className={`border-b ${LINE_LIGHT}`}>
-          <div
-            className="relative isolate h-[clamp(10rem,22vw,20rem)]"
-            style={{ maskImage: STRIP_MASK, WebkitMaskImage: STRIP_MASK }}
-          >
+          <div className="relative isolate overflow-hidden h-[clamp(10rem,22vw,20rem)]">
             <FlutedGlass
               id="fluted-glass-strip"
               src="/home/equistone-sustainable-img.jpg"
             />
+            {/* Gaps + open cells painted over the image (no CSS mask —
+                iOS Safari drops masked layers that contain an SVG filter). */}
+            <div aria-hidden="true" className="absolute inset-0 flex">
+              {STRIP_CELLS.map((show, k) => (
+                <Fragment key={k}>
+                  {k > 0 && (
+                    <div
+                      className="shrink-0 bg-light-primary"
+                      style={{ width: STRIP_GAP }}
+                    />
+                  )}
+                  <div
+                    className={`flex-1 ${show ? "" : "bg-light-primary"}`}
+                  />
+                </Fragment>
+              ))}
+            </div>
           </div>
         </div>
 
