@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import HeaderLight from "@/components/HeaderLight";
@@ -33,6 +33,7 @@ const HERO_STATS = [
 /* Image strip cut into 4 cells, one left open. */
 const STRIP_CELLS = [true, true, false, true];
 const STRIP_GAP = 3; // px between cells
+const STRIP_BG = "#fefdf2"; // = bg-light-primary, paints the gaps
 
 const PROBLEM_SOLUTION = [
   {
@@ -103,26 +104,23 @@ export default function AboutPage() {
 
         {/* Image strip */}
         <div className={`border-b ${LINE_LIGHT}`}>
-          <div className="relative isolate overflow-hidden h-[clamp(10rem,22vw,20rem)]">
-            <FlutedGlass
-              id="fluted-glass-strip"
-              src="/home/equistone-sustainable-img.jpg"
-            />
+          <div className="relative isolate overflow-hidden h-[clamp(16rem,70vw,24rem)] lg:h-[clamp(10rem,22vw,20rem)]">
+            <FlutedGlass src="/home/equistone-sustainable-img.jpg" />
             {/* Gaps + open cells painted over the image (no CSS mask —
                 iOS Safari drops masked layers that contain an SVG filter). */}
-            <div aria-hidden="true" className="absolute inset-0 flex">
+            {/* 2×2 on mobile, 4 across on desktop. Each cell's outer shadow
+                paints the gap around it in the page colour. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 grid grid-cols-2 lg:grid-cols-4"
+              style={{ gap: STRIP_GAP }}
+            >
               {STRIP_CELLS.map((show, k) => (
-                <Fragment key={k}>
-                  {k > 0 && (
-                    <div
-                      className="shrink-0 bg-light-primary"
-                      style={{ width: STRIP_GAP }}
-                    />
-                  )}
-                  <div
-                    className={`flex-1 ${show ? "" : "bg-light-primary"}`}
-                  />
-                </Fragment>
+                <div
+                  key={k}
+                  className={show ? "" : "bg-light-primary"}
+                  style={{ boxShadow: `0 0 0 ${STRIP_GAP}px ${STRIP_BG}` }}
+                />
               ))}
             </div>
           </div>
