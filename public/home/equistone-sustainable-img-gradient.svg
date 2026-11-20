@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 189.96 137.87">
+  <defs>
+    <style>
+      .cls-1{fill:#6f9a88;opacity:0.9}
+      .cls-2{fill:#cfdcd2;opacity:0.55}
+      .cls-3{fill:#1f4d47;opacity:0.7}
+      .cls-4{fill:#6f9a88;opacity:0.75}
+      .cls-5{fill:#cfdcd2;opacity:0.5}
+      .cls-6{fill:url(#linear-gradient-1)}
+      .cls-7{fill:#6f9a88;opacity:0.85}
+    </style>
+    <filter id="filter-1" filterUnits="userSpaceOnUse" x="159.327" y="-315.226" width="437.202" height="346.61" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="16" color-interpolation-filters="linearRGB"/></filter>
+    <filter id="filter-2" filterUnits="userSpaceOnUse" x="-139.915" y="-341.56" width="484.94" height="358.315" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="16" color-interpolation-filters="linearRGB"/></filter>
+    <linearGradient id="linear-gradient-1" x1="-1.762" y1="-1.219" x2="132.241" y2="183.413" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#14271f"/>
+      <stop offset="1" stop-color="#0b1612"/>
+    </linearGradient>
+    <filter id="filter-3" filterUnits="userSpaceOnUse" x="-138.658" y="-117.669" width="462.917" height="350.464" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="16" color-interpolation-filters="linearRGB"/></filter>
+  </defs>
+  <title>Artboard 1 copy 2</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <g filter="url(#filter-1)">
+        <g>
+          <ellipse cx="279.787" cy="-209.864" rx="70.46" ry="55.362" class="cls-1"/>
+          <ellipse cx="299.918" cy="-63.911" rx="85.559" ry="45.296" class="cls-2"/>
+          <ellipse cx="491.167" cy="-144.437" rx="55.362" ry="80.526" class="cls-3"/>
+        </g>
+      </g>
+    </g>
+    <g>
+      <g filter="url(#filter-2)">
+        <g>
+          <ellipse cx="107.62" cy="-245.975" rx="111.43" ry="45.585" class="cls-4"/>
+          <ellipse cx="-8.875" cy="-78.83" rx="81.04" ry="40.52" class="cls-5"/>
+          <ellipse cx="224.115" cy="-78.83" rx="70.91" ry="45.585" class="cls-3"/>
+        </g>
+      </g>
+    </g>
+    <g>
+      <g>
+        <rect x="-1.762" y="-1.219" width="194.196" height="140.944" class="cls-6"/>
+        <g filter="url(#filter-3)">
+          <g>
+            <ellipse cx="197.586" cy="-11.442" rx="76.673" ry="56.227" class="cls-7"/>
+            <ellipse cx="-17.097" cy="121.457" rx="71.561" ry="51.115" class="cls-5"/>
+            <ellipse cx="95.356" cy="152.126" rx="92.007" ry="30.669" class="cls-3"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -7,6 +7,7 @@ import HeaderLight from "@/components/HeaderLight";
 import Sidebar from "@/components/Sidebar";
 import FooterLight from "@/components/FooterLight";
 import LineAnimatedLink from "@/components/LineAnimatedLink";
+import FlutedGlass from "@/components/FlutedGlass";
 import {
   PAD,
   LINE_LIGHT,
@@ -31,6 +32,23 @@ const HERO_STATS = [
 
 /* Image strip cut into 4 cells, one left open. */
 const STRIP_CELLS = [true, true, false, true];
+const STRIP_GAP = 3; // px between cells
+
+/* Mask that shows only the visible cells (gaps + open cells cut out), so one
+   continuous fluted-glass layer can sit behind the whole strip. */
+const STRIP_MASK = (() => {
+  const n = STRIP_CELLS.length;
+  const col = `((100% - ${(n - 1) * STRIP_GAP}px) / ${n})`;
+  const at = (k, extra = 0) =>
+    `calc(${k} * ${col} + ${k * STRIP_GAP + extra}px)`;
+  const stops = STRIP_CELLS.flatMap((show, k) => {
+    const c = show ? "#000" : "transparent";
+    const start = at(k);
+    const end = `calc(${k + 1} * ${col} + ${k * STRIP_GAP}px)`;
+    return [`${c} ${start}`, `${c} ${end}`, `transparent ${end}`];
+  });
+  return `linear-gradient(90deg, ${stops.join(", ")})`;
+})();
 
 const PROBLEM_SOLUTION = [
   {
@@ -100,23 +118,15 @@ export default function AboutPage() {
         </div>
 
         {/* Image strip */}
-        <div className={`${PAD} border-b ${LINE_LIGHT}`}>
-          <div className="grid grid-cols-4 gap-[3px] h-[clamp(10rem,22vw,20rem)]">
-            {STRIP_CELLS.map((show, i) =>
-              show ? (
-                <div
-                  key={i}
-                  className="bg-light-primary"
-                  style={{
-                    backgroundImage: "url(/home/equistone-sustainable-img.jpg)",
-                    backgroundSize: "400% 100%",
-                    backgroundPosition: `${(i / 3) * 100}% 50%`,
-                  }}
-                />
-              ) : (
-                <div key={i} />
-              ),
-            )}
+        <div className={`border-b ${LINE_LIGHT}`}>
+          <div
+            className="relative isolate h-[clamp(10rem,22vw,20rem)]"
+            style={{ maskImage: STRIP_MASK, WebkitMaskImage: STRIP_MASK }}
+          >
+            <FlutedGlass
+              id="fluted-glass-strip"
+              src="/home/equistone-sustainable-img.jpg"
+            />
           </div>
         </div>
 
@@ -165,7 +175,7 @@ export default function AboutPage() {
           </div>
 
           {/* Image */}
-          <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="grain bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
               src="/home/equistone-sustainable-img.jpg"
               alt="Equistone strategic investment"

@@ -140,63 +140,77 @@ body {
 /* large screen */
 @media (min-width: 1440px) {
   .container {
-    max-width: 1360px;
+    max-width: 1480px;
   }
 }
 .pixel {
   width: 100%;
   height: 100%;
 }
-
-/* Glass cube overlay (hero image) */
-.glass-cube-scene {
-  --cube: clamp(6rem, 11vw, 10rem);
-  perspective: 900px;
-}
-.glass-cube {
+/* ------------------------------------------------------------------ */
+/* Grain — film-grain noise over any image / block.                    */
+/* Usage: add `grain` to a `relative` wrapper (e.g. around next/image)  */
+/*   <div className="relative grain"> <Image fill ... /> </div>        */
+/* Strength: grain-soft | grain (default) | grain-strong               */
+/* Moving grain: add `grain-animate`                                    */
+/* Custom:  style={{ "--grain-opacity": 0.3 }}                         */
+/* ------------------------------------------------------------------ */
+@utility grain {
   position: relative;
-  width: var(--cube);
-  height: var(--cube);
-  transform-style: preserve-3d;
-  animation: glassCubeSpin 18s linear infinite;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -50%; /* oversized so grain-animate can shift without gaps */
+    z-index: 1;
+    pointer-events: none;
+    opacity: var(--grain-opacity, 0.5);
+    mix-blend-mode: soft-light; /* gentler than overlay */
+    /* fine noise (freq 1.4) → grayscale, mild contrast ×1.5, alpha forced to 1 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1.5 0 0 0 -0.25 1.5 0 0 0 -0.25 1.5 0 0 0 -0.25 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
 }
-.glass-cube-face {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.38) 0%,
-    rgba(255, 255, 255, 0.08) 55%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  box-shadow:
-    inset 0 0 2rem rgba(255, 255, 255, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px) saturate(140%);
-  -webkit-backdrop-filter: blur(6px) saturate(140%);
+
+@utility grain-soft {
+  --grain-opacity: 0.22;
 }
-.glass-cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(calc(var(--cube) / 2)); }
-.glass-cube-shadow {
-  width: calc(var(--cube) * 1.1);
-  height: calc(var(--cube) * 0.18);
-  margin-top: calc(var(--cube) * 0.55);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.35);
-  filter: blur(12px);
+
+@utility grain-strong {
+  --grain-opacity: 0.22;
 }
-@keyframes glassCubeSpin {
-  from { transform: rotateX(-22deg) rotateY(0deg); }
-  to { transform: rotateX(-22deg) rotateY(360deg); }
+
+@utility grain-animate {
+  &::after {
+    animation: grain-shift 0.8s steps(6) infinite;
+  }
 }
+
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-6%, 4%);
+  }
+  40% {
+    transform: translate(5%, -7%);
+  }
+  60% {
+    transform: translate(-3%, 8%);
+  }
+  80% {
+    transform: translate(7%, 3%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .glass-cube {
+  .grain-animate::after {
     animation: none;
-    transform: rotateX(-22deg) rotateY(35deg);
   }
 }
