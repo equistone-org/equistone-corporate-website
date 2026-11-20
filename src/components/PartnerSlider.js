@@ -8,11 +8,12 @@ export default function PartnerSlider() {
   const trackRef = useRef(null);
 
   const partners = [
-    {
-      name: "Payhalal Sdn Bhd",
-      src: "/collaborations/equistone-payhalal-logo.svg",
-      type: "FinTech Strategic Partner",
-    },
+    // [finance-hidden]
+    // {
+    //   name: "Payhalal Sdn Bhd",
+    //   src: "/collaborations/equistone-payhalal-logo.svg",
+    //   type: "FinTech Strategic Partner",
+    // },
     {
       name: "Klinik Utama",
       src: "/collaborations/equistone-klinikutama-logo.svg",
