@@ -1,5 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +13,8 @@ import FooterLight from "@/components/FooterLight";
 import JourneyTimeline from "@/components/JourneyTimeline";
 // import PartnerSlider from "@/components/PartnerSlider";
 import LineAnimatedLink from "@/components/LineAnimatedLink";
+import FlutedGlass from "@/components/FlutedGlass";
+import RollingNumber from "@/components/RollingNumber";
 
 import {
   PAD,
@@ -57,22 +63,26 @@ const ABOUT_PILLARS = [
 const PHILOSOPHY = [
   {
     title: "Strategic Asset Transformation",
-    img: "/home/equistone-strategic-img.svg",
+    img: "/home/equistone-strategic-img-gradient.svg",
+    symbol: "/home/equistone-strategic-img-symbol.svg",
     desc: "We target businesses and sectors where disciplined application of technology and capital structure improvement unlocks disproportionate value.",
   },
   {
     title: "Venture Building Over Passive Holding",
-    img: "/home/equistone-venture-img.svg",
+    img: "/home/equistone-venture-img-gradient.svg",
+    symbol: "/home/equistone-venture-img-symbol.svg",
     desc: "We deploy operational capability alongside capital. Clinex proves this model through in-house design, build, and deployment since 2024.",
   },
   {
     title: "ICT-Enabled Sector Focus",
-    img: "/home/equistone-ict-img.svg",
-    desc: "Focus on healthcare, fintech, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
+    img: "/home/equistone-ict-img-gradient.svg",
+    symbol: "/home/equistone-ict-img-symbol.svg", // [finance-hidden] desc: "Focus on healthcare, fintech, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
+    desc: "Focus on healthcare, communications, and enterprise digitisation where technology creates defensible long-term advantage.",
   },
   {
     title: "Sustainable Development Orientation",
-    img: "/home/equistone-sustainable-img.svg",
+    img: "/home/equistone-sustainable-img-gradient.svg",
+    symbol: "/home/equistone-sustainable-img-symbol.svg",
     desc: "Aligning every venture with Malaysia's NIMP 2030, Digital Economy Blueprint, and ESG principles for long-term value creation.",
   },
 ];
@@ -83,11 +93,12 @@ const SECTORS = [
     img: "/home/equistone-healthcare-img.svg",
     desc: "Digitising Malaysia's private healthcare sector — from clinic management systems to patient data platforms. Our flagship venture Clinex is deployed and actively growing in this sector, with Klinik Utama as a key operator client.",
   },
-  {
-    title: "Financial Technology",
-    img: "/home/equistone-financial-img.svg",
-    desc: "Strategic investment in payment technology, digital financial infrastructure, and financial services digitisation. Strategic partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic fintech ecosystem.",
-  },
+  // [finance-hidden] Fintech sector hidden — company no longer pursuing finance field.
+  // {
+  //   title: "Financial Technology",
+  //   img: "/home/equistone-financial-img.svg",
+  //   desc: "Strategic investment in payment technology, digital financial infrastructure, and financial services digitisation. Strategic partner: Payhalal Sdn Bhd, operating in the Malaysian Islamic fintech ecosystem.",
+  // },
   {
     title: "Enterprise ICT & Digital Transformation",
     img: "/home/equistone-enterpriseict-img.svg",
@@ -96,12 +107,13 @@ const SECTORS = [
 ];
 
 const PARTNERS = [
-  {
-    name: "Payhalal Sdn Bhd",
-    logo: "/collaborations/equistone-payhalal-dark-logo.svg",
-    sector: "Financial Technology",
-    role: "Strategic Partner",
-  },
+  // [finance-hidden]
+  // {
+  //   name: "Payhalal Sdn Bhd",
+  //   logo: "/collaborations/equistone-payhalal-dark-logo.svg",
+  //   sector: "Financial Technology",
+  //   role: "Strategic Partner",
+  // },
   // {
   //   name: "IntelliLabs AI",
   //   logo: "/collaborations/equistone-intellilabs-dark-logo.svg",
@@ -155,7 +167,8 @@ const CTAS = [
     kicker: "Invest Alongside Equistone",
     desc: "We are building Malaysia's next generation of ICT ventures. If you are a strategic investor or co-investor seeking ICT sector exposure backed by a team that builds operationally — let's talk.",
     points: [
-      "ICT sector focus — healthcare, fintech, enterprise",
+      // [finance-hidden] "ICT sector focus — healthcare, fintech, enterprise",
+      "ICT sector focus — healthcare, enterprise",
       "Venture-building model — operational expertise included",
       "Incorporated 2019 · KL-based · Active ASEAN expansion",
     ],
@@ -166,9 +179,10 @@ const CTAS = [
     kicker: "Build Your Venture With Equistone",
     desc: "Have a high-potential ICT venture that needs smart capital, strategic advisory, or technology execution support? Equistone brings more than funding — we bring the team that built Clinex from the ground up since 2024.",
     points: [
-      "Corporate finance and capital structuring expertise",
+      // [finance-hidden] "Corporate finance and capital structuring expertise",
       "In-house technology development capability",
-      "Strategic partner network — fintech, AI, communications",
+      // [finance-hidden] "Strategic partner network — fintech, AI, communications",
+      "Strategic partner network — AI, communications",
     ],
     cta: "Submit Your Venture",
   },
@@ -190,6 +204,42 @@ const MOSAIC_CELLS = [
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const heroRef = useRef(null);
+  const heroGhostRef = useRef(null);
+
+  /* Hero starts full-width, then shrinks to container width on scroll. */
+  useEffect(() => {
+    const hero = heroRef.current;
+    const ghost = heroGhostRef.current;
+    if (!hero || !ghost) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        hero,
+        { maxWidth: () => hero.parentElement.clientWidth },
+        {
+          // real .container content width at this breakpoint (minus its padding)
+          maxWidth: () => {
+            const cs = getComputedStyle(ghost);
+            return (
+              ghost.clientWidth -
+              parseFloat(cs.paddingLeft) -
+              parseFloat(cs.paddingRight)
+            );
+          },
+          ease: "none",
+          scrollTrigger: {
+            start: 0,
+            end: () => window.innerHeight * 0.6,
+            scrub: true,
+            invalidateOnRefresh: true, // re-measure on resize
+          },
+        },
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className="flex-1 flex-col items-start justify-center bg-light-primary font-sans">
@@ -200,55 +250,52 @@ export default function Home() {
       <main
         className={`relative w-full overflow-hidden font-sans z-99 text-dark-primary bg-light-secondary border-b ${LINE_LIGHT}`}
       >
-        <div className="relative z-20 px-[clamp(0.02rem,3vw,4rem)]">
-          <div className="container mx-auto">
+        {/* Invisible ghost: measures the final container width (incl. side padding) */}
+        <div
+          aria-hidden
+          className="px-[clamp(0.02rem,3vw,4rem)] h-0 overflow-hidden"
+        >
+          <div ref={heroGhostRef} className="container mx-auto" />
+        </div>
+
+        <div className="relative z-20">
+          <div ref={heroRef} className="w-full mx-auto">
             <div
               className={`border-x  ${LINE_LIGHT} flex flex-col lg:min-h-[calc(100dvh-80px)]`}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-4 flex-1">
-                <div
-                  className={`lg:col-span-2 ${PAD} flex flex-col justify-between gap-[clamp(2rem,5vw,5rem)]  border-b lg:border-b-0 lg:border-r ${LINE_LIGHT}`}
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <p className="text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-widest leading-[1.6] opacity-80">
-                      Equistone Sdn Bhd
-                      <br />
-                      Est. 2019
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
+              <div className="grid grid-cols-1 flex-1">
+                <div className="relative">
+                  <div className=" relative isolate overflow-hidden h-full min-h-[clamp(32rem,62vw,44rem)] flex flex-col items-center bg-light-primary p-[clamp(1.25rem,3vw,2.5rem)] text-white">
+                    <FlutedGlass src="/home/equistone-glass-img.jpg" />
+                    {/* Top bar */}
+                    <div className="flex flex-wrap justify-center gap-2">
+                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/70 bg-white/15 backdrop-blur-sm font-semibold uppercase rounded-full">
                         ICT Investment Holding
                       </span>
-                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-black/60 font-semibold uppercase rounded-full">
+                      <span className="text-[clamp(0.6rem,0.75vw,0.7rem)] px-3 py-1 border border-white/70 bg-white/15 backdrop-blur-sm font-semibold uppercase rounded-full">
                         Integra Tower · Kuala Lumpur
                       </span>
                     </div>
-                  </div>
 
-                  <h1 className="font-semibold leading-[1.02] tracking-tight text-[clamp(2.6rem,5.4vw,6rem)]">
-                    We Build What
-                    <span className="text-dark-orange"> Others Only Fund.</span>
-                  </h1>
-                </div>
-
-                <div className={`lg:col-span-2 relative ${PAD}`}>
-                  <div className="grid grid-cols-3 grid-rows-2 gap-[3px] h-full min-h-[clamp(16rem,38vw,34rem)]">
-                    {MOSAIC_CELLS.map((c, i) =>
-                      c.show ? (
-                        <div
-                          key={i}
-                          className="bg-light-primary"
-                          style={{
-                            backgroundImage:
-                              "url(/home/equistone-strategic-img.jpg)",
-                            backgroundSize: "300% 200%",
-                            backgroundPosition: `${c.col * 50}% ${c.row * 100}%`,
-                          }}
-                        />
-                      ) : (
-                        <div key={i} />
-                      ),
-                    )}
+                    {/* Headline */}
+                    <div className="my-auto py-4 flex flex-col items-center text-center gap-[clamp(0.75rem,1.4vw,1.25rem)] max-w-[56rem]">
+                      <span className="grid place-items-center size-[clamp(1.6rem,2.2vw,2rem)] rounded-full border border-white/90 text-[clamp(0.7rem,0.85vw,0.8rem)] font-medium">
+                        01
+                      </span>
+                      <h1 className="font-normal leading-[1.02] tracking-tight text-[clamp(4.4rem,6.4vw,8.5rem)]">
+                        We Build What
+                        <span className="text-gray-50 font-black">
+                          {" "}
+                          Others Only Fund.
+                        </span>
+                      </h1>
+                      <p className="hidden lg:block leading-loose max-w-104 text-[clamp(0.8rem,1vw,0.95rem)] px-4 py-2 border border-white/70 bg-black/10 backdrop-blur-sm font-semibold uppercase rounded-md">
+                        <span className=" text-white-primary box-decoration-clone">
+                          Strategic capital, corporate advisory and in-house
+                          technology — under one roof since 2019.
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -275,13 +322,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                {HERO_STATS.map((s) => (
+                {HERO_STATS.map((s, i) => (
                   <div
                     key={s.label}
                     className={`${PAD} flex flex-col justify-end`}
                   >
-                    <div className="text-[clamp(2rem,3.4vw,3.2rem)] font-semibold leading-none">
-                      {s.value}
+                    <div className="text-[clamp(2rem,3.4vw,3.2rem)] font-semibold leading-none tabular-nums">
+                      <RollingNumber value={s.value} delay={i * 0.15} />
                     </div>
                     <div className="mt-[clamp(0.75rem,1vw,1rem)] pt-[clamp(0.75rem,1vw,1rem)] border-t border-black/40 text-[clamp(0.7rem,0.85vw,0.85rem)]">
                       {s.label}
@@ -328,17 +375,15 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Image */}
-          <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="grain bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
-              src="/home/equistone-venture-img.jpg"
+              src="/home/equistone-venture-img-year.jpg"
               alt="Equistone venture building"
               fill
               sizes="(min-width:1024px) 25vw, 50vw"
               className="object-cover"
             />
           </div>
-
           <StatTile value="2019" label="Year incorporated — Kuala Lumpur" />
 
           {/* Pillars */}
@@ -477,13 +522,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative md:col-span-2 bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="grain md:col-span-2 bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
               src="/home/equistone-healthcare-img.svg"
               alt="Healthcare technology"
               fill
-              sizes="(min-width:1024px) 50vw, 100vw"
+              sizes="(min-width:1024px) 25vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -514,7 +558,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                "Financial Technology",
+                // [finance-hidden] "Financial Technology",
                 "Enterprise ICT",
                 "Digital Infrastructure",
                 "Sustainable Technology",
@@ -581,9 +625,10 @@ export default function Home() {
                 <ArrowUpRight className="lg:hidden" />
               </div>
               <div
-                className={`hidden lg:flex ${PAD} items-start justify-between gap-6`}
+                className={`hidden lg:flex items-start justify-between gap-6`}
               >
-                <div className="relative w-full aspect-16/10 overflow-hidden">
+                {/* Layers: image (bottom) → grain (::after, z-1) → symbol (top) */}
+                <div className="grain w-full aspect-16/10">
                   <Image
                     src={p.img}
                     alt={p.title}
@@ -591,8 +636,19 @@ export default function Home() {
                     sizes="20vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {p.symbol && (
+                    <div className="absolute inset-0 z-2 grid place-items-center pointer-events-none">
+                      <Image
+                        src={p.symbol}
+                        alt=""
+                        aria-hidden="true"
+                        width={69}
+                        height={49}
+                        className="w-[36%] h-auto transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                 </div>
-                <ArrowUpRight />
               </div>
             </div>
           ))}
@@ -609,7 +665,8 @@ export default function Home() {
           intro="Equistone focuses on industries where digital technology creates durable structural advantages — fully aligned with Malaysia's national digital transformation priorities."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/15">
+        {/* [finance-hidden] was md:grid-cols-3 — back to 3 if Fintech sector is restored */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/15">
           {SECTORS.map((s, i) => (
             <div key={s.title} className="group bg-dark-primary flex flex-col">
               <div className="relative w-full h-[clamp(12rem,20vw,18rem)] overflow-hidden">

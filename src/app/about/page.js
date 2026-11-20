@@ -7,6 +7,7 @@ import HeaderLight from "@/components/HeaderLight";
 import Sidebar from "@/components/Sidebar";
 import FooterLight from "@/components/FooterLight";
 import LineAnimatedLink from "@/components/LineAnimatedLink";
+import FlutedGlass from "@/components/FlutedGlass";
 import {
   PAD,
   LINE_LIGHT,
@@ -23,13 +24,16 @@ const HERO_STATS = [
   { value: "50+", label: "Clinics live on Clinex as of 2026" },
   {
     value: "ICT",
-    label: "Primary focus sector — healthcare, fintech, enterprise",
+    // [finance-hidden] label: "Primary focus sector — healthcare, fintech, enterprise",
+    label: "Primary focus sector — healthcare, enterprise",
   },
   { value: "ASEAN", label: "Long-term regional expansion strategy" },
 ];
 
 /* Image strip cut into 4 cells, one left open. */
 const STRIP_CELLS = [true, true, false, true];
+const STRIP_GAP = 3; // px between cells
+const STRIP_BG = "#fefdf2"; // = bg-light-primary, paints the gaps
 
 const PROBLEM_SOLUTION = [
   {
@@ -99,23 +103,26 @@ export default function AboutPage() {
         </div>
 
         {/* Image strip */}
-        <div className={`${PAD} border-b ${LINE_LIGHT}`}>
-          <div className="grid grid-cols-4 gap-[3px] h-[clamp(10rem,22vw,20rem)]">
-            {STRIP_CELLS.map((show, i) =>
-              show ? (
+        <div className={`border-b ${LINE_LIGHT}`}>
+          <div className="relative isolate overflow-hidden h-[clamp(16rem,70vw,24rem)] lg:h-[clamp(10rem,22vw,20rem)]">
+            <FlutedGlass src="/home/equistone-sustainable-img.jpg" />
+            {/* Gaps + open cells painted over the image (no CSS mask —
+                iOS Safari drops masked layers that contain an SVG filter). */}
+            {/* 2×2 on mobile, 4 across on desktop. Each cell's outer shadow
+                paints the gap around it in the page colour. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 grid grid-cols-2 lg:grid-cols-4"
+              style={{ gap: STRIP_GAP }}
+            >
+              {STRIP_CELLS.map((show, k) => (
                 <div
-                  key={i}
-                  className="bg-light-primary"
-                  style={{
-                    backgroundImage: "url(/home/equistone-sustainable-img.jpg)",
-                    backgroundSize: "400% 100%",
-                    backgroundPosition: `${(i / 3) * 100}% 50%`,
-                  }}
+                  key={k}
+                  className={show ? "" : "bg-light-primary"}
+                  style={{ boxShadow: `0 0 0 ${STRIP_GAP}px ${STRIP_BG}` }}
                 />
-              ) : (
-                <div key={i} />
-              ),
-            )}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -164,9 +171,9 @@ export default function AboutPage() {
           </div>
 
           {/* Image */}
-          <div className="relative bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
+          <div className="grain bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
-              src="/home/equistone-strategic-img.jpg"
+              src="/home/equistone-sustainable-img.jpg"
               alt="Equistone strategic investment"
               fill
               sizes="(min-width:1024px) 25vw, 50vw"
