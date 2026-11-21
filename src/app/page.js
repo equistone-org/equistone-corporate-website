@@ -90,7 +90,7 @@ const PHILOSOPHY = [
 const SECTORS = [
   {
     title: "Healthcare Technology",
-    img: "/home/equistone-healthcare-img.svg",
+    img: "/home/equistone-healthcare-img.png",
     desc: "Digitising Malaysia's private healthcare sector — from clinic management systems to patient data platforms. Our flagship venture Clinex is deployed and actively growing in this sector, with Klinik Utama as a key operator client.",
   },
   // [finance-hidden] Fintech sector hidden — company no longer pursuing finance field.
@@ -101,7 +101,7 @@ const SECTORS = [
   // },
   {
     title: "Enterprise ICT & Digital Transformation",
-    img: "/home/equistone-enterpriseict-img.svg",
+    img: "/home/equistone-enterpriseict-img.png",
     desc: "Advisory, investment, and platform development for Malaysian enterprises undergoing digital transformation — modernising operations and unlocking technology-driven growth. Supports JomChat partnerships.",
   },
 ];
@@ -524,7 +524,7 @@ export default function Home() {
 
           <div className="grain md:col-span-2 bg-light-primary min-h-[clamp(14rem,22vw,20rem)]">
             <Image
-              src="/home/equistone-healthcare-img.svg"
+              src="/home/equistone-clinex-img-mockup.png"
               alt="Healthcare technology"
               fill
               sizes="(min-width:1024px) 25vw, 50vw"
@@ -668,18 +668,24 @@ export default function Home() {
         {/* [finance-hidden] was md:grid-cols-3 — back to 3 if Fintech sector is restored */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/15">
           {SECTORS.map((s, i) => (
-            <div key={s.title} className="group bg-dark-primary flex flex-col">
-              <div className="relative w-full h-[clamp(12rem,20vw,18rem)] overflow-hidden">
-                <Image
-                  src={s.img}
-                  alt={s.title}
-                  fill
-                  sizes="(min-width:768px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+            <div
+              key={s.title}
+              className=" group relative isolate overflow-hidden bg-dark-primary flex flex-col min-h-[clamp(14rem,26vw,22rem)]"
+            >
+              <Image
+                src={s.img}
+                alt={s.title}
+                fill
+                sizes="(min-width:768px) 50vw, 100vw"
+                className="-z-20 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Gradient overlay keeps text legible over the image */}
               <div
-                className={`${PAD} flex flex-col gap-[clamp(0.75rem,1vw,1rem)] flex-1`}
+                aria-hidden
+                className="absolute inset-0 -z-10 bg-gradient-to-t from-dark-primary via-dark-primary/70 to-dark-primary/10"
+              />
+              <div
+                className={`${PAD} relative flex flex-col justify-end gap-[clamp(0.75rem,1vw,1rem)] flex-1`}
               >
                 <p className="text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-widest opacity-70">
                   Sector {String(i + 1).padStart(2, "0")}
@@ -687,7 +693,7 @@ export default function Home() {
                 <h4 className="uppercase font-semibold text-[clamp(1rem,1.25vw,1.2rem)] leading-[1.3]">
                   {s.title}
                 </h4>
-                <p className="text-[clamp(0.85rem,0.95vw,0.92rem)] text-white/60 leading-[1.8]">
+                <p className="text-[clamp(0.85rem,0.95vw,0.92rem)] text-white/75 leading-[1.8]">
                   {s.desc}
                 </p>
                 <div className="mt-auto pt-4 flex items-end justify-between">
